@@ -50,4 +50,75 @@ dr-xr-xr-x  104 root root     0 7月  11 2016 proc
 drwxr-xr-x.  89 root root  4096 7月  11 2016 etc
 drwxr-xr-x.  21 root root  4096 7月  11 2016 var
 
+------------------------------------------------------------------------
+[root@iZ25t6j7xo6Z lib64]# gcc --version
+gcc (GCC) 4.8.2 20140120 (Red Hat 4.8.2-16)
+Copyright © 2013 Free Software Foundation, Inc.
+本程序是自由软件；请参看源代码的版权声明。本软件没有任何担保；
+包括没有适销性和某一专用目的下的适用性担保
 
+------------------------------------------------------------------------
+[root@iZ25t6j7xo6Z lib64]# gdb --version
+GNU gdb (GDB) Red Hat Enterprise Linux 7.6.1-51.el7
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+
+------------------------------------------------------------------------
+[root@iZ25t6j7xo6Z lib64]# make --version
+GNU Make 3.82
+Built for x86_64-redhat-linux-gnu
+Copyright (C) 2010  Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+
+------------------------------------------------------------------------
+[root@iZ25t6j7xo6Z lib64]# vim --version
+VIM - Vi IMproved 7.4 (2013 Aug 10, compiled Jun 10 2014 06:55:55)
+包含补丁: 1-160
+修改者 <bugzilla@redhat.com>
+编译者 <bugzilla@redhat.com>
+巨型版本 无图形界面。  可使用(+)与不可使用(-)的功能:
++acl             +farsi           +mouse_netterm   +syntax
++arabic          +file_in_path    +mouse_sgr       +tag_binary
++autocmd         +find_in_path    -mouse_sysmouse  +tag_old_static
+-balloon_eval    +float           +mouse_urxvt     -tag_any_white
+-browse          +folding         +mouse_xterm     -tcl
+++builtin_terms  -footer          +multi_byte      +terminfo
++byte_offset     +fork()          +multi_lang      +termresponse
++cindent         +gettext         -mzscheme        +textobjects
+-clientserver    -hangul_input    +netbeans_intg   +title
+-clipboard       +iconv           +path_extra      -toolbar
++cmdline_compl   +insert_expand   +perl            +user_commands
++cmdline_hist    +jumplist        +persistent_undo +vertsplit
++cmdline_info    +keymap          +postscript      +virtualedit
++comments        +langmap         +printer         +visual
++conceal         +libcall         +profile         +visualextra
++cryptv          +linebreak       +python/dyn      +viminfo
++cscope          +lispindent      -python3         +vreplace
++cursorbind      +listcmds        +quickfix        +wildignore
++cursorshape     +localmap        +reltime         +wildmenu
++dialog_con      -lua             +rightleft       +windows
++diff            +menu            +ruby/dyn        +writebackup
++digraphs        +mksession       +scrollbind      -X11
+-dnd             +modify_fname    +signs           -xfontset
+-ebcdic          +mouse           +smartindent     -xim
++emacs_tags      -mouseshape      -sniff           -xsmp
++eval            +mouse_dec       +startuptime     -xterm_clipboard
++ex_extra        +mouse_gpm       +statusline      -xterm_save
++extra_search    -mouse_jsbterm   -sun_workshop    -xpm
+     系统 vimrc 文件: "/etc/vimrc"
+     用户 vimrc 文件: "$HOME/.vimrc"
+第二用户 vimrc 文件: "~/.vim/vimrc"
+      用户 exrc 文件: "$HOME/.exrc"
+         $VIM 预设值: "/etc"
+$VIMRUNTIME 预设值: "/usr/share/vim/vim74"
+编译方式: gcc -c -I. -Iproto -DHAVE_CONFIG_H     -O2 -g -pipe -Wall -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches   -m64 -mtune=generic -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1      
+链接方式: gcc   -L. -Wl,-z,relro -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,--enable-new-dtags -Wl,-rpath,/usr/lib64/perl5/CORE  -Wl,-z,relro  -L/usr/local/lib -Wl,--as-needed -o vim        -lm -lnsl  -lselinux  -lncurses -lacl -lattr -lgpm -ldl   -Wl,--enable-new-dtags -Wl,-rpath,/usr/lib64/perl5/CORE  -fstack-protector  -L/usr/lib64/perl5/CORE -lperl -lresolv -lnsl -ldl -lm -lcrypt -lutil -lpthread -lc  
