@@ -136,4 +136,8 @@ $VIMRUNTIME 预设值: "/usr/share/vim/vim74"
 \S
 Kernel \r on an \m
 
+------------------------------------------------------------------------
+[root@iZ25t6j7xo6Z ~]# cat /etc/redhat-release 
+CentOS Linux release 7.0.1406 (Core) 
+
 
