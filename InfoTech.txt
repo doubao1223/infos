@@ -86,5 +86,6 @@ ICMP
 == 硬件
 CPU初始化过程
 硬件初始化
+volatile
 
 CAN总线
