@@ -1,8 +1,59 @@
 
-data mining
+== data mining
 
-知识图谱
+== 知识图谱
 
-自然语言处理
+== 自然语言处理
 
- 
+
+== 链表
+== binary tree
+       什么是 完全二叉树 
+== quick sort
+== hash
+== merge sort
+
+== C
+c库
+sprintf
+实现 reverse 函数
+关键字：static
+大维数组
+
+== C++
+C++11
+拷贝构造
+string类
+
+extern C
+关键字：static
+
+
+== SQL
+
+
+== 程序崩溃
+
+== 死锁
+--怎么解决
+-- 死锁怎么产生的
+-- 死锁怎么识别
+
+== 多线程
+
+
+== 设计模式
+
+
+
+== 网络
+TCP/IP 滑窗
+TCP socket 建立过程
+
+ICMP
+
+
+== Linux
+-- Linux有一个机制，内存超过多少会怎么样
+-- 调优
+-- lambda 表达式
