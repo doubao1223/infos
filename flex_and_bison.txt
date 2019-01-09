@@ -1,0 +1,97 @@
+
+ 2019年 1月10日 星期四 05时48分48秒 CST
+
+
+== 
+-- Lexical Analysis 词法分析
+   举例：foo = 1 - 3**2;
+                              传达     
+   Lexeme( 词 )   Token Type( 表意 类型 )
+   foo            Variable
+   =              Assignment Operator
+   1              Number
+   -              Subtraction Operator
+   3              Number
+   **             Power Operator
+   2              Number
+-- Syntactic Analysis 语法分析
+   分析 a sequence of tokens( 表意 ) to detremine its grammatical structure.
+   Syntax errors are identified during this stage.
+
+             =
+       foo       -
+             1      **
+                 3      2
+-- Semantic Analysis 语意分析
+   The process of performing semantic checks 语意检查
+
+举例: type checking, object binding, etc.
+
+      Code:                 Semantic Check Error:
+      float a = "example";  error: incompatible types in initialization
+-- Compiler Optimizations
+   \ tune the output of a compiler to minimize or maximize
+     some attributes of an executable computer program.
+   \ Make programs faster, etc...
+-- Code Generation
+   \ process by which a compiler's code generator
+     converts some intermediate representation of source code
+     into a form (e.g., machine code) that can be readily executed
+     by a machine.
+举例:
+int foo() {             foo:
+    return 345;             addiu  $sp, $sp, -16
+}                           addiu  $2, $zero, 345
+                            addiu  $sp, $sp, 16 
+                            jr     $ra
+
+== flex, fast lexical analyzer generator 词法分析器
+   Free and open source alternative.
+   You'll be using this.
+注：lex 词法分析器, Mike Lesk and Eric Schmidt (the Google guy)，不再使用。
+
+== bison 语法分析器
+   Free and open source alternative.
+   You'll be using this.
+注: yacc, 语法分析器，不再使用.
+   
+== Flex/Bison relation to a compiler toolchain
+
+               Frontend                            Middle-End     Backend
+
+Lexer/Scanner -> Parser -> Semantic Analyzer =>  Optimizers ==> Code Generator
+
+    Flex         Bison
+ (.l spec file)  (.y spec file)
+
+-- how flex works
+   .l spec file  ->  flex  ->  lex.yy.c
+   
+-- flex rule format
+   \ Matches text input iva Regular Expressions
+     \\ longest match
+        例： abc    [a-z]+     abc
+     \\ the first applicable rule
+        例： post   "post"
+             Rule1: "post"      { printf( "Hello,"); }
+             Rule2: [a-zA-z]+   { printf( "World!"); }
+     \\        
+   \ Returns the token type
+             
+   \ Format
+   
+-- how bison works
+   .y spec file  ->  bison  ->  somename.tab.c
+                                somename.tab.h
+   \ bison uses a .y spec file to generate a parser.
+   \ the parser reads a series of tokens and tries to
+     determine the grammatical structure
+     with respect to a given grammar.
+-- what is a Grammer
+   \ a grammar
+   \ bison .y specification file
+   \ bison definition section example
+   \ bison: rules section
+   
+   
+                               
