@@ -1,0 +1,54 @@
+
+== 国学
+http://www.guoxue.com/wenxian/wxzhi/zibu-biji.htm
+
+-- 春秋左传
+http://www.guoxue.com/?book=cqzz
+-- 三国志
+http://www.guoxue.com/shibu/24shi/sangzz/sgzzml.htm
+-- 旧唐书 http://www.guoxue.com/shibu/24shi/oldtangsu/jtsml.htm
+-- 三十六计 http://www.readers365.com/36ji/index.html
+
+
+== 小说
+-- 太平广记 
+https://ctext.org/taiping-guangji/zhs
+-- Frankenstein: or The Modern Prometheus  Mary Shelly, 1797-1851
+-- 鲁迅 http://www.readers365.com/luxun/luxun02/b001.htm
+        http://www.readers365.com/luxun.html
+
+
+== 武侠
+-- https://www.douban.com/doulist/1131263/
+
+
+== 计算机编程类
+计算机图形学的算法基础 英文版第2版  Rogers
+通信网络基础 英文版第2版 Walrand
+计算机网络 英文版第2版 Peterson/Davie 
+高性能通信网络 英文版第2版 Walrand/Varaiya
+网络互连：网桥 路由器 交换机和互连协议 英文版第2版  Perlman
+
+数据通信与网络 英文版 Forouzan
+ISDN,B-ISDN与帧中继和ATM 英文版第4版 Stallings
+TCP/IP详解 卷1：协议 Stevens
+TCP/IP详解 卷2：实现 Wright/Stevens
+TCP/IP详解 卷3：TCP事务协议、HTTP、NNTP和UNIX域协议 Stevens
+
+Internet技术基础 英文版第3版  Comer
+
+
+何红辉 关爱民 Android源码 设计模式
+https://github.com/hehonghui/android_dp_analysis_code
+
+Ian G. Clifton 
+基于 Material Design 的 Android 用户界面设计 
+http://www.informit.com/store/android-user-interface-design-implementing-material-9780134191409
+
+
+
+
+== Info
+-- DANCE, Data, Algorithms/AI, Networks, Cloud, Exponential improvements in hardware
+
+

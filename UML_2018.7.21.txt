@@ -1,0 +1,71 @@
+
+UML的功能：
+可视化抽象的概念(通常是一个系统中的类和他们之间的关系).
+强调抽象中的重要部分：name, attribute, operations.
+
+
+1. Classes 类名
+A class is an abstracting of things that are a part of your vocabulary. 抽象事物。
+the vocabulary of the system you are modeling.
+1.1 Names
+Every class must have a name that distinguishes it from other classes.
+
+1.2 Attributes 属性
+An attribute is a named property of a class.
+Java中称 field(字段)
+
+1.3 Operations 操作
+An operation is the implementation of a service. 服务
+Java中称 method(方法)
+Operation's signature, which includes the name, type, and default value of all parameters and a return type.
+Java中的方法签名不包括 返回值类型。
+
+2. Relationships
+When you build abstractions, most of your classes collaborate with others in a number of ways. 类之间相互协作
+
+In the UML, the ways that things can connect to one another, either logically or physically, are modeled as relationships. 关系
+
+2.1 Dependencies 依赖
+Dependencies are using relationships. 使用关系
+
+2.2 Generalizations 概括化
+Generalizations connect generalized classes to more-specialized ones.
+
+B a kind of A
+
+子类是B是父类A的一个对像，子类inheritance父类。
+
+在Java中是 extends(扩展)
+
+2.3 Associations
+Associations are structural reaiontships among instances. 结构关系。
+For example, rooms consist of walls and other things. 房间由墙和其他东西构成。
+
+2.3.1 Name 名称
+An association can have a name
+
+2.3.2 Role 角色
+When a class participates in an association, it has a specific role that is plays in that relationship
+
+2.3.3 Multiplicity 数量
+In many modeling situations. it's important for you to state how many objects may be connected across an instance of association.
+
+2.3.4 Aggregation 聚合
+Sometimes you will want to model a "whole/part" relation ship, in which one class represents a larger thing (the "whole"), which consists of smaller things(the "parts").
+
+has a relationship, 对象of the whole has 对象 of the part.
+
+图形：an unfilled diamond
+
+Simple aggregation does not link the lifetimes of whole and its parts.
+
+2.3.5 Composition 组合
+Composition is a form of aggregation, with strong ownership and coincident lifetime as part of the whole.
+
+图形：a filled diamond
+
+2.4 Realizations 实现
+A realization is a relationship between classifiers in which
+one classifier specifies a contract that another classifier guarantees to carry out.
+
+Most of the time use realization to specify the relationship between an interface and the class or component that provides an operation or service for it.

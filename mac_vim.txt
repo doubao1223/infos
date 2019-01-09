@@ -1,0 +1,11 @@
+1 vim in mac book pro
+	~/.vim
+	~/.viminfo
+	~/.vimrc
+2
+eddie-vim2
+eddie-vim
+
+3
+colors:
+badwolf:    http://www.vim.org/scripts/script.php?script_id=3929

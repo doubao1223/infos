@@ -1,0 +1,868 @@
+1 数据定义
+基本数据类型：bool  char  double  float  int  string  wchar_t  
+unsigned, signed, short, long, 
+构造数据类型：数组、结构(struct)、联合(union)、枚举、类、容器。
+变量，变量名，变量的初始化，
+常量： 数，字符，转义字符，字符串常量。使用宏定义常量，使用const定义常量。
+指针：内存地址。
+指针变量：存储的值代表一个地址。 &  *  ->
+2 数据运算
+算术：+  -  *  /  %  ++  --
+赋值：=  +=  -=  *=  /=  %=  <<=  >>=  &=  ^=  |=
+比较： >  >=  <  <=  ==  !=
+逻辑：&&  ||  ！
+运算符优先级和结合性 
+3 语句
+if else 语句
+switch case 语句
+while语句  do while 语句  for 语句
+4 函数
+内联函数，内联函数的代码会插入到调用的位置。
+函数重载，函数名相同，参数个数或类型不同。返回值可以相同中，也不以不同。
+实际上是不同的函数，就是名称相同。
+5 OO
+结构化程序设计流程
+结构化程序设计思想解决复杂问题的时候，缺点也逐渐暴露出来：数据和操作是相互分离的。这就导致如果数据的格式发生变化，相应的操作函数就要改写。如果遇到需要扩展功能，还涉及模块的重新划分，要修改大量原先写好的功能函数。旧有的模块很难在新的程序中得到复用。
+
+1960 Simula语言  面向对象(实物)
+可重复性
+1970 Smalltalk语言  在面向对象方面堪称经典
+在西方基督教的传说中 ，只有银弹击中中心，才可以杀死怪物。
+
+面向对象程设计将数据和函数紧密结合，共同构成对象来更加准确地描述现实世界。
+封装：1 把数据和函数组合在一起。2 对数据的保护。操作的分级。
+继承：获得另一个类的属性的方法。复用已有的类。单继承，多继承。
+多态：1 对不同的对象，某个操作可能会有不同的行为。这依赖于这个动作所要操作数据的类型。   使具有不同内部结构的对象可以共享相同的外部接口。
+派生方式：public 类型继承，private 实现继承，protected  内部继承。
+只有理论联系实践，才能深刻体会到面向对象程序设计思想的精髓，从而在以后的开发活动中加以应用。
+6 class
+默认情况下，struct声明的类成员是public的，class声明的类成员是private.
+使用 new 关键字创建的对象无法在结束其生命周期的时候自动销毁。必须用delete关键字清除这个对象。
+构造函数
+copy constructor, 用对象来构造新对象。以旧对象的内存空间copy到 新对象的内存空间，以些来完成新对象的创建。只能copy到指针，不能经copy到指针所指向的内存。
+析构函数不接受任何参数。
+重载操作符，在功能上等同于类的成员函数。
+访问级别： public  protected  private
+友元  friend
+友元函数，（1) 声明和类的成员函数是相同的, 定义在类的外部。（2)放在public和private是没有区别的。 （3)一个 函数可以是多个类的友元函数。
+在类中声明：
+class Teacher
+{
+    friend string GetTeacherName(Teacher& teacher);
+}
+在其他文件中实现：
+string GetTeacherName(Teacher& teacher)
+{
+    return teacher.m_name;
+}
+友元类，
+class Teacher
+{
+ friend class TaxDep;
+ private:
+ int m_salary;
+}
+class TaxDep
+{
+public:
+ int CheckSalary(Teacher& teacher)
+ {
+ return teacher.m_salary;
+ }
+};
+使用友元类 TaxDep 的对象，可以访问宿主类的私有成员。
+总结：友元关系不能被继续。友元关系是单向的。
+get()、set()函数与友元类的比较？
+    get()、set()仅仅隐藏了私有数据的名称，而没有隐藏数据本身。而友元的使用，只是向必要的客户公开类的隐藏数据，封装性更好。
+
+面向对象分析方法：Coad （Coad 和Yourdon), OMT(James Rumbaugh), UML
+C++类对象的内存模型
+7 指针
+7.1 指针
+将指针与NULL进行比较，可以有效地避免指针的非法访问。
+NULL宏 实质上是整数0.
+还可以使用 nullptr关键字来表示一个空指针。
+void类型指针
+
+void* memcpy(void* dest, const void* src, size_t len;
+任何类型的指针都可以传入 memcpy，这也真实体现了 内存操作函数的意义。因为它操作的对象仅仅是一片内存，而不论这片内存是什么数据类型。
+C风格的类型转换:
+    int val, val2;
+    double result = ((double)val) / val2;
+ C++风格的类型转换:
+    double result = static_cast<double>(val) / val2;
+
+7.2 指向指针的指针
+7.2.1 指向 指针数组的指针
+7.2.2指针在函数中的应用
+    指针因其在访问内存上的灵活性而出名，当它跟函数搭配使用的时候，可以大大提高函数的灵活性，增加函数的威力。
+a. 作为函数参
+    函数之间的参数传递，都是通过 传值来完成的。    
+    传值传递要对数据进行拷贝，如果要传递的数据比较大，会增加函数调整用的开销。
+    在函数内部，利用指针能够灵活访问内存的特性，可以通过指针来访问需要传递进函数的数据。
+b. 作为函数返回值
+    不能返回指向局部变量的指针。因为局部变量在函数结束后，其生命周期已经结束，
+    内存会被自动释放，这时它的内存地址是无意义的。
+c. 引用，本质是变量的别名。通俗地讲，就是变量的绰号。
+    对变量引用的操作，就是对变量本身的操作。
+
+    int* pInt = 0;  // 一个空指针
+    int& rInt = *pInt; // 引用地址为0的整型数
+    int x = 10;
+    int y = 1; // 定义一个整型变量
+    pInt = &y; 
+    rInt = x; // 不是重新改变 rInt 引用的变量，
+
+    引用的应要作用就是 传递函数的参数和返回值。
+
+    用引用来传递函数参数 具备了传指针和传引用两者的优点。
+
+8 异常处理
+    只在合适的地方使用异常处理，防止异常处理的滥用。
+    (1) 分支结构可以处理时，不要使用异常。异常用来处理非预期的错误状态。
+    (2) 异常的使用会降低程序的性能，但如异常使用得当, 可以提高程序的性能。
+    比如函数的函数的参数是指针，在入口处要对这个指针的有效性进行检查。
+
+    bool Check(int* p)
+    {
+        if (NUll == p) 
+        {
+            return false;
+        }
+        // 正常功能
+    }
+    如果使用异常处理，就可以避免对指针的有效性进行检查，而直接访问。只需要
+    在指针无效、访问发生异常时，对抛出的异常进行处理就可。
+    bool Check(int* p)
+    {
+        try
+        {
+            // 直接访问指针
+        }
+        catch (...)
+        {
+            //对指针无效的情况进行处理
+            return false;
+        }
+    }
+    如果指针参数为 NULL 的几率非常小，那么每次函数调用都对指针参数进行检查
+    会造成浪费。这时可以直接使用这个指针，并且仅在指针为 NULL 的时候进行异常
+    处理。 因为指针参数为 NULL 的几率非常小，所以异常处理发生的几率也非常小，
+    最终整个程序的效率更高。
+    (3) 尽量不要在循环中使用异常处理。
+    因为异常处理需要大量的额外操作，所以它并不适用于经常运行的代码。如果要对
+    循环中发生的错误进行处理，使用返回值是一个好的选择。
+9 综合
+9.1 源文件和头文件
+    源文件会直接编译为.obj文件。
+    如果头文件没有被引用，则相当于无用文件，不会参与编译。
+
+    #pragma once 保证一个头文件只被编译一次。
+    名字空间 
+9.2 作用域和可见性
+    局部作用域: {}括起来的代码范围。常风的局部作用域有: 函数体，if, for, 
+    while, switch 等复合语句。
+
+    全局作用域：变量或者函数不在任何 局部作用域内。
+    全局作用域内的变量或者函数只在单个源文件范围内可见。
+    当想使用已知的全局变量或全局函数时，使用 extern 在使用文件中：声明。
+9.3 编译预支处理
+    #include
+
+    #define 
+    #undef
+
+    #if
+    #endif
+
+    #ifdef
+    #else
+    #endif
+
+    #ifndef
+    #endif
+
+    #pragma once
+9.4 宏定义
+    #define
+    typedef 定义类型别名、平台无关的定义
+    例如： 
+    支持 long double 的平台: typedef long double REAL
+    不支持 long double 的平台: typedef double REAL
+
+    定义函数指针
+    typedef int* (*PFUNC)(int, char*);
+    PFUNC pFunc1, pFunc2;
+ 9.5 const
+    保护数据: const double x = 10.0;
+        
+    代替宏:
+    #define  PI 3.14
+    const double PI = 3.14
+
+    指针不能修改: int* const p;
+    指向常量: const int* p;
+                int const * p;
+
+10 STL
+10.1 STL 基本信息
+    Alexander Stepanov
+    Meng Lee
+    David R. Musser
+    标准模板库，是一个有工业强度的、高效的C++库。
+    现在已容纳于C++标准库(C++ Standard Library)中。
+     
+    1) 该库包含了在 CS 领域里常用的基本数据结构和基本算法，提供了一个
+        可扩展的应用框架。
+    2) STL三大核心:
+        container,
+        algorithm, 应用在容器上的各种方法，处理容器中内容的行为或功能。
+        iterator.
+
+    3) container adaptor, functor
+    4) STL的代码几乎都采用了 模板类和模板函数的方式。
+
+10.2 使用 STL
+    名字空间: std
+    头文件: <deque> 双端队列容器 
+            <queue> 队列容器
+            <stack> 堆栈容器
+            <vector> 动态数组容器 
+
+            映射容器，由{键，值} 对组成的集合，以作用于{键，值}对上的{谓词}
+            排列。
+            <map> {键，值}对是一一对应的关系
+            <multimap> {键，值}对是一对多的关系
+            底层由红黑树实现
+
+            <unordered_map>
+            <unordered_multimap>
+            底层由哈希表实现
+
+            集合容器，
+            <set>
+            <multiset>
+
+            <unordered_set>
+            <unordered_multiset>
+
+            <algorithm>
+            <functional>
+            <string>
+            <regex>
+            <memory>
+    顺序容器: vector, heap, priority_queue, 
+              list,
+              deque, stack , queue
+    关联容器: map, unordered_map, set, unordered_set, 
+                multimap, unordered_multimap, multiset, unordered_multiset
+
+    (1) vector中的容器，是一些数据结构的模板类。使用这些容器时，使用具体的数据类型
+    对其进行上实例化，产生相应的容器模板类。
+    (2) 利用这些实例化之后的模板类，创建自己的容器对象实例。
+    (3) 有了容器对象，向容器中添加数据，把数据装到容器中进行管理。
+    (4) 容器都提供了 自己的函数来操作容器中的数据。 
+     
+
+10.3 模板 
+10.3.1 函数模板，可以用来处理各种类型的数据。
+    当编译器发现一个函数模板的调用后，将根据实参的 实际数据类型 来确认
+    是否匹配函数模板中对应的形参，然后生成一个重载函数，称该重载函数为
+    模板函数。
+
+    模板特化时，specializations should go in the .cpp file or be made 
+    explicitly inline.
+10.3.2 类模板 
+    是多个功能相同中的类的一种抽象。以数据类型为参数，根据不同的数据类型
+    实例化为不同的 具体模板，从而处理不同类型的数据。
+    隐式实例化
+    显式实例化
+10.3.3 容器
+    (1) 在容器中可以存放对象，也可以存放对象的指针。
+    (2) 基于连续内存的容器(如vector)， 在这些容器中 插入或者删除元素时，
+    会引起内存的重新分配或者内存的复制移动。
+    在这种情况下，为了提高内存操作的性能，我们优先选择保存对象的指针。
+    (3) 基于节点内存的容器，当进行数据元素的操作时则很少有内存的复制移动，
+    所以这种容器中 保存对象 或者 指向对象的指针并无性能上的差别。
+        从方便使用的角度考虑，优先选择保存对象。 如果需要保存机器资源，通常
+    选择保存 指向保存指向这些对象的指针。
+        注：机器资源：文件句柄，命名管道，套接字等。
+    (4) 容器中保存的是对象，那么在容器析构时，容器会自动清理这些对象。
+        如果保存的是对象指针，那么指针的清理工作就是程序员的责任。
+    例：
+
+    vector<Employee*> vecEmployee;
+
+    // 容器使用完后，清空容器中保存的指针，释放这些指针所指向的对象
+    for (auto it = vecEmployee.begin(); it != vecEmployee.end(); ++it)
+    {
+        if (NULL != (*it))
+        {
+            // 释放指针所指向的对象
+            delete (*it);
+        }
+
+        // 将指针设置为NULL，防止误用
+        (*it) = NULL;
+    }
+    // 清空整个容器
+    vecEmployee.clear();
+
+    (5) 为容器中的对象实现 copy conctructor 和 operator=
+    为什么？当把对象保存到容器中时，实际上 STL 会重新生成一个此对象的拷贝(另一份), 
+    然后将这个拷贝保存在容器中，原对象将不再使用。（制造一个容器专用的对象)
+    为了保证这个拷贝的对象，能够被正确地制造，需要实现这个对象的拷贝构造函数
+    和 赋值操作符。
+    
+    例:
+    class Employee
+    {
+        // 类的属性
+        private:
+            int m_salary;
+            string m_name;
+        public:
+            // copy constructor
+            Employee(cosnt Employee& source)
+            {
+                // 利用 operator= 实现对象的拷贝
+                *this = source;
+            }
+
+            // operate=
+            Employee& oeperator=(const Employee& source)
+            {
+                m_salary = source.m_salary;
+                m_name = source.m_name;
+
+                return (*this);
+            }
+    }
+
+    很多时候无须自己实现类的 copy constructor, 编译器会自动创建一个copy constructor，以copy memory的方式 完成类对象的制造。
+    但是要特别注意，copy memeory 并不能保证类对象被正确地制造，特别当类中有指针
+    作为成员属性的时候，需要谨慎地实现自己的copy constructor, 以保证对象在装入
+    容器前被正确地制造。
+
+    (6) 使用 迭代器 删除容器中的数据元素时，元素位置会重排，导至元素的位置
+    不断发生变化，需要在每次删除动作发生后，重新设置当前迭代器的值, 将它指向正
+    确的容器的位置。
+    例子：错误:
+    for (auto it = salary.begin(); it != salary.end(); ++it)
+    {
+        if ( *it > 1000 )
+        { 
+            salary.erase(it);
+        }
+    }
+
+    例子：正确：
+    for (auto it = salary.begin(); it != salary.end();)
+    {
+        if ( *it > 1000 )
+        {
+            // 删除完成后，将 迭代器 重新指向正确的位置
+            it = salary.erase(it);
+        }
+        else
+        {
+            +it;
+        }
+    }
+    熟读容器的使用说明书，了解容器的各种使用规则和注意事项，才能使容器用起来
+    得心应手。
+
+    (7) 如何选择合适的容器
+    STL 提供了各种各样的容器，这些容器各有所长，它们可以应用在各种不同的场景
+    下。我们可以根据自己的需要选择合适的容器，才能发挥容器最大的效果。
+        在STL中，按照组织内存的不同方式，容器可以分为 顺序容器和关联容器。
+    a. 顺序容器
+        连继内存，也叫基于数组的容器。是在一个或多个内存块(动态分配的) 中保存
+        它们的元素。
+        vector, array, deque,
+    b. 关联容器
+        基于节点的容器，也就是关系容器。这种容器在每个内存块(动态分配的)中只保存一个元素。
+         
+10.4 vector 容器
+    动态数组, 内存随着元素个数的增加而动态增加。
+    如果预先知道 vector 容器的最大容量，可以使用 reserve() 函数申请足够的内存，
+    为 vector 容器预留相应的元素位置，减少在元素添加过程中内存的动态申请过程。
+
+    打包 tuple, 将多组数据打包成一组数据
+
+    tuple<string, unsigned int, double> huChen;
+    huChen = make_tupe("ChenLiangqiao", 28, 66.3);
+
+    typedef tuple<string, unsigned int, double> Human;
+    Human huJia("Jiawei", 23, 56.3);
+    vector<Human> vecHumans;
+    vecHumans.push_back(huJia);
+
+    拆包
+    get<0>(huJia)
+    get<1>(huJia)
+    get<2>(huJia)
+
+    string name;
+    unsigned int age;
+    double weight;
+    tie(name, age, weight) = huJia;
+    
+10.5 array 容器 
+    替代数组的第二种选择
+    如果有一组固定个数的数据需要保存，则 array 容器是不二之选。
+    array<string, 12> arrMonths; 
+10.6 map 容器 
+    map容器使用一棵红黑树实现，一种非严格意义上的平衡二叉树。 
+    映射
+    键-值 对
+    
+    (1) map容器中的键都要在 插入后 进行排序，所以在插入时，必需保证map的键唯一，
+    否则将导致插入操作失败。
+    (2) 因为插入数据的动作伴随 数据进行排序的动作，所以插入的键必须是可以排序
+    的。
+    (3) 如果使用自定义的数据类型作为 map 容器的键，就需要重载 < 运算符，以实现
+    map 容器的排序。
+
+    对于 map 这种基于节点的容器，更多的是使用某个 key 查找对应的 value.
+    
+    例：访问某个范围的数据
+    int keyFrom = 1;
+    int keyTo = 2;
+
+    map<int, Employee>::iterator itFrom = theMap.lower_bound(keyFrom);
+    map<int, Employee>::iterator itTo = theMap.upper_bound(keyTo);
+
+    if (theMap.end() != itFrom && theMap.end() != itTo)
+    {
+        for (map<int, string>::iterator it = itFrom;
+            it != itTo; ++it)
+        {
+            cout << it->first << " " << it->second << endl;
+        }
+    }
+
+    // 删除范围内的所有数据
+    theMap.erase(itfrom, itTo);
+
+11 STL 算法
+    STL库中的算法都以 迭代器类型 为参数，这就和数据所在容器的具体实现相互分离 了。
+    也就是，我们可以把一个 排序算法 用于vector容器，也同样可以将这个排序算法
+    用于 map 容器。 这就实现了算法的通用性，不管数据保存在什么容器，算法都可以处理。  这也是为什么 STL 中的算法称为 general algorithm 的原因。
+
+    (1) 不改变 容器中数据元素的 位置
+        for_each, find, adjacent find, count, mismatch, equal, search 等
+
+        a. for_each
+        容器是用来保存大量数据的。
+        很多时候我们希望能够 遍历容器中的每个数据，对每个数据都进行某种处理。
+        b. find 和 find_if
+    (2) 改变 容器中数据元素的 位置
+        copy, swap, transform, replace, fill 等
+        a. copy 和 copy_backward
+           reverse_copy  
+
+        b. transform
+        在移动数据的时候进行操作。
+
+    (3) 排序
+        sort, binary search, merge, heap operations, minimum and maximum, 
+        lexicographical comparison 等
+        a. merge
+        b. sort 和 reverse
+        容器中的数据排序完后，还可以进行更多的处理。
+        lower_bound() 获得小于某个点的临界点的位置
+        upper_bound() 获得大于某个点的临界点的位置
+        equal_ragne() 所有等于某个值的数据范围
+
+        max_element
+        min_element
+        c. set_union, set_difference(), set_intersection()
+        d. unique 
+        删除相同的元素
+
+    (4) 常用的数字操作
+        accumulate, inner product, partial sum, adjacent difference, 等
+11. 函数指针
+11.1 函数指针
+11.1.1 函数指针的基本含义
+    指针 -- 内存地址
+    在C++中，每个函数都有一入口地址。
+
+    a. 声明一个函数
+        void PrintPass( int score );
+    b. 定义一个函数指针
+        void (*pPrintFunc)( int score );
+    c. 定义一种函数指针的数据类型
+        typdef void (*PRINTFUNC)( int );
+    d. 使用新类型定义函数指针
+        PRINTFUNC pFuncFailed;
+        PRINTFUNC pFuncPass;
+    e. 函数名就是指向函数的指针。
+    f. 用函数名给函数指针赋值
+        pPrintFunc = PrintPass;
+    g. 使用 auto 定义函数指针类型
+        auto pPrintFunc = PrintPass;
+11.1.2 用函数指针调用函数
+    (*pPrintFunc)(75);
+11.1.3 回调函数
+        A  传递 pFunc 给 B, 也就是函数B 有一个参数是 函数指针。
+        
+        B再通过 (*pFunc)(...) 调用传入的函数，这个调用过程称为 [回调]
+
+        通过 pFunc 传入的函数 C, D, E, F,... 称为 [回调函数]
+11.1.4 函数指针 应用于 STL
+    a. 指向普通函数
+    count_if(stu.begin(), stu.end()
+            bind1st(ptf_fun(countHeight), stdHeight));
+    b. 指向类的成员函数
+    find_if(stu.begin(), stu.end(),
+            bind2nd(mem_fun_ref(&Student::isnamed), strFindName));
+        &Student::isnamed) 获得成员函数的 函数指针。
+        mem_fun_ref 将函数指针构造成一个函数对象。 如果容器中保存的是 指向对象的指针，则使用函数 mem_fun()
+        因为这个成员函数需要一个参数，所以使用 bind2nd()函数 绑定其第二个参数
+        为 strFindName 来作为查找条件。因为这是一个类的成员函数的函数的指针，所
+        以容器中的对象会作为其 默认的隐含的第一个参数。
+11.2 函数对象 
+    普通函数没法保存上一次的状态。
+    
+    函数调用操作符: ()
+    重载了 () 的类，称为 函数类(a function-like class)。
+    重载的 () 是一个 inline 函数, 编译器能完全展开重载的操作符的代码，从而避免了与函
+    数调用相关的问题。
+    
+    因为有属性，所以函数对象可以保存状态。
+
+    operator float ()
+    {
+        ...
+    }
+    解释: defines an implicit conversion for an object of class to a float 
+        variable.
+11.3 STL中的函数对象
+    算术操作: plus, minus, multiplies, divides, modules, negate
+    比较操作: equal_to, not_equal_to, greater, less, greater_equal, less_equal
+    逻辑操作: logical_and, logical_or, logical_not
+
+    例:
+    int count = count_if(vecScore.begin(), vecScore.end(), 
+        bind2nd(greater<int>(), 60));
+
+1.4 用 lambda 表达式编写更简单的函数
+1.4.1
+    没有名字的函数 anonymous functional, 只有函数体，没有函数名。
+
+    问题：
+    a. 函数对象的代码太多。
+    b. 函数定义的地方，并不在函数使用的地方。需要翻滚查看。
+
+    Lambda表达式可以在使用的地方定义，使整个代码更自然流畅。
+    for_each(vecStu.begin(), vecStu.end(),
+            [&](Student st)
+    {
+        totalHeight += st.GetHeight();
+        ++count;
+    });
+    
+1.4.2 Lambda 表达式的语法规则
+
+    [ 变量使用说明符 ](参数列表) -> 返回值数据类型
+    {
+        // 函数体
+    }
+
+    [=] 表示 Lambda表达式将以 只读方式访问当前作用域内的变量。
+    [&] 表示 Lambda表达式将以 传引用的方式使用当前作用域内的变量。
+
+
+    传值方式访问
+    for_each(vec.begin(), vec.end(), [=](int x)
+             {
+                 cout << x << endl;
+             });
+
+
+    传引用方式访问
+    for_each(vec.begin(), vec.end(), [&](int x)
+             {
+                 total += x;
+                 cout << total << endl;
+             });
+
+    Lambda 表达式传递多个数据，可以在[] 的第一位设置一个默认的传递方式，
+    然后再分别指定各个变量的传递方式。
+    for_each(vec.begin(), vec.end(), [&, addon](int x)
+             {
+                 total += (x * addon);
+                 cout << total << endl;
+             });
+    默认采用传引用方式访问, addon采用传值方式访问。
+
+    Lambda 带返回值
+    long odd = count_if(vec.begin(), vec.end(), [=](int x) -> bool
+             {
+                 return x % 2 == 1;
+             });
+11.4.3 Lambda 表达式的复用
+    
+    定义一个可以输出整数的 Lambda 表达式
+    auto show = [] (int x)
+    {
+        cout << x << endl;
+    };
+
+    for_each(vec.begin(), vec.end(), show);
+
+    把 Lambda 表达式作为参数传递
+    void Print(function<void (int)> func)
+    {
+        vector<int> v;
+        v.push_back(13);
+        for_each(v.begin(), v.end(), func);
+    }
+
+    Print(show);
+    
+12. 右值
+12.1 右值
+    右值, 只能放在 =(赋值号) 右边的值。右值就是一些无名的数据变量。
+    右值引用，对右值的引用。
+    
+    右值举例：
+        a. 数值常量 
+            2 
+        b. 函数的返回值
+            int Create(int i)
+            {
+                return (int)i;
+            }
+
+    int nInt;                   左值
+    int& lRefInt = nInt;        左值引用 
+
+    int&& rRefInt = Create(4);  右值引用 
+
+    绑定完成后，左值引用 和 右值引用 的使用就没有区别了。
+    都可以当成 普通数据变量，进行左右值的赋值操作。
+    
+    rRefInt = 1;
+    lRefInt = rRefInt;
+12.2 右值引用在 函数返回值 上的应用
+    a. 当使用右值对变量进行赋值时，通常把右值复制到等号左边的变量。赋值完成后，
+    释放掉资源。
+    b. 在没有 右值引用的时代，往往把右值当成不再有用的废物释放掉。
+    c. 引入 右值引用后，可以将一个右值引用  指向这个右值，实现废物的再利用。
+    
+    例: 不使用 右值引用
+    // 创建并返回一个类的对象
+    MemoryBlock CreateBlock(size_t nSize)
+    {
+        return MemoryBlock(nSize);          (1) 创建MemoryBlock类的临时对象 A
+    }
+
+    // 利用函数返回值对变量赋值
+    MemoryBlock block =                     (2) 创建 block 对象
+        CreateBlock(703);                   (3) 用 函数返回的临时对象A, 复制到
+                                                block 对象中。
+                                            (4) 清理 A
+    例: 使用 右值引用
+    // 创建并返回一个类的对象
+    MemoryBlock CreateBlock(size_t nSize)
+    {
+        return MemoryBlock(nSize);          (1) 创建MemoryBlock类的临时对象 A
+    }
+
+    // 利用函数返回值对变量赋值
+    MemoryBlock&& block =                   (2) 在创建 block 对象时，通过右值
+        CreateBlock(703);                       引用，直接指向右值 A 
+
+12.3 右值引用 在STL 中的应用 
+    右值引用可以充分利用函数返回值来提高性能。
+    还可以应用在STL的算法中，提高通用算法的性能，特别是涉及对象有的移动复制的算法。
+    
+13. 智能指针 shared_ptr
+    a. 指针可能会在多个函数或者模块之间传递，有可能导致指针所指向的内存资源
+        没有明确的所属对象，使得程序找不到合适的时机释放这些内存资源，指向
+        这些内存资源的指针就成为“野指针”
+    b. 共享某个内存块指针的 多个模块并不拥有这个指针，它们只是使用这些指针，
+        并不负责释放这些指针所指向的内存资源，这可能会导致程序的内存泄露。
+        但是另外的模块 又试图访问这个指针所指向的内存资源，最终导致内存访问 
+        错误。
+    c. C++语言对内存直接访问的支持 使得程序员在享受 内存访问 所带来的高性能和
+        高灵活性的同时，不得不小心地维护程序的 健壮性。
+    d. 如果指针可以更"聪明"一点，自己知道自己该什么时候 释放资源就好了。作为
+        程序员，只在需要的时候去申请内存资源，至于何时释放这些内丰资源，就由
+        这些“聪明”的指针自己去处理好了。
+    e. shared_ptr 智能指针 完美解决了这一问题。
+13.2 引用计数
+    当一个指针的引用计数降为0, 没有对象再需要这个共享的对象时，该对象就自动
+        销毁。 这是因为智能指针 拥有它所定义指针有关的内存所有权，当它销毁
+        对象的时候，也会释放相应的内存资源。
+
+    智能指针，不需要也不能被显式地删除。
+
+    只在合适的情况下使用智能指针，这样才能起到事半功倍的效果。
+    以下情况优先考虑使用 shared_ptr:
+    a. 多个使用者共同使用 同一个对象，面没有一个明确的拥有者。
+    b. 一个对象的复制操作很昂贵。
+    c. 要把指针存入标准库容器。
+    d. 要传送对象到库 或 从库取对象，而这些对象没有明确的所有权。
+    e. 当管理需要 特殊清除方式的资源时，这时可以通过定制 shared_ptr 的删除器
+        来实现。
+13.3 shared_ptr
+    shared_ptr 实际上是一个类模板。需要使用某个特定的数据类型来实例化, 以形成
+    可以指向这个 具体数据类型的 shared_ptr。
+13.3.1 shared_ptr 的使用 
+    a. 定义特定的指针的类型 
+        shared_ptr<int> spInt;
+        shared_ptr<Employee> spEmployee;
+    b. 构造具体的 shared_ptr 对象 
+        (1) template<class Other> explicit shared_ptr(Other* ptr);
+                Employee* pEmp = new Employee;
+                shared_ptr<Employee> spEmp1(pEmp);
+
+                shared_ptr<Employee> spEmp2(new Employee);
+        (2) shared_ptr(const shared_ptr& sp);
+                shared_ptr<Employee> spEmp3(spEmp1);
+        (3) *  &  ->
+        (4) = 赋值操作符
+            
+        (5) 函数
+            reset() 函数, 断开一个 shared_ptr 与原有资源的联系。
+                spEmp1.reset();
+
+                spEmp2.reset()(new Employee("Chen"));
+            get() 函数
+                shared_ptr所保存的指针有可能为空，此时全用 * 和 -> 两个运算符
+                来获取这个指针所指向的对象，会导致未定义的行为。
+
+                在这种情况下，获取 shared_ptr 所指向对象的 最好办法就是 
+                i. 通过 get() 函数获取 shared_ptr 所保存的指针，进而判断指针的                      有效性, 从而安全地获得 shared_ptr 所指向的对象。
+                i. 也可以使用 隐式 bool 类型转换 来测试 shared_ptr 是否包含
+                    有指针。
+                例：
+                //通过 get() 获得 shared_ptr 所保存的指针。
+                    shared_ptr<Employee> spEmp1(new Employee("Jiawei"));
+                    Employee* pEmp = spEmp1.get();
+
+                //通过 bool类型转换，来判断 shared_ptr 的有效性
+                    if (true == (bool)spEmp1)
+                    {
+                        // 安全地进行 * 操作
+                        PrintObj(*spEmp1);
+                    }
+                //通过隐式 bool 类型转换 
+                    if ( true == spEmp1.get() )
+
+                除了 get() 之外，还可以在 shared_ptr 之前 使用 & * 来获得这个
+                shared_ptr 所管理的对象指针。
+            shared_ptr::operator boolean-type 
+                隐式类型转换函数，将智能指针 转换到 boolean-type
+                它可以在 boolean 上下文中 测试智能指针，从而判断智能指针的有效性。
+                如果 shared_ptr 保存一个有效的指针，则返回值为 true, 否则为false.
+                注意：转换函数的类型是不确定的，很多时候需要显式地将结果转换为
+                bool 类型。例如：
+                    if (true == (bool)spEmp1)
+                        PrintObj(*spEmp1);
+            use_count() 函数, 返回 shared_ptr 的引用计数。
+            swap() 函数, 交换两个 shared_ptr
+                spEmp1.swap(spEmp2);  
+13.4 unique_ptr 
+13.5 shared_ptr 与 标准库 容器
+    问题:
+        a. 我们常常用容器 对多个相似的对象 进行管理。
+        b. 如果 以值的方式 将对象 保存到容器中，则意味着使用者 获得的是 
+            容器中的元素的拷贝，而不是元素本身。
+            i. 对于那些复制是一种昂贵操作的 对象来说，会有性能上的损失。
+            i. 有些容器，特别是 vector, 当加入对象到容器中时，可能会复制
+                所有元素，这更加重了性能的问题。
+            i. 传值意味着 没有多态的行为。    
+        c. 如果需要在容器中 存放多态的对象，且不想切割它们，则必须使用指针。
+            但如果使用 裸指针 将对象保存到 容器中，维护元素的完整性则会非常
+            复杂。
+            i. 从容器中删除元素时，必须知道 容器的使用者 是否还在使用将要被
+                删除的元素，否则可能会错误地删除某个正在使用中的元素，引起
+                严重的内存错误。
+    解决：
+        shared_ptr
+        a. 以智能指针的形式将 对象保存到容器中。
+            i. 元素复制时 不会有性能问题。
+            i. 智能指针使用完后，它所管理的资源 将被自动安全地释放，无须对其
+                完整性进行额外的维护。
+14 用 PPL 进行多线程开发
+    parallel patterns Library, 微软的简化 多线程应用程序开发的 编程模型。
+    
+    CPU 多核心 
+    一个好办法：利用多线程，将应用程序 并行化。
+
+    PPL支持的特性：
+    a. 并行算法 并行作用于一组数据的泛化算法。
+    b. 并行任务 一个可并行执行几个工作单位(任务)的机制。
+    c. 并行容器和对象 可安全地 并发存取 其元素的 泛化容器。
+    
+    OpenMP
+    https://msdn.microsoft.com/en-us/library/fw509c3b.aspx
+    
+15 基础练习 
+    ++a    a = a + 1 是一个 左值 
+    a++    a = a then return a + 1  是一个右值
+ 
+    setprecision(8);
+    stringstream 
+    
+    我们有基类的一个指针，可以让它指向 派生类的某个对象。
+    如： 
+    Student = st;
+    Human* p = &st;
+    这里 p 指值就有了两种类型：
+        指针的静态类型 (在这里是 Human)
+        动态类型 (在这里是它所指向的对象 Student) 
+
+    在C++中，通过 抽象基类(abstract base class) 来实现 接口和实现的分离。
+
+    const int a;    int const a;
+
+    const int* p;   int const* p2; 
+                    const int 
+                    p 指向常量. 也就是不可以通过 *p = 2 这种方式去修改。
+                    p 指针可以修改。
+
+    int* const q;  const q
+                    指针不可以修改。
+                    指向的值可以修改。 用 *q = 2 这种方式修改。
+
+    const int* const r;
+    
+    对于商务软件来说，使用 float 或者 double 表示浮点数，并不是一个好的选择。
+    有些国家甚至在商务软件中，禁止使用这两种方式来表示浮点数。
+
+    它们使用 10 的幂运算，来表示浮点数。例如：
+    将 1.23 表示为 123* 10-2, 这样整个数中就不存在浮点数，也就没有任何精度
+    的损的了。
+
+    从商业角度看，只有两件事是重要的：
+        (1) 代码可读性好
+        (2) 团队中每个成员都使用相同风格。
+    我们不要妄图去制定一种"最好的"编程规范，只能结合自己的项目实际，同时
+    参照现在流行的编码规范，采纳其优点，摒弃其缺点，制定出一种"最适合"的
+    编码规范，并且在项目实践中认真严格地执行。
+
+
+无限风光在险峰：
+C++程序设计语言  Bjarne Stroustrup
+C++ Primer 中文版  Stanley B. Lippman
+代码大全  Steve McConnell
+Effective C++ 55 specific Ways ...  Scott Meyers
+C++编程规范 101条 ...  Herb Sutter  
+
+
+[==Bjarne Stroupstrup==]
+
+
+[==Web==]
+CodeGuru
+CodeProject
+
+程序设计思想
+
+

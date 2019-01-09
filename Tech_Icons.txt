@@ -1,0 +1,114 @@
+
+1. AT&T
+
+Amos Joel, cell phone pioneer, telephone switching.
+
+Bill Cheswick, profile of the "Father of the Firewall".
+    Home Page: http://cheswick.com/ches/
+
+Bjarne Stroustrup, inventor of C++.
+    发明了C++编程语言
+
+Chuck Kalmanek, VP Networking and Servicec, develops network managemeng tools,
+    works with text to speech and natural voices, and works with multimodal
+    interfaces. He has 30 patents.
+
+Claude Shannon, inventor of Information Theory, legendary inventor.
+    信息论
+
+Cliff Stoll,  his investigation of a 75-cent accouting error led him to
+    the explosure of a German spy ring. The Cuckoo's Egg
+    computer security expert, 
+
+Dave Anderson,  SETI@HOME and BOINC team leader, helped to revolutionize the
+    world of distributed computing, allowing anyone to use unused computer
+    cycles to aid in everything from biomedical research to the search for
+    extraterrestrial life.
+
+
+Dave Belanger, and this team have developed innovative methods to perform
+    data mining on the massive quantities of data that flow across networks.
+    数据挖掘
+
+Elaine Weyuker, software quality guru, compulation theory expert.
+    测试专家
+
+Erna Hoover, recipent of one of the firsr software patents, was a key 
+    contributor to the creation of 1ESS, or electronic switching system,
+    which led the way for a more efficient and complex telephony network.
+    电话交换系统
+
+Gregg Vesonder, artificial intelligence guru, has been working with AI systems
+    since the late 1970s, when he developed a system for monitoring 
+    communications cables.
+
+Jay Wilpon, speech recognition pioneer.
+    
+Jone Medamana, who played a major role in the development of networking
+    applications such as ATM Frame Relay, Ehternet technologies and MPLS.
+    通信解决方案
+
+Juergen Schroeter, speech synthesis pioneer, led a team that developed
+    a new way of giving computers a voice.
+    语言合成
+
+Keith Cambron, digital telecommunications pioneer. SS7
+
+Robert Miller, has played a major role in the development of wireless 
+    communication technologies, including celluar transmission and 
+    smart card technology.
+    无线通信技术
+
+Robert Wilson, whose work in discovering cosmic background radiation led to 
+    confirmation of the Big Bang Theory, and a Nobel Prize for Wilson and 
+    his partner Arno Penzias.
+    大爆炸理论
+
+Steve Bellovin, USENET Inventor, influential co-author of Firewalls and
+    Internet Security: Repelling the Wily Hacker, security guru.
+ 
+Walter Brown, a key contributor to the creation of Telstar communications
+    satellite.
+    通信卫星
+
+2. the winner of the Turing Award:
+
+Charles Antony Richard Hoare
+
+3. National Medal of Science
+
+4. IEEE Medal of Honor
+
+5. Japan's Kyoto Prize
+
+6. IBM Fellow
+
+
+7. SIGSOFT: Outstanding Research Award
+    http://www.sigsoft.org/awards/outstandingResearchAward.html
+
+    2018	Andreas Zeller
+    2017	Daniel Jackson
+    2016	James Herbsleb
+    2015	Carlo Ghezzi
+    2014	Alexander Wolf
+    2013	David Notkin
+    2012	Lori Clarke
+    2011	David Garlan and Mary Shaw
+    2010	Erich Gamma, Richard Helm, Ralph Johnson and John Vlissides (posthumously)
+    2009	Richard N. Taylor
+    2008	Axel van Lamsweerde
+    2007	Elaine J. Weyuker
+    2006	David Harel
+    2005	Jeff Kramer and Jeff Magee
+    2004	Nancy Leveson
+    2003	Leon J. Osterweil
+    2002	Gerard Holzmann
+    2001	Michael Jackson
+    2000	Victor Basili
+    1999	Harlan Mills (one-time posthumous)
+    1999	Niklaus Wirth
+    1998	David Parnas
+    1997	Barry Boehm
+
+
