@@ -58,9 +58,10 @@ Strlen
     shared memory,
     signal,
     socket,
+三种常见的进程通讯形式，并说明其特点。    
 
 == 同步/异步
-    
+   多线程同步机制及其区别？
 
 == 设计模式
 
@@ -70,14 +71,19 @@ TCP/IP 滑窗
 TCP socket 建立过程
 UDP
 ICMP
-
+ping的使用方法
 
 == Linux
--- Linux有一个机制，内存超过多少会怎么样
--- 调优
--- Linux 信号机制
--- 驱动有哪几种
--- 
+   Linux有一个机制，内存超过多少会怎么样
+   调优
+   Linux 信号机制
+   驱动有哪几种
+   输入、输出函数
+   内核态：
+        printk
+   用户态：
+        printf
+        scanf
 
 == 疑难问题
 -- 程序崩溃(在 Linux 中怎么处理)
