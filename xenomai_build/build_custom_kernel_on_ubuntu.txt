@@ -124,5 +124,19 @@ dmesg | grep xenomai
 == Installing Xenomai libraries
 ./scripts/bootstrap
     configure.ac:92: error: possibly undefined macro: LT_SYS_SYMBOL_USCORE
-    
+说明：没有执行上面的命令                     
+
+./configure  出错，使用下面的命令
+./configure --disable-dependency-tracking
+说明：
+I was able to work around it two different ways. Either one of these works:
+
+symlink the depcomp tool from automake like this: ln -s /usr/share/automake-1.14/depcomp
+Configure with a special flag: ./configure --disable-dependency-tracking
+
+sudo make install 
+
+sudo /usr/xenomai/bin/latency
+
+
 
