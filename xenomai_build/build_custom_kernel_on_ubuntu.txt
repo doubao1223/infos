@@ -1,0 +1,128 @@
+
+
+2019年 1月19日 星期六 11时15分25秒 CST
+
+== Nick Congleton
+
+You just have to pick the features that you want and put it all together.
+
+== Xenomai
+    仅支持特定版本的几个内核。
+    需要修改 ubuntu 的内核到指定的版本。
+    1 给 ubuntu 换新的内核
+    2 安装 xenomai
+  
+== 下载安装包
+    wget https://xenomai.org/downloads/xenomai/stable/xenomai-3.0.8.tar.bz2
+
+== patch kernel
+    tar xf xenomai-3.0.8.tar.bz2
+    tar xf linux-4.14.89.tar.gz
+
+    cd linux-*
+    cp ../ipipe-core-4.14.89-x86-2.patch .
+    ../xenomai-3.0.8/scripts/prepare-kernel.sh --ipipe=ipipe-core-4.14.89-x86-2.path --arch=x86
+
+== configure kernel
+   make xconfig
+
+-- Could not find Qt via pkg-config
+   sudo apt-get install qt4-dev-tools
+
+总结：
+    命令                需要
+    make xconfig        qt    (旧版本 install qt3-dev-tools  libqt3-mt-dev)
+    make menuconfig     libncurses5  libncurses5-dev 
+    make gconfig        libgtk2.0-dev
+
+== build kernel
+sudo make-kpkg --rootcmd fakeroot --initrd kernel_image kernel_headers -j $(nproc)
+
+-- sudo: make-kpkg: command not found
+   sudo apt-get install kernel-package
+       -- What do you want to do about modified configuration file kernel-img.conf?
+       Keep the local version currently installed
+
+== Getting the Dependencies
+build-essential
+kernel-package
+
+== 保存当前内核的 config 文件
+cp /boot/config-`uname -r` .config
+
+== 配置内核
+make menuconfig
+
+M       the feature will be built as a module that
+          will be loaded if needed when Ubuntu starts.
+*       the feature will be built into the kernel and
+          always loaded
+empty   does not include black options in the final product
+
+
+Local version
+      -xenomai-3.0.8
+
+当设置完之后，执行下面的命令 clean directory
+make clean
+    
+== 构建内核 packages
+make -j `getconf _NPROCESSORS_ONLN` deg-pkg LOCALVERSION=-custom
+说明：编译生成 .deb 包。
+         使用 the amount of CPU cores on your system plus one.
+         增加 "custom" to the end of the package version
+
+sudo CONCURRENCY_LEVEL=4 CLEAN_SOURCE=no
+fakeroot make-kpkg -j `getconf _NPROCESSORS_ONLN`
+//deb-pkg LOCALVERSION=-custom
+kenel_image kernel_headers
+
+--drivers/xenomai/net/stack/include/rtskb.h:32:22 fatal error:
+    rtdm/net.h: No such file or directory                                                  
+  recipe for target 'drivers/xenomai/net/drivers/8139too.o' failed
+
+== 命令汇总
+sudo apt-get install build-essetial kernel-package
+sudo apt-get update
+
+cd linux-4.9.14/6
+cp ../ipipe-core-4.14.89-x86-2.patch .
+../xenomai-3.0.8/scripts/prepare-kernel.sh --ipipe=ipipe-core-4.14.89-x86-2.path --arch=x86
+
+make menuconfig
+sudo CONCURRENCY_LEVEL=4 CLEAN_SOURCE=no fakeroot make-kpkg -j `getconf _NPROCESSORS_ONLN` kenel_image kernel_headers
+    疑问： --rootcmd是什么意思
+
+cd ..
+sudo dpkg -i linux-headers-4.9.146-xenomai-3.0.8_4.9.146-xenomai-3.0.8-10.00.Custom_i386.deb
+sudo dpkg -i linux-image-4.9.146-xenomai-3.0.8_4.9.146-xenomai-3.0.8-10.00.Custom_i386.deb
+     You are attempting to install a kernel image (version 4.9.146-xenomai-3.0.8)
+
+//sudo update-initramfs -c -k 4.9.146-xenomai-3.0.8
+sudo emacs /etc/default/grub
+     启动时没有 Grub menu, 修改下面的选项.
+     GRUB_HIDDEN_TIMEOUT=
+
+sudo update-grub
+reboot
+启动时，在grub选择 4.9.146-xenomai-3.0.8
+
+uname -r
+=>4.9.146-xenomai-3.0.8
+
+== make sure you are running the cobalt kernel
+dmesg | grep Xenomai
+[    1.349890] [Xenomai] scheduling class idle registered.
+[    1.349894] [Xenomai] scheduling class rt registered.
+[    1.349947] I-pipe: head domain Xenomai registered.
+[    1.351610] [Xenomai] Cobalt v3.0.8
+
+dmesg | grep xenomai
+[    1.454150] usb usb1: Manufacturer: Linux 4.9.146-xenomai-3.0.8 ehci_hcd
+[    1.455056] usb usb2: Manufacturer: Linux 4.9.146-xenomai-3.0.8 uhci_hcd
+
+== Installing Xenomai libraries
+./scripts/bootstrap
+    configure.ac:92: error: possibly undefined macro: LT_SYS_SYMBOL_USCORE
+    
+

@@ -1,0 +1,29 @@
+
+2019年 1月20日 星期日 09时53分14秒 CST
+== Xenomai 3.0.5 on Ubuntu 14.04/16.04
+
+==推荐的硬件
+     Intel/AMD Processor i5/i7 ( < 2016 is recommended to guarantee full 16.04 support )
+     Dedicated Ethernet controller for RTnet, with either e1000e/e1000/r8169 driver
+               ( Intel PRO/1000 GT recommended )
+说明：不支持 Nvidia 和 Ati (因为他们 creates a lot of interruptions that
+                               breaks the real-time constraints)
+      解决方法是：Please consider removing the dedicated graphic card and
+                         use the integrated graphics (Intel HD graphics).
+
+== 选择的 linux kernel
+   4.9.38
+   原因： the latest kernel compatible with xenomai 3.0.5
+
+== Xenomai
+   3.0.5
+
+== 给Linux内核打上Xenomai补丁
+
+
+== refs
+installing: https://xenomai.org/installing-xenomai-3-x/
+patches: https://xenomai.org/downloads/ipipe/
+
+
+
