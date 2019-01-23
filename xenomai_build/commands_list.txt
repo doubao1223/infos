@@ -1,0 +1,74 @@
+
+2019年 01月 23日 星期三 09:36:24 CST
+
+== basic install
+sudo apt-get update
+sudo apt-get upgrade
+
+sudo apt-get install
+     kernel-package  ( install the package maintainer's version )
+     build-essential
+     linux-headers-generic
+
+== get source
+wget https://xenomai.org/downloads/xenomai/stable/xenomai-3.0.8.tar.bz2
+wget https://mirrors.edge.kernel.org/pub/linux/kernel/v4.x/linux-4.14.89.tar.gz
+wget https://xenomai.org/downloads/ipipe/v4.x/x86/ipipe-core-4.14.89-x86-2.patch
+     
+
+== patch linux kernel
+cd linux-4.14.89
+cp ../ipipe-core-4.14.89-x86-2.patch .
+../xenomai-3.0.8/scripts/prepare-kernel.sh --arch=x86 --ipipe=ipipe-core-4.14.89-x86-2.patch
+
+== config kernel
+    make xconfig　　    需要安装　sudo apt-get install qt4-dev-tools
+    make menuconfig     需要安装  sudo apt-get install libncurses5 libncurses5-dev
+
+== 问题
+using defaults found in /boot/config-4.15.0-29-generic
+
+/boot/config-4.15.0-29-generic:warning:
+    symbol value 'm' invalid for GIPIO_MB86S7X
+    
+warning:
+    (XENOMAI) select IPIPE which has unmet direct dependencies (HAVE_IPIPE_SUPPORT)
+    (X86_VSMP && HYPERV) selects PARAVIRT which has unmet direct dependencies (HYPERVISOR_GUEST && !IPIPE)
+    
+结论: 都可以忽略
+
+== 查看CPU类型
+cat /proc/info 
+Intel(R) Xeon(R)
+
+== 编译配置完的内核
+
+fakeroot make-kpkg -j `getconf _NPROCESSORS_ONLN` --initrd kenel_image kernel_headers modules
+
+fakeroot make-kpkg --bzimage --initrd kernel_image kernel_headers modules
+
+没有参数　--bzimage了
+./include/linux/ipipe.h:55:28 :error: field 'arch' has incomplete type
+    sudo apt-get install autoconf  (没用)
+sudo apt-get install  kexec-tools  （这个工具需要查一下　功能)
+
+sudo dpkg -i *.deb
+
+sudo gedit /etc/default/grub
+将 GRUB_DEFAULT=0改为GRUB_DEFAULT="0>0"
+更新Grub
+sudo update-grub
+
+--Xenomai库
+    ./scripts/bootstrap
+    ./configure --enable-shared --enable-smp
+    make
+    make install
+    测试
+    cd /usr/xenomai/bin
+    sudo ./latency
+    sudo ./clocktest
+
+
+
+

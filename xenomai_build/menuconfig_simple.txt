@@ -1,0 +1,33 @@
+
+2019年 01月 21日 星期一 09:16:04 CST
+
+== General setup
+     General setup
+          Local version-append to kernel release: -xenomai-3.0.8
+     Stack Protector buffer overflow detection
+      　　 CONFIG_CC_STACKPROTECTOR_NONE=y                None
+== Enable the block layer
+      IO Schedulers
+          Default I/O scheduler
+              Deadline               
+== Xenomai/cobalt
+       Sizes and static limits
+          4096
+          4096
+          256
+          256
+          512XS
+　　　 Drivers
+          Real-time IPC drivers  选
+          
+== Processor type and features
+       Processor family
+           Core 2/newer Xeon    选
+== Kernel hacking
+     Magic SysRq key
+         (0x01b6) Enable magic SysRq key functions by default: 1
+     Collect kernel timers statictics  选中
+     Notifier error injection
+         CPU Notifier error injection module  选中 
+         Latency measuring infrastructure     选中
+     
