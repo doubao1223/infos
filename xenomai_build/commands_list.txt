@@ -42,9 +42,7 @@ cat /proc/info
 Intel(R) Xeon(R)
 
 == 编译配置完的内核
-
-fakeroot make-kpkg -j `getconf _NPROCESSORS_ONLN` --initrd kenel_image kernel_headers modules
-
+fakeroot make-kpkg -j `getconf _NPROCESSORS_ONLN` --initrd kernel_image kernel_headers modules
 fakeroot make-kpkg --bzimage --initrd kernel_image kernel_headers modules
 
 没有参数　--bzimage了
