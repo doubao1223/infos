@@ -3,7 +3,7 @@
 
 == General setup
        Local version:-xenomai-3.0.8
-       Stack Protector buffer overflow detection
        
-       CONFIG_CC_STACKPROTECTOR_NONE=y                None
+       Stack Protector buffer overflow detection
+             选择　None
       
