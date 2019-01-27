@@ -42,6 +42,10 @@ cat /proc/info
 Intel(R) Xeon(R)
 
 == 编译配置完的内核
+vi ./include/linux/sched.h  增加
+#include <linux/ipipe.h>
+
+export CONCURRENCY_LEVEL=4
 fakeroot make-kpkg -j `getconf _NPROCESSORS_ONLN` --initrd kernel_image kernel_headers modules
 fakeroot make-kpkg --bzimage --initrd kernel_image kernel_headers modules
 
@@ -61,12 +65,17 @@ sudo update-grub
     ./scripts/bootstrap
     ./configure --enable-shared --enable-smp
     make
-    make install
+    sudo make install
     测试
     cd /usr/xenomai/bin
     sudo ./latency
     sudo ./clocktest
 
-
+./include/asm-generic/xenomai/wrappers.h 24:2
+    error: #error "CONFIG_IPIPE_LEGACY must be switched off"
+查看文件内容
+#ifdef CONFIG_IPIPE_LEGACY
+#error "CONFIG_IPIPE_LEGACY must be switched off"
+#endif
 
 
