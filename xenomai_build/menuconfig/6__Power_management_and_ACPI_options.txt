@@ -1,6 +1,0 @@
-
-2019年 01月 21日 星期一 09:16:04 CST
-
-
-== Power management and ACPI options
-             

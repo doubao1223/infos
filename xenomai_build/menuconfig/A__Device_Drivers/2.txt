@@ -19,7 +19,6 @@
                        Enable DDC/I2C support 　选中  y
      ==USB support
            USB Gadget Support    
-               USB Peripheral Controller
                USB functions configurable through configfs
                    Loopback and sourcesink function  不选
                    Function filesystem  不选
