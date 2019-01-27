@@ -2,14 +2,10 @@
 2019年 01月 21日 星期一 09:16:04 CST
 
 == File systems
-       Pseudo filesystems
-           Usespace-driven configuration filesystem  选中　m
        Miscellaneous filesystems
            Journalling Flash File System v2 (JFFS2) support
                JFFS2 XATTR support  不选
            SquashFS 4.0 - Squashed file system support　　选中为　m
-               File decompression options
-                    Decompress files directly into the page cache  选这个
                Decompressor parallelisation options
                     Use percpu multiple decompressors for parallel I/O  选这个
         Network File Systems
