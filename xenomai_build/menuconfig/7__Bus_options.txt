@@ -7,6 +7,3 @@
                PCI Express ASPM control
                    Debug PCI Express ASPM   不选
 
-               PCIe Downstream Port Containment support   -- 没有修改，
-               PCIe Precision Time Measurement support    -- 感觉可去掉
-
