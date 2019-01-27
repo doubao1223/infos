@@ -7,7 +7,7 @@
      Collect kernel timers statictics  选中
      Notifier error injection
          CPU Notifier error injection module  选中  m 
-         Latency measuring infrastructure     选中 y
+     Latency measuring infrastructure     选中 y
      Tracers
          Enable uprobes-based dynamic events  选中 y
      Runtime Testing
