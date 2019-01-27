@@ -3,11 +3,4 @@
 
 
 == Power management and ACPI options
-       ACPI ( Advanced Configuration and Power Interface) Support　
-       --- ACPI (Advanced Configuration and Power Interface) Support
-             Deprecated power /proc/acpi directories  选中
-             Allow supported ACPI revision to be overriden  不要了
-             Processor （这个没法去掉，有可能导致休眠么？)
-       CPU Frequecy scaling
-            CPU Frequency scaling  不要这个了
              
