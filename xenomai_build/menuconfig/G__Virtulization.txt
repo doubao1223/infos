@@ -2,7 +2,4 @@
 2019年 01月 21日 星期一 09:16:04 CST
 
 == Virtualization
-      Kernel-based Virtual Machine (KVM) support
-          KVM legacy PCI device assignment 　不选　（这个功能已经废弃了)
-          
 
