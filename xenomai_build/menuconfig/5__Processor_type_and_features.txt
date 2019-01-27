@@ -14,6 +14,7 @@
        Memory model
            Flat Memory 　选这个 
        Enable recovery from hardware memory errors  选中　(y)
-           HWPoison pages injector  选中　(m)
-       Use page table mapping to access object in zsmalloc  不选
+
+       Memory allocator for compressed pages
+           Use page table mapping to access object in zsmalloc  不选
 　　　           
