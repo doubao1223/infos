@@ -4,6 +4,6 @@
 
 == Enable loadable module support
        --- Enable loadable module support
-           Module versioning support        选中
+           Module versioning support        不选
 
            
