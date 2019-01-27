@@ -20,11 +20,6 @@
                              *** Xtables targets ***
                              "control group" match support  不选
                              "ipcomp" match support  不选
-               
-               Apple talk protocol support
-                   Appltetalk interfaces support
-                       Appletalk-IP driver support  选中为　m
-                           IP to Appletalk-IP Encapsulation support  选中为 y
                Qos and/or fair queueing
                --- Qos and/or fair queueing
                      *** Queueing/Scheduling ***
