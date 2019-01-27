@@ -1,0 +1,104 @@
+
+2019年 01月 25日 星期五 09:06:56 CST
+
+== Device Drivers
+     == GPIO Support
+        --- GPIO Support
+              /sys/class/gpio/... (sysfs interface)  不选
+              Port-mapped I/O GPIO drivers
+                  SMSC SCH311x SuperI/O GPIO  不选
+              I2C GPIO expanders
+                  Semtech SX150x I2C GPIO expander 选中　y
+
+     ==Dallas's 1-wire support
+           1-wire Slaves
+               BQ27000 slave support 　选中为　m
+     ==Power supply class support
+           Battery driver for Intel MID platforms  选中为 m
+     ==Hardware Monitoring support      
+           GPIO fan      选中为 m
+     ==Watchdog Timer Support
+           Synopsys DesignWare watchdog  不选　
+     ==Multifunction device drivers           
+           Maxim Semiconductor MAX14577/77836 MUIC + Charger Support  不选
+           Motorola EZXPCAP Support  不选　
+           Realtek PCI-E card reader  选中  m
+           Selicon Motion SM501  不选　
+           TI ADC / Touch Screen chip support  不选
+           TI/National Semiconductor LP3943 MFD Driver  不选
+           TI TPS65217 Power Management / White LED chips  选中　m
+           TI TWL4030/TWL5030/TWL6030/TPS659x0 Support  不选
+           Wolfson Microelectronics WM8994  选中　y
+     ==Voltage and Current Regulator Support
+           Marlvel 88PM8607 Power regulators  选中　y
+           Active-semo act8865 voltage regulator  不选
+           Wolfson Arizona class devices  选中　m
+           Ti/National Semiconductor LP8720/LP8725 voltage regulators  选中　y
+           TI LP8788 Power Regulators  选中　y
+           Samsung S2MPS11/13/14/15/S2MPU02 voltage regulator 　不选
+     ==Multimedia support
+           Remote Controller support  选中  y
+           Media Controller API       不选　
+           Media USB Adapters
+               STK1160 USB video capture support
+                   STK1160 AC97 codec support    选中　y
+           *** Webcam, TV (analog/digital) USB devices ***
+           Empia EM28xx USB devices support
+               Empia EM28xx analog TV, video capture and/or webcam support 不选
+           Radio Adapters            
+               Silicon Labs Si4713 FM Radio with RDS Transmitter support
+                   Silicon Labs Si4713 FM Radio Transmitter support with USB  不选
+                   Silicon Labs Si4713 FM Radio Transmitter support with I2C  不选
+               Thanko's Raremono AM/FM/SW radio support  不选
+           Sensors used on soc_camera driver
+               ov2640 camera support  选中  m
+               ov6650 sensor support  选中  m
+
+     ==Graphics support
+           I2C encoder or helper chips  --记录位置
+           
+           ACP (Audio CoProcessor) Configuration
+               Intel 8xx/9xx/G3x/G4x/HD Graphics
+                   Enable preliminary support for prerelease Intel hardware by default  选中  y
+               Intel GMA5/600 KMS Framebuffer
+                   Intel Medfield support (Experimental)  不要
+                   Kernel modesetting driver for MGA G200 server engines  不要
+               Frame buffer Devices
+                   OpenCores VGA/LCD core 2.0 framebuffer support  不要
+                   Intel 830M/845G/852GM/..... support
+                       DDC/I2C for Intel framebuffer support  不要
+                   3Dfx Banshee/Voodoo3/Voodoo5 display support
+                       3Dfx Acceleration functions  选中  y
+                       Enable DDC/I2C support 　选中  y
+     ==Sound card support
+          Advanced Linux Sound Architecture
+              OSS Mixer API  不选
+              Debug  选中　y
+     ==HID support
+     　    USB HID support
+           I2C HID support
+     ==USB support
+           DesignWare USB2 DRD Core Support  选中  m
+           ISP1760 Mode Selcetion
+               Host only mode   选中　
+               Gadget only mode
+               Dual Role mode
+           USB Serial Converter support    
+               USB Moxa UPORT Serial Driver  不选
+           USB Physical Layer drivers
+               Tahvo USB transceiver driver  不选
+           USB Gadget Support    
+               USB Peripheral Controller
+                   Aeroflex Gaisler GRUSBDC USB Peripheral Controller Driver  不选
+               USB functions configurable through configfs
+                   Loopback and sourcesink function  不选
+                   Function filesystem  不选
+     ==LED Support
+           External LED on Dell Business Netbooks  选中　m
+     ==InfiniBand support
+     ==EDAC (Error Detection And Correction) reporting
+           EDAC lefacy sysfs  选中为　y
+           Main Memory EDAC (Error Detection And Correction) reporting  选中为　m
+              子项选为  m
+               Sysfs HW Error injection facilities  不选
+ 

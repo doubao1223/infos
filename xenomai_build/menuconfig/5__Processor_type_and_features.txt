@@ -4,7 +4,8 @@
 == Processor type and features
        Processor family
            Core 2/newer Xeon   ( Vmware 服务器选这个 CPU )
-       I-Pipe legacy interface　　选中
+       Interrupt pipeline
+           I-pipe legacy interface  不选　
        Performance monitoring
             Intel uncore performance events  不选
             Intel rapl performance evetns  不选
@@ -15,5 +16,4 @@
        Enable recovery from hardware memory errors  选中　(y)
            HWPoison pages injector  选中　(m)
        Use page table mapping to access object in zsmalloc  不选
-       
 　　　           

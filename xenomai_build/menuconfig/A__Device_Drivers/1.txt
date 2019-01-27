@@ -1,0 +1,68 @@
+
+2019年 01月 25日 星期五 09:06:56 CST
+
+== Device Drivers
+     ==Block devices
+           --- Block devices
+               Compaq Smart Array 5xxx support   选　m
+               　　SCSI tape drive support for Smart Array 5xxx   选中　y
+               
+               OSD object-as-blkdev support  选中  m
+               RAM block device support      选中　y
+               Virtio block driver           选中  y
+     ==Misc devices
+           Texas Instruments DAC7512　　选中　m
+     ==SCSI device support
+           SCSI Transports
+           　　Parallel SCSI (SPI) Transport Attributes  选中　y
+           SCSI low-level drivers
+           --- SCSI low-level drivers
+                   Adaptec AIC7xxx Fast -> U160 support (New Driver)
+                       Initial bus reset delay in milli-seconds  设置为　15000
+                   Generaic NCR5380/53c400 SCSI MMIO support  选中为　m
+                   IBM Power Linux RAID adapter support
+                       enable driver internal trace  不选
+                       enable adapter dump support   不选
+     ==Network device support
+       --- Network device support
+               NetworkCore driver support
+                   Virtio network driver  选中  y
+               Ethernet driver support
+               --- Ethernet driver support
+                       STMicroelectronics devices
+                           STMicroelectronics 10/100/1000 Ethernet driver
+                               STMMC Platform bus support  选中　m
+               USB Network Adapters
+               --- USB Network Adapters
+                        Multi-purpose USB Networking Framework
+                            CoreChip-sz SR9800 based USB 2.0 10/100 ethenet devices  选中　m
+               Wirelsess LAN
+               --- Wirelsess LAN
+                       Atheros 802.11n wireless cards support
+                           Atheros Ath9k debugging
+                               Detailed stattion statics  不选
+                           Wake on Wireless LAN support 　不选
+    ==Input device support
+      -*- Generic input layer (needed for keyboard, mouse, ...)
+            Touchscreens
+            --- Touchscreens
+                  Intel MID platform resistive touchscreen   选中  m
+            Miscellaneous devices
+            --- Miscellaneous devices
+                  MPU3050 Triaxial gyroscope sensor  选中　m
+    ==Character devices
+          Enable TTY
+              GSM MUX line discipline support 　不选
+          Serial drivers
+              Freescale lpuart serial port support  不选　
+          IPMI top-level message handler  选中  y
+    ==I2C support
+      -*- I2C support
+            I2C device interface  选中为  m
+            I2C bus multiplexing support
+                Multiplexer I2C Chip support
+                    pinctrl-based I2C multiplexer  选中为  m
+            I2C Hardware Bus support
+                RobotFuzz Open Source InterFace USB adapter  不选
+            I2C/SMBus Test Stub
+
