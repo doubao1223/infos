@@ -1,0 +1,22 @@
+
+2019年 1月30日 星期三 14时34分35秒 CST
+
+
+dmesg | grep xenomai
+=>
+Kernel command line: BOOT_IMAGE=/boot/vmlinuz-3.14.17-xenomai-2.6.4 root=UUID=3616b15e-9905-4f62-b2a8-52f1e6fd4f4e ro crashkernel=384M-2G:64M,2G-:128M quite splash
+usb usb1: Manufacturer: Linux 3.14.17-xenomai-2.6.4 ehci_hcd
+usb usb2: Manufacturer: Linux 3.14.17-xenomai-2.6.4 uhci_hcd
+
+dmesg | grep Xenomai
+=>
+I-pipe: head domain Xenomai registered.
+Xenomai: hal/i386 started. 
+Xenomai: scheduling class idle registered.
+Xenomai: scheduling class rt registerd.
+Xenomai: real-time nucleus v2.6.4 (Jumpin' Out) loaded.
+Xenomai: debug mode enabled.
+Xenomai: starting native API services.
+Xenomai: starting POSIX services.
+Xenomai: starting RTDM services.
+
