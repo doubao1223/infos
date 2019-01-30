@@ -1,4 +1,4 @@
-
+n
 2019年 01月 21日 星期一 09:16:04 CST
 
 == File systems
@@ -9,7 +9,6 @@
                Decompressor parallelisation options
                     Use percpu multiple decompressors for parallel I/O  选这个
         Network File Systems
-        --- Network File Systems
               Ceph distributed file system
                   Ceph POSIX Access Control Lists  不选
               CIFS support (advanced network filesystem, SMBFS successor)
