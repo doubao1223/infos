@@ -3,7 +3,6 @@
 
 == Device Drivers
      == GPIO Support
-        --- GPIO Support
               /sys/class/gpio/... (sysfs interface)  不选
               Port-mapped I/O GPIO drivers
                   SMSC SCH311x SuperI/O GPIO  不选
@@ -20,6 +19,6 @@
      ==USB support
            USB Gadget Support    
                USB functions configurable through configfs
-                   Loopback and sourcesink function  不选
-                   Function filesystem  不选
+                   Loopback and sourcesink function (for testing)  不选
+                   Function filesystem (FunctionFS)  不选
  

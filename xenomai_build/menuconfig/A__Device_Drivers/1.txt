@@ -13,23 +13,19 @@
            Texas Instruments DAC7512　　选中　m
      ==SCSI device support
            SCSI low-level drivers
-           --- SCSI low-level drivers
-                   Adaptec AIC7xxx Fast -> U160 support (New Driver)
+                       Adaptec AIC7xxx Fast -> U160 support (New Driver)
                        Initial bus reset delay in milli-seconds  设置为　15000
-                  //下面这个没找到
-                  Generaic NCR5380/53c400 SCSI MMIO support  选中为　m
+                      Generaic NCR5380/53c400 SCSI MMIO support  选中为　m
      ==Network device support
-       --- Network device support
                Wirelsess LAN
-               --- Wirelsess LAN
                        Atheros 802.11n wireless cards support
                            Atheros Ath9k debugging
+                               //下面的没找到 
                                Detailed stattion statics  不选
                            Wake on Wireless LAN support 　不选
     ==Input device support
       -*- Generic input layer (needed for keyboard, mouse, ...)
             Miscellaneous devices
-            --- Miscellaneous devices
                   MPU3050 Triaxial gyroscope sensor  选中　m
     ==Character devices
           Enable TTY
