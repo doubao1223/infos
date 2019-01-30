@@ -14,7 +14,12 @@
               
            Debug support
                Debug support  选中　
-               　　子选项 用默认的
+               　　子选项 默认的
+                   Spinlock debugging support
+                   Watchdog support
+                     
+                   增加选中
+                   Check for calling context  
 　　　     Drivers
               Real-time IPC drivers  选中 (y 或者显示为 *,　不是 M)
 

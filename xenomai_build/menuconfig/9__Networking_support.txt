@@ -2,15 +2,13 @@
 2019年 01月 21日 星期一 09:16:04 CST
 
 == Networking support
-　 --- Networking support
            Networking options
                Transformation statistics  不选
                TCP/IP networking
-               Ip: kernel level autoconfiguration  选中
-                   IP: DHCP support  选中
+                   Ip: kernel level autoconfiguration  选中
+                       IP: DHCP support  选中
                    
                Network packet filtering framework (Netfilter)                
-               --- Network packet filtering framework (Netfilter)        
                      Core Netfilter Configuration    
                          Netfilter nf_tables support
                              Netfilter nf_tables mixed IPv4/IPv6 tables support 不选
@@ -21,7 +19,6 @@
                              "control group" match support  不选
                              "ipcomp" match support  不选
                Qos and/or fair queueing
-               --- Qos and/or fair queueing
                      *** Queueing/Scheduling ***
                      Heavy-Hitter Filter (HHF)  不选
                      Proportional Integral controller Enhanced (PIE) scheduler  不选
@@ -31,7 +28,6 @@
            RF switch subsystem support
                Generic rfkill regulator driver  选中　m
            NFC susbystem support
-               --- NFC susbystem support
                      Near Field Communication (NFC) devices
                          Texas Instruments NFC WiLink driver  选中　m
 
