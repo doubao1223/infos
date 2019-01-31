@@ -77,7 +77,7 @@ sudo update-grub
    原因
    解决 sudo apt-get install libtool
    
-    ./configure --enable-shared --enable-smp
+    ./configure --with-core=cobalt --enable-debug --enable-smp --enable-pshared
     make
     sudo make install
 
@@ -103,6 +103,5 @@ sudo update-grub
 10. libelf-dev
 11. sciidoc
 12. binutils-dev
-
 
 
