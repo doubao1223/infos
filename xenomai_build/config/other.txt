@@ -1,0 +1,24 @@
+
+== NVidia 驱动
+lsmod | grep nouveau
+=>
+noueau
+mxm_wmi
+ttm
+i2c_algo_bit
+drm_kms_helper
+drm
+wm
+video
+
+1 App software -> add
+      为 NVidia 安装 nvidia-390(open source) 驱动。
+2 sudo gedit /etc/modprob.d/blacklist.conf
+      增加 blacklist nouveau
+3 sudo update-initramfs -u
+4 reboot
+
+lsmod | grep nouveau
+
+
+
