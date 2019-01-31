@@ -1,0 +1,23 @@
+
+== 使用 ROS 仿真机器人
+
+A Gentle Introcution to ROS
+
+ROS 官网教程基础部分  http://wiki.ros.org/ROS/Tutorials
+
+了解urdf, gazebo, ros_control, rqt, rviz等
+
+== 资源
+仿真机器人模型
+lir3 http://gitlab.i.lithotek.com/algorithm/LIR3.git
+xb6 http://gitlab.i.lithotek.com/algorithm/xb06.git
+ur5 http://gitlab.i.lithotek.com/yanliujiang/algorithm-ur5sim.git
+
+== 控制
+图形显示 roslaunch X_description XX，会显示rviz界面，接受的是joint_states的topic，发布此topic即可显示机器人运动。
+
+动力学仿真和控制 使用gazebo进行见http://www.gazebosim.org/tutorials?cat=connect_ros， 主要看http://www.gazebosim.org/tutorials?tut=ros_control&cat=connect_ros； lir3包与此相似。
+
+== 说明
+ROS在机器人学界用的十分广泛，github上也有许多代码可供参考，因此挑选ROS作为算法快速开发、仿真和验证工具。MATLAB也可以与ROS通信；涉及到ROS力所不及的，也可使用MATLAB。
+
