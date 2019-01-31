@@ -1,0 +1,19 @@
+
+2019年 1月31日 星期四 09时22分57秒 CST
+
+== Performance
+       Intel SpeedStep                          No
+       C-States Control                         No
+       Intel TurboBoost                         Enable
+
+== Power Management
+       AC Recovery                              Power Off
+       Enable Intel Speed Shift Technology      No
+       Deep Sleep Control                       Disabled
+       USB Wake Support                         Yes
+       Block Sleep                              Yes
+       
+== Advanced configurations
+      ASPM (Acive State Power Management)
+           Disabled
+      
