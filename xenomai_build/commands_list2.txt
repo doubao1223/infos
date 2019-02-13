@@ -91,7 +91,7 @@ sudo update-grub
 
 == 其他问题 
 1. ./include/linux/ipipe.h:55:28 :error: field 'arch' has incomplete type
-    sudo apt-get install autoconf  (没用)
+     xuyao zai neihe shezhi zhong dingyi CONFIG_HAVE_IPIPE_SUPPORT
 2. sudo apt-get install  kexec-tools  （这个工具需要查一下　功能)
 3. kernel-package 都有什么，作用是什么
 4. build-essential

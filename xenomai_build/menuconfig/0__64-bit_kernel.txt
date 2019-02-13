@@ -2,5 +2,4 @@
 2019年 01月 24日 星期四 14:23:52 CST
 
 Say no to build a 32-bit kernel - formerly known as i386
-
 Defined at arch/x86/Kconfig:2
