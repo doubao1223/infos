@@ -38,7 +38,7 @@ warning:
 结论: 都可以忽略
 
 == 查看CPU类型
-cat /proc/info 
+cat /proc/cpuinfo 
 Intel(R) Xeon(R)
 
 == 编译配置完的内核
