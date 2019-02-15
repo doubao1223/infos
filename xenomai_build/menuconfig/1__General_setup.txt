@@ -2,8 +2,7 @@
 2019年 01月 21日 星期一 09:16:04 CST
 
 == General setup
-       Local version:-xenomai-3.0.8
-       
+       Local version:-xenomai-3.0.8 ( zhangshi banben zhong buyao jia )
        Stack Protector buffer overflow detection
-             选择　None
+             选择　None ( yong mo ren de Strong )
       
