@@ -11,12 +11,12 @@
      Tracers
          Enable uprobes-based dynamic events  选中 y
      Runtime Testing
-         Red-Black tree test            m
-         Interval tree test             m
-         Per cpu operations test        m
-         Self test for hardware accelerated raid6 recovery     m
-         Test functions located in the string_helpers module at runtime   m
-         Test kstrto*() family of functions at runtime    m
+         Red-Black tree test            不选
+         Interval tree test             不选
+         Per cpu operations test        不选
+         Self test for hardware accelerated raid6 recovery     不选
+         Test functions located in the string_helpers module at runtime  不选
+         Test kstrto*() family of functions at runtime  不选
      Test user/kernel boundary protections  不选
      Set loadable kernel module data as NX and text as RO  选中
 
