@@ -1,6 +1,6 @@
-
 ;2019年 02月 15日 星期五 11:14:00 CST
-; ~/.emacs.d/
+
+; ~/.emacs.d/init.el
 
 (global-linum-mode 1) ; always show line numbers
 
