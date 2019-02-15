@@ -45,7 +45,7 @@ cat /proc/cpuinfo
 
 == 编译完的内核
 export CONCURRENCY_LEVEL=4
-fakeroot make-kpkg -j `getconf _NPROCESSORS_ONLN` --initrd kernel_image kernel_headers modules
+fakeroot make-kpkg -j `getconf _NPROCESSORS_ONLN` --initrd --append-to-version -xenomai-3.0.8 --revision 1.0.0 kernel_image kernel_headers modules
 
 1. 报错 make-kpkg: command not found
    原因
@@ -62,6 +62,9 @@ fakeroot make-kpkg -j `getconf _NPROCESSORS_ONLN` --initrd kernel_image kernel_h
 == 安装
 sudo dpkg -i linux-headers*.deb
 sudo dpkg -i linux-image*.deb
+W: Possible missing firmware /lib/firmware/i915/kbl_guc_ver9_14.bin for module i915
+W: Possible missing firmware /lib/firmware/i915/bxt_guc_ver8_7.bin for module i915
+download  kbl* and bxt, copy to /lib/firmaware/i915
 
 == 更新Grub
 sudo gedit /etc/default/grub
