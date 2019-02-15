@@ -3,19 +3,19 @@
 
 == Device Drivers
      ==Block devices
-               Compaq Smart Array 5xxx support   选　m
-               　　SCSI tape drive support for Smart Array 5xxx   选中　y
+               Compaq Smart Array 5xxx support    x
+               　　SCSI tape drive support for Smart Array 5xxx    x
           
-               OSD object-as-blkdev support  选中  m
-               RAM block device support      选中　y
-               Virtio block driver           选中  y
+               OSD object-as-blkdev support  选中  m   default
+               RAM block device support      选中　y   default
+               Virtio block driver           选中  y   default
      ==Misc devices
-           Texas Instruments DAC7512　　选中　m
+           Texas Instruments DAC7512　　选中　m  default
      ==SCSI device support
            SCSI low-level drivers
                        Adaptec AIC7xxx Fast -> U160 support (New Driver)
-                       Initial bus reset delay in milli-seconds  设置为　15000
-                      Generaic NCR5380/53c400 SCSI MMIO support  选中为　m
+                       Initial bus reset delay in milli-seconds  设置为　15000  default
+                      Generaic NCR5380/53c400 SCSI MMIO support  选中为　m  default
      ==Network device support
                Wirelsess LAN
                        Atheros 802.11n wireless cards support
@@ -32,7 +32,7 @@
               GSM MUX line discipline support 　不选
           Serial drivers
               Freescale lpuart serial port support  不选　
-          IPMI top-level message handler  选中  y
+          IPMI top-level message handler  选中  y   default
     ==I2C support
       -*- I2C support
             I2C device interface  选中为  m

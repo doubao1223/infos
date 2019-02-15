@@ -14,8 +14,8 @@
      ==Graphics support
                Frame buffer Devices
                    3Dfx Banshee/Voodoo3/Voodoo5 display support
-                       3Dfx Acceleration functions  选中  y
-                       Enable DDC/I2C support 　选中  y
+                       3Dfx Acceleration functions  选中  y  default
+                       Enable DDC/I2C support 　选中  y  default
      ==USB support
            USB Gadget Support    
                USB functions configurable through configfs
