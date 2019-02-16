@@ -1,0 +1,10 @@
+
+
+1. 
+drivers/xenomai/net/stack/include/rtskb.h:32:22: fatal error: rtdm/net.h: No such file or directory
+
+linux-4.9.146/include/xenomai/rtdm$
+    ln -s ../xenomai-3.0.8/include/rtdm/net.h net.h
+  没有用上面的，取消了 RTnet
+ 
+

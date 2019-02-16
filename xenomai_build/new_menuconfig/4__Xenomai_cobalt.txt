@@ -18,7 +18,10 @@
               没选，不知道有什么作用
 
 　　　     Drivers
+              Enable legacy  pathnames for named RTDM devices
+                 取消
               RTnet
+                 取消（编译问题太多)
                  RTnet, TCP/IP socket interface <M>
                     Drivers
                        New Intel(R) PRO/1000 PCIe (Gigabit)  <M>
@@ -29,4 +32,6 @@
               Real-time IPC drivers  选中为 yes( 是* )
                         不知道什么作用，
                         不知道和 M 什么区别。
+                   选了之后， 有上面带 * 的 第 8 行。
+                               
 
