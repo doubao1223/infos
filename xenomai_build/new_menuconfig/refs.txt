@@ -1,8 +1,9 @@
 
+2019年 2月16日 星期六 16时42分13秒 CST
 
+https://stackoverrun.com/cn/q/11541946
 
 https://gitlab.denx.de/Xenomai/xenomai/wikis/Configuring_For_X86_Based_Dual_Kernels#Optimized_CPU_and_platform_settings
-
 
 https://rtt-lwr.readthedocs.io/en/latest/rtpc/xenomai3.html
 
