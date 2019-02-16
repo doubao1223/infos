@@ -1,0 +1,9 @@
+
+
+
+https://gitlab.denx.de/Xenomai/xenomai/wikis/Configuring_For_X86_Based_Dual_Kernels#Optimized_CPU_and_platform_settings
+
+
+https://rtt-lwr.readthedocs.io/en/latest/rtpc/xenomai3.html
+
+
