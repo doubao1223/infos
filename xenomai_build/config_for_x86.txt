@@ -1,0 +1,66 @@
+
+https://stackoverrun.com/cn/q/11541946
+==>
+https://gitlab.denx.de/Xenomai/xenomai/wikis/Configuring_For_X86_Based_Dual_Kernels#Optimized_CPU_and_platform_settings
+
+
+[ Xenomai 3 requires the hardware TSC feature from x86 CPU ]
+
+
+== Power management 电源管理
+  不应该 disable power management globally
+
+  disable
+      CONFIG_APM
+      CONFIG_ACPI_PROCESSOR
+
+== USB
+  enable
+      support for your USB host controller(s)
+
+  disable
+      support for "legacy USB emulation"
+
+== CPU Frequency scaling
+  disable
+      CONFIG_CPU_FREQ
+
+
+== Configuration Options
+  disable CONFIG_CPU_FREQ   ;; 将 充许 CPU frequency 根据负载进行调整.
+  disable CONFIG_CPU_IDLE   ;;
+
+  CONFIG_CC_STACKPROTECTOR
+
+  disable CONFIG_APM        ;; 如果配置上了，APM routines are invoked with SMI
+                            ;; priority, 会整个绕过 I-pipe.
+                            
+  disable CONFIG_ACPI_PROCESSOR  ;;  BIOS如果支持 ACPI, 也可以disable.
+  disable CONFIG_INTEL_IDLE      ;;
+  
+  disable CONFIG_INPUT_PCSPKR    ;;
+  
+  disable CONFIG_PCI_MSI         ;;
+  
+
+            
+
+    
+    
+
+
+
+
+
+TSC, Time Stamp Counter 时间步点计数
+is a hardware featurefound on a number of contemporary processors.
+
+The TSC is a special register which is simply incremented every clock cycle.
+Since the clock is the fundamental unit of time as seen by the processor, 
+the TSC provides the highest-resolution timing information available
+for that processor.
+
+It can thus be used for a number of applications, such as measuring
+the exact time cost of specific intructions or operations.
+
+
