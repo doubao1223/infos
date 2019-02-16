@@ -1,0 +1,32 @@
+
+2019年 01月 21日 星期一 09:16:04 CST
+
+== Xenomai/cobalt
+       --- Xenomai/cobalt
+       
+           Sizes and static limits
+    *         32   Number of pipe devices
+              说明：
+
+              4096 Nubmer of registry slots  ( 初始值是 512 )
+              4096 Size of system heap (Kb)
+              256  Size of private heap (Kb)
+              256  Size of shared heap (Kb)
+              512  Maximum number of POSIX timers per process ( 初始值是 256 )
+              
+           Debug support
+              没选，不知道有什么作用
+
+　　　     Drivers
+              RTnet
+                 RTnet, TCP/IP socket interface <M>
+                    Drivers
+                       New Intel(R) PRO/1000 PCIe (Gigabit)  <M>
+                       Realtek 8169 (Gigabit)  <M>
+                       Loopback  <M>
+                    Add-Ons
+                       Real-Time Capturing Support  <M>
+              Real-time IPC drivers  选中为 yes( 是* )
+                        不知道什么作用，
+                        不知道和 M 什么区别。
+

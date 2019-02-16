@@ -1,0 +1,31 @@
+
+2019年 01月 21日 星期一 09:16:04 CST
+
+== Processor type and features
+     => Processor family
+           Core 2/newer Xeon   ( if "cat /proc/cpuinfo | grep family" returns 6 )
+           
+     => Interrupt pipeline
+           I-pipe legacy interface  选了!!
+             不知道这是什么？怎么用？
+       导致编译错误： ./include/linux/sched.h:1899:12 error
+            "IPIPE_ROOT_NPTDKEYS" undeclared here (not in a function)
+
+            I-pipe legacy interface 取消!!!
+            
+     => Performance monitoring
+           没有动，用的是默认的选项
+　　　
+     => Transparent Hugepage Support
+          取消
+          
+     => Allow for memory compaction
+          取消
+
+     => Contiguous Memory Allocator
+          取消
+
+     => Allow for memory compaction
+          Page Migration
+             取消
+       

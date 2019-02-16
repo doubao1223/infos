@@ -1,0 +1,9 @@
+
+2019年 01月 21日 星期一 09:16:04 CST
+
+== Bus options (PCI etc.)
+       PCI support
+         Message Signaled Interrupts ( MSI and MSI-X )
+            使能 ( 默认就是这个 )
+            -- enable  PCI_MSI
+    

@@ -1,0 +1,13 @@
+
+2019年 01月 25日 星期五 09:06:56 CST
+
+Device Drivers
+
+==Input device support
+     Generic input layer (needed for keyboard, mouse, ...)
+         Miscellaneous devices
+            PC Speaker support
+              取消
+              -- disable  INPUT_PCSPKR
+
+

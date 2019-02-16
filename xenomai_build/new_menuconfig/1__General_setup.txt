@@ -1,0 +1,14 @@
+
+2019年 01月 21日 星期一 09:16:04 CST
+
+== General setup
+       Local version:-xenomai-3.0.8   --不设置
+
+       Timers subsystem
+         Hight Resolution Timer Support
+           使能 ( 默认就是这个 )
+           
+       Stack Protector buffer overflow detection
+             选择　None
+           -- disable CONFIG_CC_STACKPROTECTOR
+
