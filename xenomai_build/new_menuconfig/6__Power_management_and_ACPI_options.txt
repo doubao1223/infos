@@ -1,27 +1,21 @@
 
 2019年 2月16日 星期六 14时46分58秒 CST
 
-
 Power Management and ACPI options
+    => ACPI Support
+          => Processor 
+               取消 ( disable  ACPI_PROCESSOR )
+               
+    =>* APM BIOS support 
+          取消 ( disable  APM )
+          
+    => CPU Frequency scaling
+          取消 ( disable  CPU_FREQ )
 
-== ACPI Support
-      => Processor
-           取消
-           -- disable  ACPI_PROCESSOR
-           
-==* APM BIOS support
-      取消
-      -- disable       APM
-      
-== CPU Frequency scaling
-      取消
-       -- disable      CPU_FEQ
-== CPU Idle
-      => CPU Idle PM support
-           取消
-        -- disable     CPU_IDLE
-        
-== Cpuidle Driver for Intel Processors
-      取消
-      -- disable       INTEL_IDLE
-
+    => CPU Idle
+          => CPU Idle PM support
+               取消 ( disable  CPU_IDLE )
+            
+    => Cpuidle Driver for Intel Processors
+          取消 ( disable  INTEL_IDLE )
+    

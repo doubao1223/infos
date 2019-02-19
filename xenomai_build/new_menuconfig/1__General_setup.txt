@@ -5,7 +5,7 @@
        Local version:-xenomai-3.0.8   --不设置
 
        Timers subsystem
-         Hight Resolution Timer Support
+         High Resolution Timer Support
            使能 ( 默认就是这个 )
            
        Stack Protector buffer overflow detection

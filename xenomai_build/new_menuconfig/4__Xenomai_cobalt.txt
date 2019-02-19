@@ -6,8 +6,6 @@
        
            Sizes and static limits
     *         32   Number of pipe devices
-              说明：
-
               4096 Nubmer of registry slots  ( 初始值是 512 )
               4096 Size of system heap (Kb)
               256  Size of private heap (Kb)
@@ -29,9 +27,6 @@
                        Loopback  <M>
                     Add-Ons
                        Real-Time Capturing Support  <M>
-              Real-time IPC drivers  选中为 yes( 是* )
-                        不知道什么作用，
-                        不知道和 M 什么区别。
+              Real-time IPC drivers  选中为 M
                    选了之后， 有上面带 * 的 第 8 行。
-                               
 
