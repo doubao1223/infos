@@ -2,9 +2,8 @@
 2019年 01月 21日 星期一 09:16:04 CST
 
 == Xenomai/cobalt
-       --- Xenomai/cobalt
        
-           Sizes and static limits
+      => Sizes and static limits
     *         32   Number of pipe devices
               4096 Nubmer of registry slots  ( 初始值是 512 )
               4096 Size of system heap (Kb)
@@ -12,10 +11,10 @@
               256  Size of shared heap (Kb)
               512  Maximum number of POSIX timers per process ( 初始值是 256 )
               
-           Debug support
+      => Debug support
               没选，不知道有什么作用
 
-　　　     Drivers
+　　　=>  Drivers
               Enable legacy  pathnames for named RTDM devices
                  取消
               RTnet

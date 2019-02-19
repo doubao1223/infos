@@ -4,6 +4,5 @@
 == Bus options (PCI etc.)
        PCI support
          Message Signaled Interrupts ( MSI and MSI-X )
-            使能 ( 默认就是这个 )
-            -- enable  PCI_MSI
+            使能 ( 默认就是这个 ) ( enable  PCI_MSI )
     
