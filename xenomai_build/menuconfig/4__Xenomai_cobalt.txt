@@ -6,11 +6,11 @@
        
            Sizes and static limits
               32   Number of pipe devices
-              4096 Nubmer of registry slots  ( default shi 512 )
+              4096 Nubmer of registry slots  ( 初始值是 512 )
               4096 Size of system heap (Kb)
               256  Size of private heap (Kb)
               256  Size of shared heap (Kb)
-              512  Maximum number of POSIX timers per process ( default shi 256 )
+              512  Maximum number of POSIX timers per process ( 初始值是 256 )
               
            Debug support
                Debug support  选中　
