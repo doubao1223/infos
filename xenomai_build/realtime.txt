@@ -1,0 +1,15 @@
+
+2019年 2月19日 星期二 15时37分18秒 CST
+
+
+== 实时UDP
+   boost asio
+   TCP不能实时
+
+== ubuntu 实时性测试
+   cyclictest
+   示波器
+
+== RT-preempt
+   
+
