@@ -62,10 +62,10 @@ fakeroot make-kpkg -j `getconf _NPROCESSORS_ONLN` --initrd --append-to-version -
 == 安装
 sudo dpkg -i linux-headers*.deb
 sudo dpkg -i linux-image*.deb
-W: Possible missing firmware /lib/firmware/i915/kbl_guc_ver9_14.bin for module i915
-W: Possible missing firmware /lib/firmware/i915/bxt_guc_ver8_7.bin for module i915
-download  kbl* and bxt, copy to /lib/firmaware/i915
-
+    W: Possible missing firmware /lib/firmware/i915/kbl_guc_ver9_14.bin for module i915
+    W: Possible missing firmware /lib/firmware/i915/bxt_guc_ver8_7.bin for module i915
+    download  kbl* and bxt, copy to /lib/firmaware/i915
+    
 == 更新Grub
 sudo gedit /etc/default/grub
     将 GRUB_DEFAULT=0改为GRUB_DEFAULT="0>0"
@@ -79,7 +79,6 @@ sudo update-grub
 2. 报错 failed to run libtoolize: No such file or directory
    原因
    解决 sudo apt-get install libtool
-   
     ./configure --with-core=cobalt --enable-debug --enable-smp --enable-pshared
     make
     sudo make install
