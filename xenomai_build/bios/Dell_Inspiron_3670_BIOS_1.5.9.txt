@@ -4,16 +4,16 @@
 == Performance
        Intel SpeedStep                          No
        C-States Control                         No
-       Intel TurboBoost                         Enable
+       Intel TurboBoost                         No
 
 == Power Management
        AC Recovery                              Power Off
        Enable Intel Speed Shift Technology      No
        Deep Sleep Control                       Disabled
-       USB Wake Support                         Yes
+       USB Wake Support                         No
+       Wake on LAN/WLAN                         No
        Block Sleep                              Yes
        
 == Advanced configurations
-      ASPM (Acive State Power Management)
-           Disabled
+      ASPM (Acive State Power Management)       Disabled
       
