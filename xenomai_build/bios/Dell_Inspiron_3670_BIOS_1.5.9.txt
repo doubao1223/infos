@@ -4,7 +4,7 @@
 == Performance
        Intel SpeedStep                          No
        C-States Control                         No
-       Intel TurboBoost                         No
+       Intel TurboBoost                         Yes/No 都差不多
 
 == Power Management
        AC Recovery                              Power Off
