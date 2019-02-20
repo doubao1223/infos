@@ -1,0 +1,40 @@
+
+2019年 2月20日 星期三 16时17分04秒 CST
+== Ubuntu 16.04 安装 ROS (Kinetic Kame)
+      => 查看 Ubuntu 的版本
+            lsb_release -sc
+      => 设置 sources.list 设置为国内的更新源
+      => 设置 keys
+      => install
+            sudo apt-get install
+            
+            sudo apt-get install ros-kinetic-ros-base ;; 没有GUI工具   OK
+                                 ros-kinetic-desktop-full ;; 完整安装  32bit 缺包
+                                                                       64bit OK
+                                     猜测：我的32位系统安装的有问题？！
+                                 ros-kinetic-desktop ;; 桌面安装
+                                 ros-kinetic-PACKAGE ;; 单个包安装
+      => 查找包
+            apt-cache search ros-kinetic
+      => 初始化 rosdep
+            sudo rosdep init
+            rosdep update
+      => 环境设置
+            echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+            source ~/.bashrc
+      => 构建包所需要的依赖
+            例如：roinstall is a frequently used command-line tool that enables you to easily
+                     download many source trees for ROS packages with one command.
+            用下面的命令，安装这个 工具和
+                                   其他用来building ROS packages 的依赖
+            sudo apt install
+                        python-roinstall python-roinstall-generator python-wstool
+                        build-essential
+
+== uninstall
+      => sudo apt-get remove ros-*
+      => sudo apt-get autoremove
+
+== refs
+      http://wiki.ros.org/kinetic/Installation/Ubuntu
+      https://www.jianshu.com/p/9efd8fadc197
