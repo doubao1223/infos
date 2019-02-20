@@ -1,0 +1,50 @@
+
+
+2019年 2月19日 星期二 10时46分59秒 CST
+
+== concepts
+ROS
+    是什么？  机器人 操作系统，类似于机器人控制行为的控制协议。
+    问题？    通信很难保证
+
+RTT
+    是什么？  实时的工具套装
+
+
+orocos
+    是什么？  是一个 符合ROS精神和的框架.
+
+
+机器人之间的通信：
+  x robotA     <===>       y robotA
+               ROS接口
+           
+     ROS接口               
+       |                   支持ROS接口的 控制器
+      RTT                       
+       | 
+     消息发送  <->
+
+== libs
+RTT
+RTT_ROS_integration
+
+== component
+   硬实时
+   控制
+
+== 说明
+   请对照原版 Component Manual, RTT api 和 Soetens 论文。
+   RTMiddleware (Robotics Technology Middleware)
+
+
+== ROS                       Ubuntu
+     Lunar Loggerhead          18.04 LTS (Bionic Beaver)     仿生升级 海狸
+     
+  => Kinetic Kame              16.04 LTS (Xenial Xerus)     好客的 地松鼠
+       运地的 Kame 
+     Indigo Igloo              14.04 LTS (Trusty Tahr)      可靠的 塔尔羊
+       紫色 小屋
+     Hydro Medusa              12.04 LTS (Precise Pangolin) 精确的 穿山甲
+       
+
