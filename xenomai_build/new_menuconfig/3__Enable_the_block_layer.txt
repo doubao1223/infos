@@ -1,0 +1,8 @@
+
+2019年 01月 21日 星期一 09:16:04 CST
+
+== Enable the block layer
+      => IO Schedulers
+            Default I/O scheduler
+               Deadline     选中
+                     
