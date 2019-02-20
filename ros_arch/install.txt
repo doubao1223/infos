@@ -41,3 +41,5 @@
 == refs
       http://wiki.ros.org/kinetic/Installation/Ubuntu
       https://www.jianshu.com/p/9efd8fadc197
+      http://wiki.ros.org/Distributions
+      
