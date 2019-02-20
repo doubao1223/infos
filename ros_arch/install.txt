@@ -30,7 +30,10 @@
             sudo apt install
                         python-roinstall python-roinstall-generator python-wstool
                         build-essential
-
+== 对安装的简单测试
+      执行 roscore
+      在另一个 terminal 执行 turtlesim
+    
 == uninstall
       => sudo apt-get remove ros-*
       => sudo apt-get autoremove
