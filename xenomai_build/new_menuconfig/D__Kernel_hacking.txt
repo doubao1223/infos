@@ -1,0 +1,24 @@
+
+2019年 01月 21日 星期一 09:16:04 CST
+
+== Kernel hacking
+     => -*- Magic SysRq key
+           (0x1) Enable magic SysRq key functions by default
+     => Collect kernel timers statictics  选中
+     => Notifier error injection
+          CPU Notifier error injection module 选中 m  (这个没选。不知道意思)
+	  
+     => Latency measuring infrastructure     选中 y
+     => Tracers
+     	  Enable uprobes-based dynamic events 选中 y  (这个没选。不知道意思)
+
+     => Runtime Testing
+         Red-Black tree test            不选
+         Interval tree test             不选
+         Per cpu operations test        不选
+         Self test for hardware accelerated raid6 recovery     不选
+         Test functions located in the string_helpers module at runtime  不选
+         Test kstrto*() family of functions at runtime  不选
+     => Test user/kernel boundary protections  不选
+     => Set loadable kernel module data as NX and text as RO  选中
+
