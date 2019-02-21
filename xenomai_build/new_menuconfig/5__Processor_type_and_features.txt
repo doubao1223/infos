@@ -4,7 +4,6 @@
 == Processor type and features
      => Processor family
            Core 2/newer Xeon   ( if "cat /proc/cpuinfo | grep family" returns 6 )
-           
      => Interrupt pipeline
            I-pipe legacy interface  选了!!
              不知道这是什么？怎么用？
@@ -12,23 +11,19 @@
             "IPIPE_ROOT_NPTDKEYS" undeclared here (not in a function)
 
             I-pipe legacy interface 取消!!!
-            
      => Performance monitoring
            没有动，用的是默认的选项
 　　　	   M Intel uncore performance events
 	   * Intel rapl performance events
 	   * Intel cstate performance events
-	   
-     => Transparent Hugepage Support
-          取消
-          
+     => Transparent Hugepage Support         取消
+     => Memory split(2G/2G user/kernel split)
+     -> Memory model (Sparse Memory)  具体还需要进一步了解
+     => Allow for memory compaction          取消
+     => Contiguous Memory Allocator          取消
      => Allow for memory compaction
-          取消
+          Page Migration                     取消
+     => Memory allocator for compressed pages
+     	    Use page table mapping to access object in zsmalloc 不选
 
-     => Contiguous Memory Allocator
-          取消
-
-     => Allow for memory compaction
-          Page Migration
-             取消
-       
+     
