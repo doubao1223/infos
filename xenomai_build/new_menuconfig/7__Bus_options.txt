@@ -4,10 +4,6 @@
 == Bus options (PCI etc.)
       => PCI support
             ...
-            PCI Express Port Bus support
-	       PCI Express ASPM control
-	          Debug PCI Express ASPM  不选
-	       ... 
             Message Signaled Interrupts ( MSI and MSI-X )
              使能 ( 默认就是这个 ) ( enable  PCI_MSI )
     
