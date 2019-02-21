@@ -15,7 +15,10 @@
             
      => Performance monitoring
            没有动，用的是默认的选项
-　　　
+　　　	   M Intel uncore performance events
+	   * Intel rapl performance events
+	   * Intel cstate performance events
+	   
      => Transparent Hugepage Support
           取消
           
