@@ -2,30 +2,97 @@
 
 2019年 2月19日 星期二 10时46分59秒 CST
 
-== concepts
-ROS
+== ROS   Willow Garage
     是什么？  机器人 操作系统，类似于机器人控制行为的控制协议。
-    问题？    通信很难保证
+    问题？    通信很难保证。 应该是说实时性吧
+    功能      提供一系列 程序库 和工具。
+                  硬件抽象
+                  设备驱动
+                  函数库
+                  可视化工具
+                  消息传递
+                  软件包管理
+    目标      帮助开发者
+== 通信过程
 
-RTT
-    是什么？  实时的工具套装
-
-
-orocos
-    是什么？  是一个 符合ROS精神和的框架.
-
-
-机器人之间的通信：
-  x robotA     <===>       y robotA
-               ROS接口
-           
+   应用调用
      ROS接口               
        |                   支持ROS接口的 控制器
       RTT                       
        | 
      消息发送  <->
+== ROS中的概念     
+    Node     类似一般操作系统中的 进程
+    Message  在ROS中定义为具体的数据结构
+    Topic    Publish和Subscribe过程。指节点发布的消息的去处。
+    Service  一对一服务，两者之间建立起实时通讯
+    节点管理器  管理员
 
-== libs
+  补充说明：
+    节点是用 C++ 或 Python (ROS客户端库 roscpp, rospy) 编写的程序，用来执行任务或进程。
+    节点之间的通信。（进程之间的通信）
+        ROS 创建了一个 连接所有进程的网络，
+            通过这个网络 节点之间完成交互、获取其他节点发布的信息。
+    节点之间通过消息进行通信。
+        ROS标准类型
+        基于标准消息开发的 自定义类型
+    节点的每一条消息都要发布到主题。
+        rqt_graph, 能看到节点之间的通信机制。
+        rostopic type topicname ;查看主要 topicname 的消息类型
+        rosmsg show typename    ;查看 typename 这个消息的内部结构
+    节点通过 topic 与另一个节点通信是间接实现的，使用服务。
+    服务，由用户开发，名称唯一。
+        rosnode info nodename ;查看一个节点提供的服务
+        如： rosnode info /turtlesim
+           在输出信息中，Service部分就是该节点具有的服务。
+        rosservice call servicename ;直接与服务交互
+        如： rosservice call /clear
+           此时小海龟的运行轨迹会被清除。
+
+== ROS的文件系统
+    功能包，用一个文件夹 把 一个特写功能用到的东西包起来。
+        配置文件 config
+        源文件   include, scripts, src
+        自定义内容  msg  srv  action
+        启动文件 launch
+        编译规则  CMakeList.txt
+        功能包清单 package.xml
+    标签
+        build_depend 编译依赖
+        run_depend   运行依赖
+    元功能包   metapackage
+        元功能包的清单不需要 build_depend, 只需要 run_depend
+== 工作空间
+     包含的文件
+        源码            src
+        编译过程文件    build
+        编译后的文件    devel  (developed)
+        
+     创建工作空间
+        创建文件夹      catkin_ws 和 catkin_ws/src
+        初始化工作空间  cd ~/catkin_ws/src
+                        catkin_init_workspace
+        编译            cd ~/catkin_ws
+                        catkin_make
+        使环境变量生效
+            方式一      ~/catkin_ws/devel/setup.bash
+            方式二      echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+                        source ~/.bashrc
+     创建功能包
+        编写代码
+
+        cd ~/catkin_ws/src
+        catkin_create_pkg 功能包 依赖的功能包 依赖的功能包 ...
+        cd catkin_ws
+        catkin_make
+
+查看环境变量是否生效
+    echo $ROS_PACKAGE_PATH
+
+ROS IDE
+    RobeWare
+
+== Libs
 RTT
 RTT_ROS_integration
 
