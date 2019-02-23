@@ -1,20 +1,75 @@
 
-
 2019年 02月 22日 星期五 16:31:51 CST
 
+== 安装 Ubuntu
+    1 Erase disk and install Ubuntu
+    2 安装时下载
 
-1 Erase disk and install Ubuntu
-2 安装时下载
+== 安装工作软件
+    1 sudo apt install git
+    2 sudo apt install emacs
+    3 ibus
+    	sudo apt install ibus ibus-clutter ibus-gtk ibs-gtk3 ibus-qt4
+    	im-config -s ibus
+    	sudo apt update
+    	sudo apt install ibus-table-wubi
+    	sudo apt install ibus-pinyin
+	
+== 下载实时内核编译需要的 代码源文件
+    xenomai-3.0.8.tar.bz2
+    linux-4.14.89.tar.gz
+    ipipe-core-4.14.89-x86-2.patch
 
-3 sudo apt install git
-4 sudo apt install emacs
-5 ibus
-	sudo apt install ibus ibus-clutter ibus-gtk ibs-gtk3 ibus-qt4
-	im-config -s ibus
-	sudo apt update
-	sudo apt install ibus-table-wubi
-	sudo apt install ibus-pinyin
-6 	
+== 解压
+    tar xf xenomai-*.tar.bz2
+    tar xf linux-*.tar.gz
+
+== 为Linux配置实时内核xenomai
+    cd linux-*  ; 进入Linux源代码
+    ../xenomai-3.0.8/scripts/prepare-kernel.sh --arch=x86_64 --ipipe=../ipipe-core-4.14.89-x86-2.patch  ;;将实时内核代码配置给Linux
+
+== 编译Linux内核( 带有 xenomai 实时特性的Linux内核 )
+    make menuconfig  ;;配置内核的命令( 相同功能的命令还有 make config, make gconfig )
+        1 failed: Unable to find the ncurses libraries or the required header files
+        solvedby: sudo apt-get install libncurse5-dev
+
+	2 warning: symbol value 'm' invalid for GPIO_MB86S7X
+	solvedby:  Device Drivers -> GPIO Support -> Memory mapped GPIO Drivers
+		       GPIO support for Fujitsu MB86S7x Platform  ;; 没有这一项
+		   告警自己没了!
+
+        3 warning: (X86_VSMP && HYPERV) selects PARAVIRT
+	  	       which has unmet direct dependencies (HYPERVISOR_GUEST && !IPIPE)
+        solvedby:
+     
+    fakeroot make-kpkg -j `getconf _NPROCESSORS_ONLN` --initrd --append-to-version -xenomai-3.0.8 --revision 1.0.0 kernel_image kernel_headers modules ;; 空配置编译
+    	1 make-kpkg command not found:
+	solvedby:  sudo apt install kernel-package
+		   安装到最后，选的是 maintainer的版本( kernel-img.conf)
+		   Install the package maintainer's version 
+		   
+        2 faltal error: openssl/opensslv.h: No such file or directory
+	sovledby:  sudo apt install libssl-dev
+	3 arch/x86/kernel/process.c:689:4: error: implicit declaration of function ‘__ipipe_halt_root’ [-Werror=implicit-function-declaration]
+
+	4 kernel/ipipe/core.c:547:9: error: implicit declaration of function ‘arch_mangle_irq_bits’ [-Werror=implicit-function-declaration]
+
+	5 kernel/ipipe/core.c:574:7: error: implicit declaration of function ‘arch_demangle_irq_bits’ [-Werror=implicit-function-declaration]
+	
+	6 kernel/ipipe/core.c: In function ‘ipipe_critical_enter’:
+kernel/ipipe/core.c:1712:1: warning: the frame size of 2056 bytes is larger than 1024 bytes [-Wframe-larger-than=]
+
+        debian/ruleset/targets/common.mk:295: recipe for target 'debian/stamp/build/kernel' failed
 
 
+== 查看 cpu
+     cat /proc/cpuinfo | grep family
+        => cpu family	: 6
+	=> cpu family	: 6
+	=> cpu family	: 6
+	=> cpu family	: 6
 
+     说明：
+	Genuine Intel, Intel Pentium CPU N4200 1.1 GHz
+	4个core 6代 cpu
+	
