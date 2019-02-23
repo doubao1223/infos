@@ -61,6 +61,8 @@ kernel/ipipe/core.c:1712:1: warning: the frame size of 2056 bytes is larger than
 
         debian/ruleset/targets/common.mk:295: recipe for target 'debian/stamp/build/kernel' failed
 
+	solvedby: 在有问题的文件中增加
+	             #include <asm/irqflags.h>
 
 == 查看 cpu
      cat /proc/cpuinfo | grep family
