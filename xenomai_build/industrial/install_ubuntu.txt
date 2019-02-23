@@ -1,0 +1,20 @@
+
+
+2019年 02月 22日 星期五 16:31:51 CST
+
+
+1 Erase disk and install Ubuntu
+2 安装时下载
+
+3 sudo apt install git
+4 sudo apt install emacs
+5 ibus
+	sudo apt install ibus ibus-clutter ibus-gtk ibs-gtk3 ibus-qt4
+	im-config -s ibus
+	sudo apt update
+	sudo apt install ibus-table-wubi
+	sudo apt install ibus-pinyin
+6 	
+
+
+

@@ -1,0 +1,12 @@
+
+
+2019年 02月 22日 星期五 16:13:50 CST
+== ERR1
+    Missing parameter in configuration file. Keyword: path
+    gfxboot.c32: not a COM32R image
+    boot:
+
+解决: F12 并选择 安装的U盘
+注: F2进入BIOS
+
+== ERR2
