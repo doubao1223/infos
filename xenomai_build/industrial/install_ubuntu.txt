@@ -40,7 +40,15 @@
 
         3 warning: (X86_VSMP && HYPERV) selects PARAVIRT
 	  	       which has unmet direct dependencies (HYPERVISOR_GUEST && !IPIPE)
-        solvedby:
+          reason:  IPIPE 是 true, 所以 direct depencencies 是 false.
+          solvedby: 查看 PARAVIRT 选项的位置
+	  	        Processor type and features
+			    Linux guest support ( HYPERVISOR_GUEST [=y] )
+			        依赖 HyperVisor_Guest [=y] && !IPIPE = [=y]
+                                选择方式：
+			            X86_VSMP [= n] && X86_64 [=y] && PCI [=y] && X86_EXTENDED_PLATFORM [=y] && SMP [=y]
+				    || HyperV [=m] && x86 [=y] && ACPI [=y] && PCI [=y] && X86_LOCAL_APIC [=y] && HyperVisor_Guest [=y]
+	            取消 Linux guest support 的选择， 再选中。
      
     fakeroot make-kpkg -j `getconf _NPROCESSORS_ONLN` --initrd --append-to-version -xenomai-3.0.8 --revision 1.0.0 kernel_image kernel_headers modules ;; 空配置编译
     	1 make-kpkg command not found:
@@ -51,19 +59,16 @@
         2 faltal error: openssl/opensslv.h: No such file or directory
 	sovledby:  sudo apt install libssl-dev
 	3 arch/x86/kernel/process.c:689:4: error: implicit declaration of function ‘__ipipe_halt_root’ [-Werror=implicit-function-declaration]
-
 	4 kernel/ipipe/core.c:547:9: error: implicit declaration of function ‘arch_mangle_irq_bits’ [-Werror=implicit-function-declaration]
-
 	5 kernel/ipipe/core.c:574:7: error: implicit declaration of function ‘arch_demangle_irq_bits’ [-Werror=implicit-function-declaration]
-	
 	6 kernel/ipipe/core.c: In function ‘ipipe_critical_enter’:
 kernel/ipipe/core.c:1712:1: warning: the frame size of 2056 bytes is larger than 1024 bytes [-Wframe-larger-than=]
 
         debian/ruleset/targets/common.mk:295: recipe for target 'debian/stamp/build/kernel' failed
 
 	solvedby: 在有问题的文件中增加
-	             #include <asm/irqflags.h>
-
+	             #include <asm/irqflags.h>    ;; 没用
+	          还是在 make menuconfig 里修改选项，解决了这个问题
 == 查看 cpu
      cat /proc/cpuinfo | grep family
         => cpu family	: 6
