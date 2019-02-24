@@ -9,7 +9,7 @@
        导致编译错误： ./include/linux/sched.h:1899:12 error
             "IPIPE_ROOT_NPTDKEYS" undeclared here (not in a function)
 
-     => Performance monitoring    其下的4个全部取消
+     => Performance monitoring    --这次没有修改，用默认的选择
      => Transparent Hugepage Support         取消
      => Memory split(3G/1G user/kernel split)
      -> Memory model (Sparse Memory)  具体还需要进一步了解
