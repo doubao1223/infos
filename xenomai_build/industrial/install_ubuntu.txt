@@ -69,6 +69,8 @@ kernel/ipipe/core.c:1712:1: warning: the frame size of 2056 bytes is larger than
 	solvedby: 在有问题的文件中增加
 	             #include <asm/irqflags.h>    ;; 没用
 	          还是在 make menuconfig 里修改选项，解决了这个问题
+	7 install: cannot stat 'REPORTING-BUGS': No such file or directory
+	solvedby:  ~/work/linux-4.14.89$ touch REPORTING-BUG
 == 查看 cpu
      cat /proc/cpuinfo | grep family
         => cpu family	: 6
