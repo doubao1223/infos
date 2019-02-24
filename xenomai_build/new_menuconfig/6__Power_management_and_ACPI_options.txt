@@ -3,19 +3,28 @@
 
 == Power Management and ACPI options
     => ACPI Support
-          => Processor 
+          => Processor  -- 没法取消
                取消 ( disable  ACPI_PROCESSOR )
                
-    =>* APM BIOS support 
+    =>* APM BIOS support --64位系统中，没有这项
           取消 ( disable  APM )
           
-    => CPU Frequency scaling
+    => CPU Frequency scaling  --没法取消
           取消 ( disable  CPU_FREQ )
 
     => CPU Idle
-          => CPU Idle PM support
+          => CPU Idle PM support  --没法取消
                取消 ( disable  CPU_IDLE )
             
-    => Cpuidle Driver for Intel Processors
+    => Cpuidle Driver for Intel Processors  -- 设置了
           取消 ( disable  INTEL_IDLE )
-    
+
+
+
+PCI => ACPI
+ACPI + X86 => ACPI_PROCESSOR
+ACPI_PROCESSOR + ACPI +X86 => ACPI_PROCESSOR_IDLE
+
+
+
+
