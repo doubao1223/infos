@@ -71,6 +71,7 @@ kernel/ipipe/core.c:1712:1: warning: the frame size of 2056 bytes is larger than
 	          还是在 make menuconfig 里修改选项，解决了这个问题
 	7 install: cannot stat 'REPORTING-BUGS': No such file or directory
 	solvedby:  ~/work/linux-4.14.89$ touch REPORTING-BUG
+		   我删除了这个文件，安装了 linux-headers-generic 看行不行
 	8 Cannot use CONFIG_STACK_VALIDATION=y, please install libelf-dev, libelf-devel or elfutils-libelf-devel
 	sovledby:
             sudo apt-get update
@@ -94,5 +95,11 @@ kernel/ipipe/core.c:1712:1: warning: the frame size of 2056 bytes is larger than
     sudo update-grub ;;更新 grub
     reboot ;;重启
 
+    error 1: 重启后，无法进入 grub
+    solvedby: 重新启动后，
+		如果是 UEFI 按 Esc 键
+		如果是 BIOS 按 Shift 键
+    error 2: 重启卡在了 Loading initial ramdisk ...
+    solvedby:   安装了 linux-headers-generic, 重新编译看结果吧
 
     
