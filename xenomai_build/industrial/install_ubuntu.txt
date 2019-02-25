@@ -71,6 +71,12 @@ kernel/ipipe/core.c:1712:1: warning: the frame size of 2056 bytes is larger than
 	          还是在 make menuconfig 里修改选项，解决了这个问题
 	7 install: cannot stat 'REPORTING-BUGS': No such file or directory
 	solvedby:  ~/work/linux-4.14.89$ touch REPORTING-BUG
+	8 Cannot use CONFIG_STACK_VALIDATION=y, please install libelf-dev, libelf-devel or elfutils-libelf-devel
+	sovledby:
+            sudo apt-get update
+	    sudo apt install libelf-dev (有依赖需要先安装)
+	说明： 7、8的告警，让我觉得，应该先安装内核编译的什么依赖包？
+	
 == 查看 cpu
      cat /proc/cpuinfo | grep family
         => cpu family	: 6
@@ -82,3 +88,11 @@ kernel/ipipe/core.c:1712:1: warning: the frame size of 2056 bytes is larger than
 	Genuine Intel, Intel Pentium CPU N4200 1.1 GHz
 	4个core 6代 cpu
 	
+== 安装编译好的 Linux 内核
+    sudo dpkg -i linux-image-4.14.89-xenomai-3.0.8_1.0.0_amd64.deb
+    sudo dpkg -i linux-headers-4.14.89-xenomai-3.0.8_1.0.0_amd64.deb
+    sudo update-grub ;;更新 grub
+    reboot ;;重启
+
+
+    
