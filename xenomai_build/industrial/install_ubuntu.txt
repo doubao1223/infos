@@ -2,8 +2,20 @@
 2019年 02月 22日 星期五 16:31:51 CST
 
 == 安装 Ubuntu
-    1 Erase disk and install Ubuntu
-    2 安装时下载
+    0 F12 进入 BIOS， 选
+         EFI Boot Devices
+	    Linpus lite (SanDisk Cruzer Glide)
+    1 Install Ubuntu
+    2 都不选
+         Download updates while isntalling Ubuntu
+	 Install third-party software for graphics and Wifi hardware, MP3 and other media
+    3 Erase disk and install Ubuntu
+    4 luoshi
+      luoshi-POC-320
+      luoshi
+      luoshi2014
+      luoshi2014
+      Log in automatically
 
 == 安装工作软件
     1 sudo apt install git
