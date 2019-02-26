@@ -6,10 +6,10 @@ sudo apt-get update
 sudo apt-get upgrade
 
 sudo apt-get install
-     kernel-package  ( install the package maintainer's version )
-     build-essential
-     linux-headers-generic
-
+     kernel-package  ( install the package maintainer's version )  有
+     build-essential       有
+     linux-headers-generic 有
+     dkms		   有
 
 == 查看CPU类型
 cat /proc/cpuinfo 
@@ -65,15 +65,18 @@ sudo update-grub
 == 其他问题 
 1. ./include/linux/ipipe.h:55:28 :error: field 'arch' has incomplete type
      xuyao zai neihe shezhi zhong dingyi CONFIG_HAVE_IPIPE_SUPPORT
-2. sudo apt-get install  kexec-tools  （这个工具需要查一下　功能)
-3. kernel-package 都有什么，作用是什么
-4. build-essential
-5. fakeroot
-6. crash
-7. kexe-tools
-8. makedumpfile
-9. kernel-wedge
-10. libelf-dev
-11. sciidoc
-12. binutils-dev
+     
+2. sudo apt-get install  kexec-tools  （这个工具需要查一下　功能)    补充安装了
+3. kernel-package   有
+4. build-essential  有
+
+5. fakeroot	    有
+6. crash	    补充安装了
+7. kexec-tools	    有
+8. makedumpfile     有
+   kdump-tools	    有
+9. kernel-wedge     有
+10. libelf-dev      有
+11. sciidoc	    
+12. binutils-dev    
 

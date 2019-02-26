@@ -1,0 +1,24 @@
+
+
+2019年 02月 26日 星期二 15:50:31 CST
+
+== 软连接错误
+Hmm. There is a symbolic link
+     /lib/modules/4.14.89-xenomai-3.0.8/build
+     
+ However, I can not read it: No such file or directory
+ 
+ Therefore, I am deleting /lib/modules/4.14.89-xenomai-3.0.8/build
+
+== 
+Hmm. The package shipped with a symbolic link
+     /lib/modules/4.14.89-xenomai-3.0.8/source
+     
+ However, I can not read the target: No such file or directory
+ 
+ Therefore, I am deleting /lib/modules/4.14.89-xenomai-3.0.8/source
+
+ 解决：
+	sudo apt --purge remove dkms
+
+ 

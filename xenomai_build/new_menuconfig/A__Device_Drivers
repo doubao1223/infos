@@ -6,5 +6,5 @@
          Generic input layer (needed for keyboard, mouse, ...)
             Miscellaneous devices
                PC Speaker support
-                  取消 ( disable  INPUT_PCSPKR )
+                  取消 ( disable  INPUT_PCSPKR )  -- 用M
         
