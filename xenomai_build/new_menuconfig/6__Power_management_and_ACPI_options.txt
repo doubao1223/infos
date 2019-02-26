@@ -2,6 +2,9 @@
 2019年 2月16日 星期六 14时46分58秒 CST
 
 == Power Management and ACPI options
+    => CPU Frequency scaling  --没法取消
+          取消 ( disable  CPU_FREQ )
+
     => ACPI Support
           => Processor  -- 没法取消
                取消 ( disable  ACPI_PROCESSOR )
@@ -9,9 +12,7 @@
     =>* APM BIOS support --64位系统中，没有这项
           取消 ( disable  APM )
           
-    => CPU Frequency scaling  --没法取消
-          取消 ( disable  CPU_FREQ )
-
+   
     => CPU Idle
           => CPU Idle PM support  --没法取消
                取消 ( disable  CPU_IDLE )
