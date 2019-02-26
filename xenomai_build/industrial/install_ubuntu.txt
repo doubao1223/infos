@@ -112,6 +112,7 @@ kernel/ipipe/core.c:1712:1: warning: the frame size of 2056 bytes is larger than
 		如果是 UEFI 按 Esc 键
 		如果是 BIOS 按 Shift 键
     error 2: 重启卡在了 Loading initial ramdisk ...
-    solvedby:   安装了 linux-headers-generic, 重新编译看结果吧
+    solvedby:   安装了 linux-headers-generic,  没用
+	
 
     
