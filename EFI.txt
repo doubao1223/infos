@@ -48,5 +48,37 @@
 	 
   CONFIG_EFI_BOOTLOADER_CONTROL
      
-  
-	 
+== block
+    sudo blkid | grep sda2
+	=>
+	sda1  cafec
+	sda2  9fe59
+	sda3  72797
+    问题：
+		正在BOOT的是 root=UUID=26e7d0d0-2aee-4330-8948-552240a6b8ab
+		initrd		 /boot/initrd.img-4.15.0-19-generic
+
+		initrd       /boot/initrd.img-4.14.89-xenomai-3.0.8
+		
+	lsblk /dev/sda	
+	sudo fdisk -l /dev/sda
+	sudo sfdisk -l /dev/sda
+
+	sudo fdisk -l | grep '^Disk /dev'
+
+== https://askubuntu.com/questions/510856/how-to-boot-load-the-kernel-using-efi-stub-efistub-loader
+    1. Mount the efi partition and copy the kernel files there
+	$ cp -uv /boot/vmlinuz-* /boot/initrd.img-* /boot/efi/EFI/ubuntu/
+	
+        '/boot/vmlinuz-3.13.0-35-generic' -> '/boot/efi/EFI/ubuntu/vmlinuz-3.13.0-35-generic'
+        '/boot/initrd.img-3.13.0-35-generic' -> '/boot/efi/EFI/ubuntu/initrd.img-3.13.0-35-generic'
+
+   2. Change the kernel file name
+    $ for f in /boot/efi/EFI/ubuntu/vmlinuz-*-generic;
+      do mv -uv -- "$f" "${f//-generic/}.efi";
+      done
+        '/boot/efi/EFI/ubuntu/vmlinuz-3.13.0-35-generic' -> '/boot/efi/EFI/ubuntu/vmlinuz-3.13.0-35-generic.efi'`
+
+   3. Add new entry to EFI boot menu
+      $ kv=3.13.0-35;efibootmgr -c -p 3 -L $kv -l \EFI\ubuntu\vmlinuz-$kv.efi -u root=/dev/sda1 initrd=\\EFI\\ubuntu\\initrd.img-$kv-generic ro rootfstype=ext4 debug ignore_loglevel libata.force=dump_id crashkernel=384M-:128M
+      $ kv=3.13.0-35;efibootmgr -c -p 3 -L $kv -l \EFI\ubuntu\vmlinuz-$kv.efi -u root=/dev/sda1 initrd=\\EFI\\ubuntu\\initrd.img-$kv-generic ro rootfstype=ext4
