@@ -19,6 +19,8 @@ Hmm. The package shipped with a symbolic link
  Therefore, I am deleting /lib/modules/4.14.89-xenomai-3.0.8/source
 
  解决：
-	sudo apt --purge remove dkms
+	sudo apt --purge remove dkms  没解决
+
+ 
 
  
