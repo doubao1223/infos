@@ -1,0 +1,52 @@
+
+
+2019年 02月 27日 星期三 14:48:31 CST
+
+= FEI (Extensible Firmware Interface)
+   => Processor type and features
+   CONFIG_EFI
+     This enabEles the kernel to use EFI runtime services that are available
+	 (such as the EFI variable services)
+
+     This options is only useful on systems that have EFI firmware.
+
+     In addition, you should use the latest ELILO loader available at
+     <http://elilo.sourceforge.net> in order to take advantage of EFI
+	 runtime services.
+
+	 However, even with this option, the resultant kernel should continue
+	 to boot on non-EFI platforms.
+	 
+  CONFIG_EFI_STUB
+     This kernel feature allows a bzImage to be loaded directly by EFI
+	 firmware without the use of bootloader.
+
+	 see Documentation/efi-stub.txt for more information.
+
+  CONFIG_EFI_MIXED
+     Enabling this feature allows a 64-bit kernel to be booted on a
+	 32-bit firmware, provided that your CPU supports 64-bit mode.
+
+	 Note that it is not possible to boot a mixed-mode enabled kernel
+	 via the EFI boot stub - a bootloader that supports
+	 the EFI handover protocol must be used.
+
+  => Firmware Drivers
+       EFI Support
+	      EFI Bootloader Control
+  CONFIG_EFI_VARS
+     If you say Y here, you are able to get EFI variable information via
+	 sysfs.  You may read, write, create, and destory EFI variables through
+	 this interface.
+
+	 Note that using this driver n concert efibootmgr requries at least
+	 test release version 0.5.0-test3 or later, which is available from:
+	 <http://linux.dell.com/efibootmgr/testing/efibootmgr-0.5.0-test3.tar.gz>
+
+	 Subsequent efibootmgr releases may be found at:
+	 <http://github.com/vathpela/efibootmgr?
+	 
+  CONFIG_EFI_BOOTLOADER_CONTROL
+     
+  
+	 
