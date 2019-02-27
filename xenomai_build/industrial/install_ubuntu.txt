@@ -89,7 +89,6 @@ kernel/ipipe/core.c:1712:1: warning: the frame size of 2056 bytes is larger than
             sudo apt-get update
 	    sudo apt install libelf-dev (有依赖需要先安装)
 	说明： 7、8的告警，让我觉得，应该先安装内核编译的什么依赖包？
-	
 == 查看 cpu
      cat /proc/cpuinfo | grep family
         => cpu family	: 6
@@ -113,6 +112,8 @@ kernel/ipipe/core.c:1712:1: warning: the frame size of 2056 bytes is larger than
 		如果是 BIOS 按 Shift 键
     error 2: 重启卡在了 Loading initial ramdisk ...
     solvedby:   安装了 linux-headers-generic,  没用
-	
-
+	    目前我觉得是选项 CONFIG_EFI 这个选顶导致的。	
+		我猜测选中这个选项之后，如果是 UEFI 方式启动，会有一套新的方式，
+		    我目前的 .deb包方式不支持。 暂时的解决办法是取消这一项。
+			
     
