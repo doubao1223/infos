@@ -3,7 +3,7 @@
 
 == Xenomai/cobalt
        
-      => Sizes and static limits
+      => Sizes and static limits  --这次配置的值都没改
     *         32   Number of pipe devices
               4096 Nubmer of registry slots  ( 初始值是 512 )
               4096 Size of system heap (Kb)

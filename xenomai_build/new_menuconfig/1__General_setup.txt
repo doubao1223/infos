@@ -8,6 +8,6 @@
          High Resolution Timer Support
            使能 ( 默认就是这个 )
            
-      => Stack Protector buffer overflow detection
+      => Stack Protector buffer overflow detection   -- 就用默认的Strong     
              选择　None ( disable CONFIG_CC_STACKPROTECTOR )
 
