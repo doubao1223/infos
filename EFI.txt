@@ -82,3 +82,19 @@
    3. Add new entry to EFI boot menu
       $ kv=3.13.0-35;efibootmgr -c -p 3 -L $kv -l \EFI\ubuntu\vmlinuz-$kv.efi -u root=/dev/sda1 initrd=\\EFI\\ubuntu\\initrd.img-$kv-generic ro rootfstype=ext4 debug ignore_loglevel libata.force=dump_id crashkernel=384M-:128M
       $ kv=3.13.0-35;efibootmgr -c -p 3 -L $kv -l \EFI\ubuntu\vmlinuz-$kv.efi -u root=/dev/sda1 initrd=\\EFI\\ubuntu\\initrd.img-$kv-generic ro rootfstype=ext4
+
+
+== KERNEL configutaion
+     ACPI    ;;  Power management and ACPI Options -> ACPI
+	 
+	 EFI     ;; Processor type and features -> EFI runtime service support
+	 EFI_STUB  ;; 在上面选项里面
+	 FB_EFI  ;; Device Drivers -> Graphics support -> Frame buffer Devices
+	 		 	-> EFSI-based Framebuffer Support
+     FRAMEBUFFER_CONSOLE  ;; Device Drivers -> Graphics support -> Console display driver support
+	                         -> Framebuffer Console support
+	 EFI_VARS  ;; optional
+	           ;; Firmware Drivers -> EFI (Extensible Firmware Interface) Support
+			      -> EFI Variable Support via sysfs
+  refs: https://wiki.ubuntu.com/EFIBootLoaders
+			   
