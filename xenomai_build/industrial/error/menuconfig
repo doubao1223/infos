@@ -2,8 +2,7 @@
 == menuconfig
 
    ==warning: the frame size of 1040 bytes is larger than 1024 bytes
-         Kernel hacking
-	    Compile-time checks and compiler options
-	       Warn for stack frames larger than (needs gcc 4.4)
+         Kernel hacking -> Compile-time checks and compiler options
+	        -> Warn for stack frames larger than (needs gcc 4.4)
 	       	  设置为 4096
 		  
