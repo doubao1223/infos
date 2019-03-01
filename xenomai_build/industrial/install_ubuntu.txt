@@ -2,13 +2,13 @@
 2019年 02月 22日 星期五 16:31:51 CST
 
 == 安装 Ubuntu
-    0 F12 进入 BIOS， 选
-         EFI Boot Devices
+    0 F2/F12 进入 BIOS， 选
+        EFI Boot Devices
 	    Linpus lite (SanDisk Cruzer Glide)
     1 Install Ubuntu
-    2 都不选
-         Download updates while isntalling Ubuntu
-	 Install third-party software for graphics and Wifi hardware, MP3 and other media
+    2 安装选项 
+         v  Download updates while isntalling Ubuntu
+	     x  Install third-party software for graphics and Wifi hardware, MP3 and other media
     3 Erase disk and install Ubuntu
     4 luoshi
       luoshi-POC-320
