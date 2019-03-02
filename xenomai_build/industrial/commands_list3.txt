@@ -54,6 +54,9 @@ sudo update-grub
     make
     sudo make install
 
+	复杂的配置
+    ./configure --with-core=cobalt --enable-debug --enable-assert --enable-async-cancel --enable-pshared --enable-smp --enable-x86-vsyscall --enable-valgrind-client --enable-fortify --enable-dlopen-libs --enable-tls
+
 == 重启，加载新的内核
    reboot
    
