@@ -1,0 +1,46 @@
+
+== boost_1.69.0
+
+   ~/work/boost_1_69_0$
+		./bootstrap.sh
+		./b2
+
+   => error
+        Unicode/ICU support for Boost.Regex?... not found
+		
+  Building the Boost C++ Libraries.
+    - C++11 mutex              : no  (cached)
+    - lockfree boost::atomic_flag : yes (cached)
+    - Boost.Config Feature Check: cxx11_auto_declarations : no  (cached)
+    - Boost.Config Feature Check: cxx11_constexpr : no  (cached)
+    - Boost.Config Feature Check: cxx11_defaulted_functions : no  (cached)
+    - Boost.Config Feature Check: cxx11_final : no  (cached)
+    - Boost.Config Feature Check: cxx11_hdr_mutex : no  (cached)
+    - Boost.Config Feature Check: cxx11_hdr_tuple : no  (cached)
+    - Boost.Config Feature Check: cxx11_lambdas : no  (cached)
+    - Boost.Config Feature Check: cxx11_noexcept : no  (cached)
+    - Boost.Config Feature Check: cxx11_nullptr : no  (cached)
+    - Boost.Config Feature Check: cxx11_rvalue_references : no  (cached)
+    - Boost.Config Feature Check: cxx11_template_aliases : no  (cached)
+    - Boost.Config Feature Check: cxx11_thread_local : no  (cached)
+    - Boost.Config Feature Check: cxx11_variadic_templates : no  (cached)
+    - has_icu builds           : yes (cached)
+warning: Graph library does not contain MPI-based parallel components.
+note: to enable them, add "using mpi ;" to your user-config.jam
+
+    ./b2 cxxflag="--std=c++17"
+    sudo ./b2 -j4 install
+
+   => uninstall ubuntu 自带的 boost
+        dpkg -S /usr/include/boost/version.hpp
+		sudo apt-get autoremove {package}
+		例: sudo apt-get autoremove libboost1.58-dev
+		      189M
+			  
+   => uninstall ubuntu
+        rm /usr/local/lib/libboost*
+		rm -rf /usr/local/include/boost
+   
+== ubuntu 16.04 install boost 1.58
+     sudo apt-get install libboost-all-dev
+
