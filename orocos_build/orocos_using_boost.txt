@@ -1,0 +1,364 @@
+== my work
+    在rtt-toolchain-2.9文件夹下，查找boost相关内容。
+		grep -rn -e "boost" | more
+		=> config/FindBoost.cmake
+		   config/check_depend.cmake
+		   tests/corba_ipc_test.cpp  118
+		   tests/taskthread_fd_test.cpp   32,33
+		   tests/type_discovery_container_test.cpp	22,23,36,37
+		   tests/operations_fixture2.cpp:31
+		   tests/corba_test.cpp:67
+           tests/buffers_test.cpp: 22,39,40,122
+		   tests/buffers_test.cpp 125, 137, 1386, 1429, 1430, 1506, 1507
+		   
+		   tests/operations_fixture0.cpp 31
+		   tests/operations_fixture7.cpp:31
+		   tests/operations_fixture4.cpp:31
+
+		   tests/tasks_test.cpp:33,36,304,305,332,333,353,354,375,376,398,400,415,
+								416,450,451
+		   
+		   tests/operation_test.cpp:139, 168, 191, 234
+           tests/operations_fixture.hpp:26
+		   
+           tests/event_test.cpp:32,33,36,54,93,123,124,125,259,324,340,352,366
+		   tests/dataflow_performance_test.cpp 18,21,23,26,86,87,93,101,111,411,527,539
+		   									   761, 1060, 1063, 1064, 1065, 1213, 1214
+     	   tests/dataflow_performance_test.cpp:1301, 1302
+		   tests/taskstates_test.cpp:29
+		   tests/operations_fixture.cpp 31
+
+		   tests/testtypes/MatrixTypeInfo.hpp:46, 93, 95, 110, 220, 230
+
+		   tests/testtypes/types/array_types.cpp:11, 13
+		   tests/test-runner-corba.cpp:35,37,43,98,112
+           tests/type_discovery_struct_test.cpp 22,23,37,103
+		   tests/remote_method_test.cpp 50, 329, 351
+
+		   tests/logger_test.cpp:25,29,105,106,107,108
+		   tests/datasource_fixture.hpp 27,28,32,67,157,192,212
+		   tests/functors_test.cpp 506,511,516,517
+		   tests/listlocked_test.cpp 23,29,38,41,62,85,93,95,96,99,101,106,110
+
+		   tests/generictask_test.cpp 30,82,283,284
+		   tests/type_discovery_test.cpp 22,23,36,37
+		   tests/time_test.cpp 22,35,64,327,342
+		   tests/corba_mqueue_test.cpp 44,48
+		   tests/CMakeLists.txt
+		   tests/perations_fixture3.cpp 31
+		   tests/mqueue_ipc_test.cpp 162,230,349
+		   tests/marshalling_test.cpp 28,32,36,52
+		   tests/unit_test_suit.hpp
+		   
+		   tests/ports_test.cpp:29
+		   tests/operations_fixture6.cpp:31
+		   tests/test-runner.cpp:34
+		   tests/operations_fixture1.cpp:31
+		   tests/unit.hpp:36
+		   tests/datasource_test.cpp:22
+		   tests/plugins_test.cpp:23
+		   tests/mqueue_archive_test.cpp:21
+
+		   tests/scripting_test.cpp:31
+		   tests/mqueue_test.cpp:59
+		   tests/mqueue_ipc_server.cpp:162:
+		   tests/method_test.cpp:399
+		   
+   	       tests/operations_fixture5.cpp:31:
+
+
+rtt/SendHandle.hpp:48
+
+rtt/TaskContext.cpp
+rtt/OperationInterfacePart.hpp
+rtt/types/TemplateTypeInfo.hpp
+rtt/types/PropertyDecomposition.hpp:61
+rtt/types/CompositionFactory.hpp:65
+rtt/types/TemplateConstructor.hpp:47
+rtt/types/type_discovery.hpp:
+rtt/types/carray.hpp
+rtt/types/Operators.cpp:46
+
+rtt/types/ValueFactory.hpp:78
+rtt/types/TypeInfo.hpp:59
+rtt/types/MemberFactory.hpp:75
+rtt/types/GlobalsRepository.hpp:58
+rtt/types/CArrayTypeInfo.hpp:44
+
+rtt/types/SequenceConstructor.hpp:19
+rtt/types/StructTypeInfo.hpp:56
+
+rtt/types/BoostArrayTypeInfo.hpp:45
+rtt/types/PrimitiveTypeInfo.hpp:39
+rtt/types/SequenceTypeInfoBase.hpp:49
+rtt/types/Operators.hpp:44
+
+rtt/types/PropertyDecomposition.cpp:51
+rtt/types/TypeInfoRepository.cpp:48
+rtt/types/StreamFactory.hpp:7
+
+rtt/types/SequenceTypeInfo.hpp:27
+rtt/types/OperatorTypes.hpp:44:
+rtt/types/PrimitiveSequenceTypeInfo.hpp
+rtt/types/SequenceTypeInfoBase.hpp
+rtt/types/Operators.hpp:44
+
+rtt/types/StdVectorTemplateTypeInfo.hpp
+rtt/types/PropertyDecomposition.cpp:51
+rtt/types/TypeInfoRepository.cpp:48
+
+rtt/types/TypeInfoRepository.cpp:91
+rtt/types/StreamFactory.hpp
+
+rtt/types/SequenceTypeInfo.hpp
+rtt/types/OperatorTypes.hpp:44
+rtt/types/PrimitiveSequenceTypeInfo.hpp
+
+rtt/types/TemplateCompositionFactory.hpp
+
+rtt/types/TemplateValueFactory.hpp:23
+
+rtt/Service.hpp:53:
+rtt/Service.hpp
+
+rtt/DataFlowInterface.hpp
+rtt/ServiceRequester.cpp:44:
+rtt/marsh/MarshallingService.hpp
+rtt/ExecutionEngine.cpp:50
+
+rtt/OperationCaller.hpp:43
+rtt/ConnPolicy.cpp:50
+
+rtt/TaskContext.hpp:49
+rtt/deployment/ComponentLoader.hpp 6
+rtt/ServiceRequester.hpp:50
+rtt/DataFlowInterface.cpp
+
+rtt/extras/FileDescriptorActivity.cpp
+rtt/extras/SimulationThread.hpp:49
+rtt/extras/dev/NameServerRegistrator.hpp:42
+rtt/extras/dev/NameServerRegistrator.hpp:71
+rtt/extras/ReadOnlyPointer.hpp:42
+rtt/extras/TimerThread.hpp:46
+
+
+rtt/typekit/StdTypeInfo.hpp:52:
+rtt/typekit/ConnPolicyType.hpp:42
+rtt/typekit/RealTimeTypekitConstructors.cpp:65
+rtt/typekit/StdVectorTypeInfo.hpp:65
+rtt/typekit/BoolTypeInfo.hpp:62
+
+
+rtt/Service.cpp:48
+rtt/ConfigurationInterface.cpp:43
+
+
+rtt/plugin/PluginLoader.cpp:49:
+rtt/Attribute.hpp:175
+rtt/ExecutionEngine.hpp:51
+
+rtt/scripting/ValueChangeParser.hpp:110
+rtt/scripting/ParsedStateMachine.hpp:44
+
+
+rtt/scripting/FunctionGraphBuilder.hpp:48
+rtt/scripting/ValueParser.cpp:37
+rtt/scripting/ProgramService.cpp:61
+
+rtt/scripting/CommandFunctors.hpp:42:
+rtt/scripting/ArgumentsParser.hpp:60
+rtt/scripting/ConditionParser.cpp:41
+rtt/scripting/ExpressionParser.cpp:51
+rtt/scripting/GraphCopier.hpp:45
+rtt/scripting/FunctionGraphBuilder.cpp:52
+
+
+rtt/scripting/parser-types.hpp:42
+rtt/scripting/ExpressionParser.hpp:69
+rtt/scripting/ProgramGraphParser2.cpp:42
+rtt/scripting/CommonParser.cpp:37
+
+rtt/scripting/StateMachineService.hpp:
+rtt/scripting/CmdFunction.hpp:12
+
+rtt/scripting/StateMachine.cpp:46
+rtt/scripting/StateMachine.cpp
+
+rtt/scripting/ProgramGraphParser.hpp
+rtt/scripting/ScriptParser.hpp:8
+rtt/scripting/PeerParser.hpp:79:
+rtt/scripting/Parser.cpp:48:
+rtt/scripting/ProgramService.hpp:50:
+
+rtt/scripting/FunctionFactory.cpp:70
+rtt/scripting/EdgeCondition.hpp:55
+rtt/scripting/ProgramGraphParser.cpp:51
+rtt/scripting/CallFunction.hpp:49
+
+
+rtt/scripting/StateGraphParser.cpp:56:
+rtt/scripting/ScriptParser.cpp:14
+rtt/scripting/VertexNode.hpp:55:
+rtt/scripting/StateMachine.hpp:55
+
+rtt/scripting/PropertyParser.hpp:70
+rtt/scripting/PropertyParser.cpp:48:
+
+rtt/scripting/StatementProcessor.cpp:49
+rtt/scripting/StatementProcessor.cpp:53
+rtt/scripting/ValueChangeParser.cpp:39
+
+rtt/scripting/FunctionGraph.hpp:51
+rtt/scripting/StateGraphParser.hpp:45:
+
+rtt/scripting/PeerParser.cpp:47:
+
+rtt/scripting/ScriptingService.hpp:64
+
+rtt/scripting/ParsedStateMachine.cpp:40
+
+rtt/scripting/ParsedStateMachine.cpp:128
+rtt/scripting/ConditionCache.hpp:57
+
+rtt/scripting/ArgumentsParser.cpp:34
+
+rtt/scripting/FunctionGraph.cpp:49
+rtt/rtt-fwd.hpp:48:
+rtt/Operation.hpp:44
+rtt/CMakeLists.txt:
+
+rtt/transports/mqueue/MQSendRecv.cpp
+rtt/transports/mqueue/MQSerializationProtocol.hpp:51
+
+rtt/transports/mqueue/MQLib.cpp:45:
+rtt/transports/mqueue/MQTemplateProtocolBase.hpp:46
+
+rtt/transports/mqueue/Dispatcher.hpp:132
+rtt/transports/mqueue/binary_data_archive.hpp:48
+rtt/transports/mqueue/MQTemplateProtocol.hpp:47:
+
+rtt/transports/corba/OperationCallerProxy.hpp:30
+rtt/transports/corba/AnyDataSource.hpp:77:
+rtt/transports/corba/CorbaOperationCallerFactory.hpp:68
+rtt/transports/corba/ServiceI.h:96
+rtt/transports/corba/CorbaDispatcher.hpp:158:
+rtt/Property.hpp:45
+
+rtt/internal/GlobalService.hpp:6
+rtt/internal/DataSourceStorage.hpp:42
+
+rtt/internal/BindStorage.hpp:42:
+rtt/internal/CreateSequence.hpp:42
+
+rtt/internal/Signal.hpp:44
+
+rtt/internal/GetSignature.hpp:53
+
+rtt/internal/NA.hpp:42
+rtt/internal/LocalOperationCaller.hpp:42
+rtt/internal/RemoteOperationCaller.hpp:42
+rtt/internal/ConnOutputEndPoint.hpp 64
+rtt/internal/ReturnSignature.hpp:42
+
+rtt/internal/CollectSignature.hpp:42
+rtt/internal/ListLocked.hpp:43
+
+rtt/internal/FusedFunctorDataSource.hpp:49
+
+rtt/internal/signature5.hpp:43:
+rtt/internal/DataSource.hpp:45:
+rtt/internal/SendHandleC.cpp:98
+rtt/internal/ConnInputEndPoint.hpp:58
+rtt/internal/CollectBase.hpp:45
+rtt/internal/OperationInterfacePartFused.hpp:43
+
+rtt/internal/DataSources.hpp:72
+rtt/internal/DataSourceGenerator.hpp:43
+rtt/internal/InvokerSignature.hpp:42
+
+rtt/internal/ConnectionManager.cpp:47
+rtt/internal/mystd.hpp:41
+rtt/internal/Return.hpp:57
+rtt/internal/ReturnBase.hpp:42
+
+rtt/internal/SharedConnection.cpp:43
+rtt/internal/OperationCallerBinder.hpp:42
+rtt/internal/SignalBase.hpp:42
+rtt/internal/DataSource.inl:82
+
+rtt/internal/signature3.hpp:43
+rtt/internal/SignalBase.cpp:40
+rtt/internal/SignalBase.cpp:242
+
+rtt/internal/PartDataSource.hpp:68
+rtt/internal/GlobalEngine.hpp:43
+rtt/internal/ConnFactory.hpp:414
+rtt/internal/signature1.hpp:43
+rtt/internal/ConnectionManager.hpp:57
+rtt/internal/signature7.hpp:43
+
+rtt/internal/ArrayPartDataSource.hpp:72
+rtt/internal/ListLockFree.hpp:45
+rtt/internal/signature_template.hpp
+
+rtt/internal/SendHandleC.hpp:43
+rtt/internal/InputPortSource.hpp:73
+rtt/internal/signature4.hpp:43
+
+rtt/internal/Collect.hpp:44
+rtt/internal/signature2.hpp:43
+rtt/internal/UnMember.hpp:42:
+rtt/internal/DataSourceTypeInfo.hpp:142
+rtt/internal/signature6.hpp:43
+
+rtt/internal/InvokerBase.hpp:42
+rtt/internal/Invoker.hpp:42
+
+rtt/internal/signal_template.hpp:46
+rtt/internal/DataObjectDataSource.hpp:24
+rtt/internal/SharedConnection.hpp:58
+
+rtt/InputPort.hpp:103
+rtt/OperationInterface.cpp:53
+rtt/base/DataObjectInterface.hpp:43
+
+rtt/base/ChannelElement.hpp:42
+rtt/base/BufferInterface.hpp:43
+rtt/base/OperationCallerInterface.hpp:21
+rtt/base/DataSourceBase.hpp:43
+
+rtt/base/BufferBase.hpp:41
+rtt/base/OperationCallerBaseInvoker.hpp:75:
+rtt/base/ChannelElementBase.hpp:44:
+
+rtt/base/DisposableInterface.hpp:42
+rtt/base/ChannelInterface.cpp:42
+rtt/base/OperationCallerBase.hpp:45
+rtt/base/ActionInterface.hpp:42
+rtt/base/ActivityInterface.hpp:43
+rtt/os/MainThread.hpp:44
+rtt/os/Condition.hpp:48:
+rtt/os/StartStopManager.cpp:85
+
+rtt/os/lxrt/fosi.h:134:
+rtt/os/startstop.cpp:54
+rtt/os/startstop.cpp:93
+rtt/os/MainThread.cpp:47
+rtt/os/StartStopManager.hpp:43
+rtt/os/exceptions.cpp:43:
+rtt/os/Mutex.hpp:53
+
+rtt/OutputPort.hpp:267
+doc/xml/orocos-typekit-plugin.xml:256
+doc/xml/orocos-task-context.xml:2128
+doc/xml/orocos-rtt-plugins.xml:174
+
+doc/xml/orocos-transports-mqueue.xml:76
+doc/xml/orocos-rtt-scripting.xml:577
+doc/xml/orocos-corelib.xml:500
+doc/xml/orocos-installation.xml:190
+
+package.xml:18:
+tools/scripts/do-fwd.pl
+
+
