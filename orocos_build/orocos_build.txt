@@ -113,8 +113,103 @@ cd ..
      interrupt handled in userspace
        asynchronous notifications from kernelspace to userspace
 	 
-
 == Xenomai 3
 
-== rtt cmake infos
+== undefined reference to
+     => 报错 编译文件
+	   build/rtt/CMakeFiles/orocos-rtt-xenomai_dynamic.dir/build.make
+	   　　#Object files for target orocos-rtt-xenomai_dynamic
+	       
+	 => 出错的 .o文件
+	      Logger.cpp.o　
+		  TaskContext.cpp.o
+		  ExecutionEngine.cpp.o		  
+			这个提示出的都是别的文件中的问题，有
+			=>
+				os/xenomai/fosi.h
+				    rt_mutex_inquire
+					rt_mutex_release
+					rt_mutex_delete
+						     create
+				    rt_timer_ns2ticks
+					         ticks2ns
+							 
+					rt_cond_broadcast
+					rt_cond_delete
+					rt_cond_create
 
+					rt_sem_v
+					rt_sem_inquire
+					rt_sem_delete
+					
+
+				alchemy/mutex.h
+				    rt_mutex_acquire_timed
+					rt_mutex_acquire_timed
+			    alchemy/cond.h
+				    rt_cond_wait_timed
+
+
+				alchemy/timer.h
+					alchemy_clock
+					clockobj_get_time		libcopperpalte.so
+			    alchemy/sem.h
+					rt_sem_p_timed
+					
+					
+				copperplate/clockobj.h		libcobalt.so
+				    __cobalt_clock_gettime
+				    cobalt_divrem_billion
+					timespec_add
+		  =>os/tlsf		在 libalchemy.so 中都有定义
+		    tlsf.c.o
+			问题函数：
+			  rt_mutex_create
+					   acquire_timed
+					   release
+					   delete
+		  =>os
+		    Timer.cpp.o
+            TimeService.cpp.o
+			Thread.cpp.o
+		  =>os/xenomai
+	          fosi_internal.cpp.o
+			  问题函数：
+				rt_task_self
+				    shadow
+					same
+				    wait_period
+				    inquire	
+				    spawn			W
+				    yield
+				    join
+				    delete
+				    set_periodic   W
+				    set_priority
+　			    rt_timer_ns2ticks	
+			    rt_mutex_acquire_timed
+				    release				
+			  问题分析：
+				fosi.h　这个头文件
+				在 libalchemy.so 中都有定义
+		  =>base
+		      ChannelInterface.cpp.o
+		  =>internal
+		      ConnectionManager.cpp.o
+		      SendHandleC.cpp.o
+          =>types
+			  TypeInfoRepository.cpp.o
+	      =>plugin
+			  PluginLoader.cpp.o
+		  =>extras
+		      SequentialActivity.cpp.o
+			  FileDescriptorActivity.cpp.o               
+			  TimerTHread.cpp.o
+   
+
+== CMake files 调用顺序
+    rtt/CMakeLists.txt
+		rtt/rtt/CMakeLists.txt
+		    rtt/rtt/os/CMakeLists.txt
+		        rtt/rtt/os/xenomai/CMakeLists.txt		  
+    5 build/rtt/CMakeFiles/orocos-rtt-xenomai_dynamic.dir/build.make
