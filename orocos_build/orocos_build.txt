@@ -117,4 +117,58 @@ cd ..
 == Xenomai 3
 
 == rtt cmake infos
+~/work/rtt-toolchain-2.9/build$ cmake .. -DOROCOS_TARGET=xenomai -DCMAKE_INSTALL_PREFIX=/usr/include -DCMAKE_INSTALL_PREFIX=/usr/local
+
+-- The C compiler identification is GNU 5.4.0
+-- The CXX compiler identification is GNU 5.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+
+Orocos RTT version 2.9.0
+No orocos-rtt.cmake file loaded, using default settings.See orocos-rtt.default.cmake
+No OROCOS_TARGET environment variable set. Using: xenomai
+-- CMAKE_VERSION: 3.5.1
+
+-- Boost version: 1.58.0
+-- Using the following Boost include directory: /usr/include
+-- Found the following Boost libraries:
+--   filesystem:          /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+--   system:              /usr/lib/x86_64-linux-gnu/libboost_system.so
+--   unit_test_framework: /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so
+--   thread:              /usr/lib/x86_64-linux-gnu/libboost_thread.so
+--   serialization:       /usr/lib/x86_64-linux-gnu/libboost_serialization.so
+-- Found Xerces:          /usr/lib/x86_64-linux-gnu/libxerces-c.so  
+-- Found Boost Uuid in    /usr/include.
+
+-- Orocos target is xenomai
+     XENOMAI_INCLUDE_DIR=XENOMAI_INCLUDE_DIR-NOTFOUND
+     XENOMAI_NATIVE_LIBRARY=XENOMAI_NATIVE_LIBRARY-NOTFOUND
+	 
+CMake Error at config/LibFindMacros.cmake:74 (message):
+    Required library XENOMAI NOT FOUND.
+    
+    Install the library (dev version) and try again.  If the library is already
+    installed, set the XENOMAI_ROOT_DIR environment variable or use cmake to
+    set the missing variables manually.
+    
+Call Stack (most recent call first):
+  config/FindXenomai.cmake:72 (libfind_process)
+  config/check_depend.cmake:164 (find_package)
+  CMakeLists.txt:106 (INCLUDE)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/luoshi/work/rtt-toolchain-2.9/build/CMakeFiles/CMakeOutput.log".
+
+
 
