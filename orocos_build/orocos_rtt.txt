@@ -1,0 +1,69 @@
+## Orocos 项目介绍
+http://www.orocos.org/content/history
+     字面意思是　Open Robot Control Software，或者 Open Realtime Control Services.
+	 				  开放的机器人控制软件		   开发的实时控制服务
+
+	 Free Software project for robot control	   in year 2000
+	 	  Herman Bruyninckx
+		  加 3 个 partnets:
+		  	   K.U.Leuven  ( + Bekaert, LVD and Vandewiele )
+			   LAAS Toulouse
+			   KTH Stockholm
+		  Herman Bruyninckx得以雇佣一个 PhD 学生，来全职做这个。
+		  		 		to hire Peter Soetens as a PhD student, to work full-time on the design and first implementation.
+		 2002年， Peter就发布了一个　hard real-time core, 但是太原始，根本没法用。
+	 有一个小目标： access to the deepest layers of the hardware control
+   　提供　机器人控制的　C++ libraries
+
+## 包括的子项目：
+         RTT( Real-Time Toolkit )
+		 KDL( Kinematics and Dynamics Library )	   	Ruben Smits( 重用了一些前人的东西,　作者是　Erwin Aerbelien 和　Herman Bruyninckx.
+		 BFL( Bayesian Filtering Library )			Klaas Gadeyne
+		 总结一下：　KDL和BFL的远景是提供 stand-alone functionality, 能
+		 		    embedded in various software frameworks.
+		 Toolchain
+		 OCL( Orocos Component Library )		 
+         log4cpp,      		 
+   公司使用了 RTT,		 v2.9
+   	     	  OCL,		 
+		      log4cpp,
+    三大目标（都是瞄准 复杂软件的）：
+	  =>复杂软件的构建发生了变化
+			不再仅仅是　　compile time
+			越来越多地是　deployment time
+			甚至是		 run time
+		这就是说明　功能的增加　基于component-based system development
+	  =>复杂软件的组件选自更多不同的供应商（Multi-vendor）
+	 　　   companies
+	 		free software
+			open source projects
+			programming frameworks
+			outsourced
+	  => Focus
+	  	    realtime control of robots and machine tools
+			( 聚焦于对　机器人和　机器工具的　实时控制 )
+
+## orocos 的 邻居项目
+      ROS
+	  CORBA
+	  Xenomai
+	  Boost
+## orocos的主要项目
+   
+
+## rtt是干什么的？
+   实时工具集，提供了基础设施　和　构建机器人应用的功能。
+   in C++
+
+   强调的是 real-time
+   			on-line interactive
+			component based applications
+
+## 怎么配置？
+    Orocos Real-Time Toolkit Installation Guide
+    ( RTT V2.9.0 )
+	
+
+## 程序怎么编写？
+
+ 

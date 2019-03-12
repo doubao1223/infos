@@ -1,0 +1,11 @@
+
+== orocos (The Open RObot COntrol Software project)
+   这个项目的两大策略：
+   (1) component-based 基于组件
+   (2) object-oriented reusability 对象重用
+
+== Orocos vs ROS
+      orocos is focused on control
+      ROS is more generic
+
+

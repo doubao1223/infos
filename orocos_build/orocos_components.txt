@@ -1,0 +1,63 @@
+
+2019年 03月 07日 星期四 10:38:28 CST
+
+## Orocos 子项目：
+         RTT( Real-Time Toolkit )
+		 KDL( Kinematics and Dynamics Library )
+		 	  Ruben Smits( 重用了一些前人的东西,　作者是　Erwin Aerbelien 和　Herman Bruyninckx.
+		 BFL( Bayesian Filtering Library )			Klaas Gadeyne
+		 
+		 总结一下：　KDL和BFL的远景是提供 stand-alone functionality, 能
+		 		    embedded in various software frameworks.
+					
+		 Toolchain, 工具链。包括下面的部分组成
+		     AutoProj,					编译库的工具
+			 RTT(Real-Time Toolkit), 	实时组件框架
+			 OCL(Orocos Component Library),   启动组件，组件间交互
+			 OroGen & TypeGen,	  	    代码生成的工具
+		 
+         log4cpp,
+		 
+   公司使用了 RTT,		 v2.9
+   	     	  OCL,		 
+		      log4cpp,
+    三大目标（都是瞄准 复杂软件的）：
+	  =>复杂软件的构建发生了变化
+			不再仅仅是　　compile time
+			越来越多地是　deployment time
+			甚至是		 run time
+		这就是说明　功能的增加　基于component-based system development
+	  =>复杂软件的组件选自更多不同的供应商（Multi-vendor）
+	 　　   companies
+	 		free software
+			open source projects
+			programming frameworks
+			outsourced
+	  => Focus
+	  	    realtime control of robots and machine tools
+			( 聚焦于对　机器人和　机器工具的　实时控制 )
+
+## orocos 的 邻居项目
+      ROS
+	  CORBA
+	  Xenomai
+	  Boost
+## orocos的主要项目
+   
+
+## rtt是干什么的？
+   实时工具集，提供了基础设施　和　构建机器人应用的功能。
+   in C++
+
+   强调的是 real-time
+   			on-line interactive
+			component based applications
+
+## 怎么配置？
+    Orocos Real-Time Toolkit Installation Guide
+    ( RTT V2.9.0 )
+	
+
+## 程序怎么编写？
+
+ 

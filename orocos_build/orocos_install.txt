@@ -1,0 +1,43 @@
+
+2019年 03月 07日 星期四 10:45:13 CST
+
+## 设置 orocos　的安装环境
+   
+   	=>构建依赖
+		CMake					>=2.6.3
+		Boost C++ Library 		>=1.33.0(1.40.0 recommended)
+		Boost C++ Test Library 	1.33.0  ;; 单元测试使用
+		  两个前提： 1. build RTT from source
+			        2. ENABLE_TESTS=ON
+		Boost C++ Serialization Library		1.37.0
+		GNU gcc/g++ Compilers   3.4.0				;; 4.x series also is ok.
+
+	=>安装
+	    CMake
+			方式一：　apt-get install cmake
+			方式二：　www.cmake.org 从源码安装
+		Orocos
+			tar -xvjf orocos-rtt-2.9.0-src.tar.bz2
+			mkdir orocos-rtt-2.9.0/build
+			cd orocos-rtt-2.9.0/build
+			cmake ..
+				  -DOROCOS_TARGET=<target>						;; xenomai
+				  [-DCMAKE_PREFIX_PATH=/opt/orocos]				;; Boost
+				  [-DCMAKE_INSTALL_PREFIX=/usr/local]			;; where to install the RTT
+				  [-DLINUX_SOURCE_DIR=/usr/src/linux]			;; Linux kernel
+　　		make									;; 创建　liborocos-rrt-xenomai.so
+													;;如使能了 corba　是　liborocos-rtt-corba-xenomai.so
+			sudo make install 						;; 默认安装是　/usr/local
+
+	=>组件
+		RTT
+
+		OCL ;; the OCL is now part of the Orocos Toolchain and should
+			   seldomly be installded separately.
+
+## 源代码需要设置么？
+
+## 详细配置(using CMake)
+
+## 交叉编译
+
