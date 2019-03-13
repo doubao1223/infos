@@ -1,0 +1,509 @@
+
+2019年 03月 13日 星期三 20:03:50 CST
+== include
+*    => xenomai 
+	 => trace
+	 => linux
+*    => ipipe
+	 => clocksource
+	 => asm-generic
+	 
+== kernel
+*    => xenomai
+	 	  
+	 => trace
+	 => time
+	 => sched
+	 => printk
+	 => power
+	 => locking
+	 =>	irq
+*	 => ipipe
+	 => debug
+
+== init
+     => main.c
+	 	  #include <linux/ipipe.h>
+
+		  asmlinkage __visible void __init start_kernel(void)
+		  {
+		    hard_local_irq_disable();
+
+			__ipipe_init_earyly();
+
+			__ipipe_init();
+
+          }
+
+		  static void __init do_basic_setup(void)
+		  {
+		    __ipipe_init_proc();
+		  }
+== fs
+     => exec.c
+	      #include <linux/ipipe.h>
+
+		  static int exec_mmap(struct mm_struct *mm)
+		  {
+		    unsigned long flags;
+
+			ipipe_mm_switch_protect(flags);
+
+			ipipe_mm_switch_unprotect(flags);
+		  }
+== arch
+     => x86
+*	      => xenomai
+               include/asm/xenomai
+					         => uapi
+							      kernel/cobalt/arch/x86/include/asm/xenomai/uapi/
+								    => syscall.h
+									=> fptest.h
+									=> features.h
+									=> arith.h
+							 => kernel/cobalt/arch/x86/include/asm/xenomai/
+							 	  => wrappers.h
+								  => thread.h
+								  => syscall.h
+								  => syscall32-table.h
+								  => syscall32.h
+								  => smi.h
+								  => machine.h
+								  => fptest.h
+								  => features.h
+								  => calibration.h
+								  => c1e.h
+			   
+               kernel/cobalt/arch/x86/thread.c
+			   kernel/cobalt/arch/x86/smi.c
+		       kernel/cobalt/arch/x86/mayday.c
+			   kernel/cobalt/arch/x86/machine.c
+			   kernel/cobalt/arch/x86/c1e.c
+		  => mm
+		       => tlb.c
+			        void switch_mm(struct mm_struct *prev, struct mm_struct *next,
+						 		   struct task_struct *tsk)
+				    {
+					  flags = hard_local_irq_save();
+
+					  hard_local_irq_restore(flags);
+					}
+
+					void switch_mm_irqs_off(struct mm_struct *prev, struct mm_struct *next,
+						 				    struct task_struct *tsk)
+					{
+					  raw_smp_processor_id();
+
+					  WARN_ON_ONCE(IS_ENABLED(CONFIG_IPIPE_DEBUG_INTERNAL) &&
+					           !hard_irqs_diabled());
+
+					  if (!IS_ENABLED(CONFIG_IPIPE) &&
+					}											
+
+					static void flush_tlb_func_common(const struct flush_tlb_info *f,
+						   		      bool local, enum tlb_flush_reason reason)
+				    {
+					  unsigned long flags;
+
+					  flags = hard_cond_local_irq_save();
+					  
+					  hard_cond_local_irq_restore(flags);
+					}
+			   => fault.c
+			        static noinline void
+					__do_page_fault(struct pt_regs *regs, unsigned long error_code,
+						    unsigned long address)
+					{
+					  #ifdef CONFIG_IPIPE
+					      if (ipipe_root_domain != ipipe_head_domain) {
+						  	  trace_hardirqs_on();
+							  hard_local_irq_enable();
+						  }
+					  #endif		  
+					}
+
+					#ifdef CONFIG_IPIPE
+					void __ipipe_pin_mapping_globally(unsigned long start, unsigned long end)
+					{
+					  unsigned long next, addr = start;
+					  pgd_t *pgd, *pgd_ref;
+					  struct page *page;
+
+					  if (!(start >= VMALLOC_START && start < VMALLOC_END))
+					      return;
+					  do {
+					      next = pgd_addr_end(addr, end);
+						  pgd_ref = pgd_offset_k(addr);
+						  if (pgd_none(*pgd_ref))
+						      continue;
+						  spin_lock(&pgd_lock);
+						  list_for_each_entry(page, &pgd_list, lru) {
+						      if (pgd_none(*pgd))
+							      set_pgd(pgd, *pgd_ref);
+						  }
+						  spin_unlock(&pgd_lock);
+						  addr = next;
+					} while (addr != end);
+
+					arch_flush_lzay_mmu_mode();
+				  }	
+		  => lib
+		  	   => usercopy.c
+			        #include <linux/ipipe.h>
+
+					!ipipe_root_p
+
+					
+			   => mmx_32.c
+			        !ipipe_root_p
+		  => kvm
+		       => x86.c
+			   	    #include <linux/ipipe.h>
+
+					struct kvm_shared_msrs {
+					 
+					  bool dirty;
+					  
+					}
+
+					static void kvm_restore_shared_msrc(struct kvm_shared_msrs *locals)
+					{
+					  ...
+					}
+
+					static void kvm_on_user_return(struct user_return_notifier *urn)
+					{
+					
+					  kvm_restore_shared_msrs(locals);
+					  __ipipe_exit_vm();
+					}
+
+					int kvm_set_shared_msr(unsigned slot, u64 value, u64 mask)
+					{
+					
+					  smsr->dirty = true;
+					  
+					}
+
+					void kvm_arch_vcpu_put(struct kvm_vcpu *vcpu)
+					{
+					  unsigned int cpu = smp_processor_id();
+					  struct kvm_shared_msrs *smsr = per_cpu_ptr(shared_msrs, cpu);
+					  unsigned long flags;
+
+					  flags = hard_cond_local_irq_save();
+
+					  if (!smsr->dirty)
+					      __ipipe_exit_vm();
+					  hard_cond_local_irq_restore(flags);
+					}
+
+					#ifdef CONFIG_IPIPE
+
+					void __ipipe_handle_vm_preemption(struct ipipe_vm_notifier *nfy)
+					{
+					  ..
+					}
+					EXPORT_SYMBOL_GPL(__ipipe_handle_vm_preemption);
+
+ 					#endif
+
+					static int vcpu_enter_guest(struct kvm_vcpu *vcpu)
+					{
+					  ...
+					  local_irq_disable();
+					  hard_cond_local_irq_disble();
+
+					  __ipipe_enter_vm(&vcpu->ipipe_notifier);
+					}
+					
+			   => vmx.c
+			        static void vmx_load_host_state(struct vcpu_vmx *vmx)
+					{
+					  unsigned long flags;
+					  flags = hard_preempt_disable();
+					  __vmx_laod_host_state(vmx);
+					  hard_preempt_enable(flags);
+					}
+
+					static void setup_msrs(struct vcpu_vmx *vmx)
+					{
+					  ...
+					  hard_cond_local_irq_disable();
+					  ...
+					  hard_cond_local_irq_enable();
+					}
+
+					static struct kvm_vcpu *vmx_create_vcpu(struct kvm *kvm, unsigned int id)
+					{
+					  #ifdef CONFIG_IPIPE
+					      vmc->vxpu.ipipe_notifier.handler = __ipipe_handle_vm_preemption;
+					  #endif
+						...
+						  hard_cond_local_irq_disable();
+						...
+						  hard_cond_local_irq_enable();
+					}
+			   => svm.c
+					static void svm_vcpu_run(struct kvm_vcpu *vcpu)
+					{
+				      ...
+					  hard_local_irq_enable();
+					  ...
+					  hard_local_irq_disable();
+					  ...
+					}
+
+					static void svm_handle_external_intr(struct kvm_vcpu *vcpu)
+					{
+					  
+					  hard_cond_local_irq_enable();
+					  
+					}
+		  => kernel
+		  => include
+		  => entry
+     =>	arm
+		  => plat-omap
+		       => include
+			        => plat
+					     => dmtimer.h
+						      struct omap_dm_timer {
+							    unsigned long  phys_base;
+							  }
+
+							  static inline unsigned long __omap_dm_timer_read_status(
+							  		 struct omap_dm_timer *timer)
+							  {
+								return __raw_readl(timer->ira_stat);
+							  }
+							  
+		       => dmtimer.c
+			        unsigned long omap_dm_timer_get_phys_counter_addr(
+							 struct omap_dm_timer *timer)
+					{
+					  return timer->phys_base + (OMAP_TIMER_COUNTER_REG &0xff);
+					}
+
+					unsigned long omap_dm_timer_get_virt_counter_addr(
+							 struct omap_dm_timer *timer)
+					{
+					  return (unsigned long)timer->io_base + (OMAP_TIMER_COUNTER_REG & 0xff)
+					}
+
+					static int omap_dm_timer_probe(struct platform_device *pdev)
+					{
+				      timer->phys_base = mem->start;
+					}
+		  => mach-imx
+		       => mach-imx53.c
+			        static void __init imx53_init_late(void)
+					{
+					  imx_set_aips(IMX_IO_ADDRESS(0x53f00000));
+					  imx_set_aips(IMX_IO_ADDRESS(0x63f00000));
+					  
+               => mach-imx51.c
+			        static void __init imx51_init_late(void)
+					{
+					  imx_set_aips(IMX_IO_ADDRESS(0x73f00000));
+					  imx_set_aips(IMX_IO_ADDRESS(0x83f00000));					  
+					  
+		  => include
+		       => asm
+			        arch_timer.h
+					  static inline void arch_timer_set_cntkctl(u32 cntkctl)
+					  {
+					    cntkctl |= ARCH_TIMER_USR_PCT_ACCESS_EN;
+		  
+== drivers
+*    => xenomai
+	 => tty
+	 => soc
+	 => pinctrl
+	 => pci
+	 => memory
+	 => irqchip
+	 => iommu
+ 	 => gpu
+	 => gpio
+	 => cpuidle
+	 =>	clocksource
+	 => base
+
+== mm
+     => vmalloc.c
+          static int vmap_page_range_noflush(unsigned long start,
+	      		  unsigned long end, pgprot_t prot, struct page **pages)
+          {
+	      
+	        __ipipe_pin_mapping_globally(start, end);
+          }
+	 => mprotext.c
+	      #include <linux/ipipe.h>
+
+		  static unsigned long change_pte_range(struct vm_area_struct *vma, pmd_t *pmd,
+		  		 unsigned long addr, unsigned long end, pgprot_t newprot,
+				 int dirty_accountable, int prot_numa)
+          {
+            unsigned long pages = 0, flags;
+
+			flags = hard_local_irq_save();
+
+		    hard_local_irq_restore(flags);
+	      }		
+		  
+		  unsigned long change_protection(struct vm_area_struct *vma, unsigned long start,
+		       	   		 unsigned long end, pgprot_t newprot,
+		         		 int dirty_accountable, int prot_numa)
+      	  {
+
+          #ifdef CONFIG_IPIPE
+          	if (test_bit(MMF_VM_PINNED, &vma->vm_mm->flags) &&
+          	    ((vma->vm_flags | vma->vm_mm->def_flags) & VM_LOCKED) &&
+          	    (vma->vm_flags & (VM_READ | VM_WRITE | VM_EXEC)))
+          		__ipipe_pin_vma(vma->vm_mm, vma);
+          #endif
+          }
+
+	 => mmu_context.c
+	      #include <linux/ipipe.h>
+
+		  void use_mm(struct mm_struct *mm)
+		  {
+		    unsigned long flags;
+
+			ipipe_mm_switch_protect(flags);
+
+			ipipe_mm_switch_unprotect(flags);
+		  }
+	 => mlock.c
+		  #ifdef CONFIG_IPIPE
+          int __ipipe_pin_vma(struct mm_struct *mm, struct vm_area_struct *vma)
+          {
+          	int ret, write, len;
+          
+          	if (vma->vm_flags & (VM_IO | VM_PFNMAP))
+          		return 0;
+          
+          	if (!((vma->vm_flags & VM_DONTEXPAND) ||
+          	    is_vm_hugetlb_page(vma) || vma == get_gate_vma(mm))) {
+          		ret = populate_vma_page_range(vma, vma->vm_start, vma->vm_end,
+          					      NULL);
+          		return ret < 0 ? ret : 0;
+          	}
+          
+          	write = (vma->vm_flags & (VM_WRITE | VM_SHARED)) == VM_WRITE;
+          	len = DIV_ROUND_UP(vma->vm_end, PAGE_SIZE) - vma->vm_start/PAGE_SIZE;
+          	ret = get_user_pages(vma->vm_start, len, write, 0, NULL);
+          	if (ret < 0)
+          		return ret;
+          	return ret == len ? 0 : -EFAULT;
+          }
+          #endif
+     => memory.c
+	      #include <linux/ipipe.h>
+		  
+		  static inline void cow_user_page(struct page *dst,
+				 struct page *src,
+				 unsigned long va,
+				 struct vm_area_struct *vma);
+
+       	  static inline unsigned long
+          copy_one_pte(struct mm_struct *dst_mm, struct mm_struct *src_mm,
+	               pte_t *dst_pte, pte_t *src_pte, struct vm_area_struct *vma,
+				   unsigned long addr, int *rss, struct page *uncow_page)
+		  {
+	#ifdef CONFIG_IPIPE
+		    if (uncow_page) {
+		    	struct page *old_page = vm_normal_page(vma, addr, pte);
+		    	cow_user_page(uncow_page, old_page, addr, vma);
+		    	pte = mk_pte(uncow_page, vma->vm_page_prot);
+		    
+		    	if (vm_flags & VM_SHARED)
+		    		pte = pte_mkclean(pte);
+		    	pte = pte_mkold(pte);
+		    
+		    	page_add_new_anon_rmap(uncow_page, vma, addr, false);
+		    	rss[!!PageAnon(uncow_page)]++;
+		    	goto out_set_pte;
+		    }
+    #endif /* CONFIG_IPIPE */
+
+	      static int copy_pte_range(struct mm_struct *dst_mm, struct mm_struct *src_mm,
+		   		     pmd_t *dst_pmd, pmd_t *src_pmd, struct vm_area_struct *vma,
+		   			 unsigned long addr, unsigned long end)
+          {
+			...
+		  }
+
+		  
+          #ifdef CONFIG_IPIPE
+          
+          int __ipipe_disable_ondemand_mappings(struct task_struct *tsk)
+          {
+
+== lib
+     => smp_processort_id.c
+	      #include <linux/ipipe.h>
+
+		  notrace static unsigned int check_preemption_disabled(const char *what1,
+								  	  const char *what2)
+          {
+		    if (hard_irqs_disabled())
+			    goto out;
+
+			if (!ipipe_root_p)
+				goto out;
+
+    	  }
+		  
+	 => ioremap.c
+	      #include <linux/hardirq.h>
+
+		  int ioremap_page_range(unsigned long addr,
+		  	  		 	unsigned long end, phys_addr_t phys_addr, pgprot_t prot)
+		  {
+		    if (!in_interrupt()) {
+			    __ipipe_pin_mapping_globally(start, end);
+				
+	 
+	 => dump_stack.c
+	 	  #include <linux/ipipe.h>
+
+		  static unsigned long disable_local_irqs(void)
+		  {
+		    unsigned long flags = 0;
+
+			if (ipipe_root_p)
+			    local_irq_save(falgs);
+
+			return flags;
+		  }
+
+		  static void restore_local_irqs(unsigned long flags)
+		  {
+		    if (ipipe_root_p)
+			    local_irq_restore(flags);
+		  }
+
+		  asmlinkage __visible void dump_stack(void)
+		  {
+		    flags = disable_local_irqs();
+			
+			restore_local_irqs(flags);
+
+			restore_local_irqs(flags);
+		  }
+		  
+	 => bust_spinlocks.c
+	 	  #include <linux/ipipe_trace.h>
+
+		  void __atrribute__((weak)) bust_spinlocks(int yes)
+		  {
+		    ipipe_trace_panic_dump();
+	 => atomic64.c
+		  ipipe_
+
+
+
+
