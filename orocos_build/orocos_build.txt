@@ -105,10 +105,6 @@ cd ..
 	    ticks2nano　临时修改
 	    
         config/FindXenomai.cmake  ; native
-	
-	
-	
-	 
 == Xenomai 2
      interrupt handled in userspace
        asynchronous notifications from kernelspace to userspace
@@ -164,7 +160,6 @@ Call Stack (most recent call first):
   config/FindXenomai.cmake:72 (libfind_process)
   config/check_depend.cmake:164 (find_package)
   CMakeLists.txt:106 (INCLUDE)
-
 
 -- Configuring incomplete, errors occurred!
 See also "/home/luoshi/work/rtt-toolchain-2.9/build/CMakeFiles/CMakeOutput.log".
@@ -265,3 +260,6 @@ See also "/home/luoshi/work/rtt-toolchain-2.9/build/CMakeFiles/CMakeOutput.log".
 		    rtt/rtt/os/CMakeLists.txt
 		        rtt/rtt/os/xenomai/CMakeLists.txt		  
     5 build/rtt/CMakeFiles/orocos-rtt-xenomai_dynamic.dir/build.make
+
+
+==
