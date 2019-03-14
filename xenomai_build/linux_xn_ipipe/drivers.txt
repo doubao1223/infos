@@ -1,0 +1,221 @@
+
+2019年 03月 13日 星期三 20:03:50 CST
+
+== drivers ( 13 个 了目录)
+	 => base
+		  core.c
+		  regmap
+		  
+	 =>	clocksource
+	 	  arm_arch_timer.c
+		  arm_global_timer.c
+		  bcm2835_timer.c
+		  dw_apd_timer.c
+		  dw_apd_timer_of.c
+		  timer-imx-gpt.c
+		  timer-sp804.c
+	 => cpuidle
+	 	  cpuidle.c
+	 => gpio
+			gpio-davinci.c		3		TI DaVinci GPIO Support
+			gpio-mvebu.c		19		GPIO driver for Marvell SoCs
+			gpio-mxc.c			3		MXC GPIO support (Freescale Semiconductor)
+			gpio-omap.c			15		OMAP GPIO
+			gpio-pl061.c		7		ARM PrimeCell GPIO (Data sheet: ARM DDI 0190B, 9 2000)
+			gpio-zynq.c			23		Xilinx Zynq GPIO device driver
+ 	 => gpu
+	 	  ipu-v3
+			ipu-common.c		2
+			ipu-prv.h			1
+	 => iommu
+		  irq_remapping.c		1
+	 => irqchip
+	 	  irq-atmel-aic5.c		24		
+		  irq-bcm2835.c			3		Broadcom
+		  irq-bcm2836.c			14
+		  irq-bcm7120-l2.c		9		
+		  irq-brcmstb-l2.c		6
+		  irq-crossbar.c		3		Texas Instruments
+		  irq-dw-apb-ictl.c		6		Synopsys DW APB ICTL 
+		  irq-gic.c				14
+		  irq-gic-v2m.c			7
+		  irq-gic-v3.c			11
+		  irq-imx-gpcv2.c		19		Freescale
+		  irq-omap-intc.c		14
+		  irq-sunxi-nmi.c		6		NMI, non-maskable interrupt
+		  irq-versatile-fpga.c	4
+		  irq-vic.c				6	
+	 => memory
+	 	  omap-gpmc.c			8
+	 => pci
+	 	  htirq.c					1
+		  dwc
+			pcie-designware-host.c	1
+		  host
+			pcie-altera.c			1
+	 => pinctrl
+	 	  pinctrl-rockchip.c	4
+		  pinctrl-single.c		6
+		  bcm
+			pinctrl-bcm2835.c	12	
+		  sunxi
+			pinctrl-sunxi.c		6
+			pinctrl-sunxi.h		2
+	 => soc
+	 	  dove
+			pmu.c
+	 => tty
+	 	  amba-pl011.c		7
+		  xilinx_uartps.c	3
+	 	  serial
+			8250
+			  8250_core.c	3
+*    => xenomai
+		--analogy
+		    (kernel/drivers/analogy)
+		    buffer.c
+		    command.c
+		    device.c
+		    driver.c
+		    driver_facilities.c
+		    instruction.c
+		    proc.h
+		    rtdm_helpers.c
+		    rtdm_interface.c
+		    subdevice.c
+		    transfer.c
+		    intel(kernel/drivers/analogy/intel)
+			  8255.c
+			  8255.h
+			  parport.c
+			national_instruments(kernel/drivers/analogy/national_intruments)
+			  mio_common.c
+			  mite.c
+			  mite.h
+			  ni_660x.c
+			  ni_670x.c
+			  ni_mio.h
+			  ni_stc.h
+			  ni_tio.h
+			  pcimio.c
+			  tio_common.c
+			sensoray(kernel/drivers/analogy/sensoray)
+			  s526.c
+			testing(kernel/drivers/analogy/testing)
+			  fake.c
+			  loop.c
+		--autotune(kernel/drivers/autotune)
+			autotune.c
+		--can(kernel/drivers/can)
+		    rtcan_dev.c/.h
+			rtcan_flexcan.c
+			rtcan_internal.h
+			rtcan_list.h
+			rtcan_module.c
+			rtcan_raw.c/.h
+			rtcan_raw_dev.c
+			rtcan_raw_filter.c
+			rtcan_socket.c/socket.h
+			rtcan_version.h
+			rtcan_virt.c
+			mscan(kernel/drivers/can/mscan)
+			  rtcan_mscan.c/.h
+			  rtcan_mscan_mpc5xxx.c
+			  rtcan_mscan_proc.c
+			  rtcan_mscan_regs.h
+			sja1000(kernel/drivers/can/sja1000)
+			  rtcan_adv_pci.c
+			  rtcan_ems_pci.c
+			  rtcan_esd_pci.c
+			  rtcan_isa.c	  
+			  rtcan_ixxat_pci.c
+			  rtcan_mem.c
+			  rtcan_peak_dng.c
+			  rtcan_peak_pci.c			  
+			  rtcan_plx_pci.c
+			  rtcan_sja1000.c/.h
+			  rtcan_sja1000_proc.c
+			  rtcan_sja1000_regs.h			  
+		--gpio(kernel/drivers/gpio)
+		    gpio-bcm2835.c
+		    gpio-core.c
+		    gpio-mxc.c		
+		    gpio-sun8i-h3.c
+		    gpio-xilinx.c
+		    gpio-zynq7000.c			
+		--ipc(kernel/drivers/ipc)
+		    bufp.c
+			iddp.c
+			internal.h
+			rtipc.c
+			xddp.c
+		--net(kernel/drivers/net)
+		    addons     ;;附件
+			  cap.c
+			  proxy.c
+			drivers    ;;网絡驱动
+			stack      ;;网絡协议栈
+			  corectl.c  eth.c  iovec.c  rtdev.c  rtdev_mgr.c
+			  rtnet_chrdev.c  rtnet_module.c  rtnet_rtpc.c
+			  rtskb.c  rtwlan.c  socket.c  stack_mgr.c
+			  
+			  include(kernel/drivers/net/stack/include)  ;; 头文件
+			    ipv4_chrdev.h  nomac_chrdev.h  rtcfg_chrdev.h  rtdev.h
+				rtdev_mgr.h  rtmac.h  rtnet_chrdev.h  rtnet_internal.h
+				rtnet_iovec.h  rtnet_port.h  rtnet_rtpc.h  rtnet_socket.h
+				rtskb_fifo.h  rtskb.h  rtwlan.h  rtwlan_io.h  stack_mgr.h
+				tdma_chrdev.h
+				ethernet  ;; 以太网 头文件
+				  eth.h
+				ipv4      ;; ipv4 头文件
+				  af_inet.h  arp.h  icmp.h  ip_fragment.h  ip_input.h
+				  ip_output.h  ip_sock.h  protocol.h  route.h  tcp.h
+				  udp.h
+				rtcfg     ;; 实时网络配置
+				  rtcfg_client_event.h  rtcfg_conn_event.h
+				  rtcfg_event.h  rtcfg_file.h  rtcfg_frame.h				  
+				  rtcfg.h  rtcfg_ioctl.h  rtcfg_proc.h
+				  rtcfg_timer.h
+				rtmac     ;; 实时 mac 地址
+				  rtmac_disc.h  rtmac_proc.h  rtmac_proto.h  rtmac_vnic.h
+				  nomac
+				    nomac_dev.h  nomac.h  nomac_ioctl.h  nomac_proto.h			
+				  tdma
+				    tdma_dev.h  tdma.h  tdma_ioctl.h  tdmd_proto.h
+					tdma_worker.h
+			  ipv4  ;; ipv4 实现
+			    af_inet.c  arp.c  icmp.c  ip_fragment.c  ip_input.c
+				ip_output.c  ip_sock.c  protocol.c  route.c
+				tcp ;; tcp 实现
+				  tcp.c
+				  timerwheel.c/.h
+				udp ;; udp 实现
+				  udp.c
+			  packet
+				af_packet.c
+			  rtcfg
+			    rtcfg_client_event.c  rtcfg_conn_event.c
+				rtcfg_event.c  rtcfg_file.c  rtcfg_frame.c				  
+				rtcfg_ioctl.c  rtcfg_proc.c
+				rtcfg_timer.c
+			  rtmac
+			    rtmac_disc.c  rtmac_proc.c  rtmac_proto.c  rtmac_vnic.c
+				rtmac_module.c
+        		nomac
+				  nomac_dev.c  nomac_ioctl.c  nomac_proto.c
+				  nomac_module.c
+				tdma
+				  tdma_dev.c  tdma_ioctl.c  tdmd_proto.c
+				  tdma_worker.c  tdma_module.c
+		--serial(kernel/drivers/serial)
+		    16550A.c  1650A_io.h  1650A_pci.h  16550A_pnp.h
+			mpc52xx_uart.c  rt_imx_uart.c
+		--spi(kernel/drivers/spi)
+		    spi-bcm2835.c
+			spi-device.c/.h
+			spi-master.c/.h
+			spi-sun6i.c
+		--testing(kernel/drivers/testing)
+		--udd(kernel/drivers/udd)
+		    udd.c
+
