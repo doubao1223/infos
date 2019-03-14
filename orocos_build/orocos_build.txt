@@ -261,5 +261,70 @@ See also "/home/luoshi/work/rtt-toolchain-2.9/build/CMakeFiles/CMakeOutput.log".
 		        rtt/rtt/os/xenomai/CMakeLists.txt		  
     5 build/rtt/CMakeFiles/orocos-rtt-xenomai_dynamic.dir/build.make
 
+== ok
+     分支：ahoarau-xenomai3-support-v2
+	 环境变量：
+		rtt/build$ ccmake..
+		  XENOMAI_POSIX_XENO_CONFIG		/usr/xenomai/bin/xeno-config
+		  XENOMAI_XENO_CONFIG			/usr/xenomai/bin/xneo-config
+		=>
+		  ~/.bashrc
+		  export OROCOS_TARGET=xenomai
+		  export XENOMAI_ROOT_DIR=/usr/xenomai
+          export XENOMAI_INCLUDE_DIR=/usr/xenomai/include
+          export XENOMAI_NATIVE_LIBRARY=/usr/xenomai/lib
 
-==
+	 环境变量总结
+
+	 cmake .. -DOROCOS_TARGET=xenomai -DCMAKE_INSTALL_PREFIX=/usr/include -DCMAKE_INSTALL_PREFIX=/usr/local
+	 
+luoshi@luoshi-POC-320:~/work/rtt_xenomai3/build$ cmake ..
+Orocos RTT version 2.9.0
+No orocos-rtt.cmake file loaded, using default settings.See orocos-rtt.default.cmake
+Detected OROCOS_TARGET environment variable. Using: xenomai
+-- CMAKE_VERSION: 3.5.1
+-- Found Boost Uuid in /usr/include.
+-- Orocos target is xenomai
+-- Xenomai 3.0.8 detected, searching for alchemy skin.
+-- 
+==========================================
+Xenomai 3.0.8 alchemy skin
+    libs        : -lalchemy;-lcopperplate;/usr/xenomai/lib/xenomai/bootstrap-pic.o;-L/usr/xenomai/lib;-lcobalt;-lmodechk;-lpthread;-lrt
+    include     : /usr/xenomai/include/cobalt;/usr/xenomai/include;/usr/xenomai/include/alchemy
+    definitions : -D_GNU_SOURCE;-D_REENTRANT;-D__COBALT__
+    ldflags     : -Wl,--no-as-needed -Wl,@/usr/xenomai/lib/modechk.wrappers
+    cflags      : -fasynchronous-unwind-tables
+==========================================
+
+-- Found XENOMAI 3.0.8
+-- Xenomai 3.0.8 detected, searching for posix skin.
+-- 
+==========================================
+Xenomai 3.0.8 posix skin
+    libs    : -L/usr/xenomai/lib;-lcobalt;-lmodechk;-lpthread;-lrt
+    include : /usr/xenomai/include/cobalt;/usr/xenomai/include
+    ldflags : -Wl,--no-as-needed -Wl,@/usr/xenomai/lib/cobalt.wrappers -Wl,@/usr/xenomai/lib/modechk.wrappers    -L/usr/xenomai/lib -lcobalt -lmodechk -lpthread -lrt
+    cflags  : -I/usr/xenomai/include/cobalt -I/usr/xenomai/include -D_GNU_SOURCE -D_REENTRANT -fasynchronous-unwind-tables -D__COBALT__ -D__COBALT_WRAP__
+==========================================
+
+-- Found XENOMAI_POSIX 3.0.8
+-- XENOMAI_DEFINITIONS : _GNU_SOURCE;_REENTRANT;__COBALT__
+-- Found Doxygen -- API documentation can be built
+TLSF settings: -Wextra -Wall -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wno-long-long -Wstrict-aliasing=2 -DUSE_SBRK=1 -DUSE_MMAP=1 -D_GNU_SOURCE -DTLSF_STATISTIC=1 -fno-strict-aliasing
+Building MQueue Transport library (Requires Boost >= 1.37.0).
+No default plugin path given, setting it to /usr/local/lib/orocos.
+Define the DEFAULT_PLUGIN_PATH cmake variable to override this.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/luoshi/work/rtt_xenomai3/build
+
+== Log4cpp
+    分支     toolchain-2.9
+    point    1f6915e
+
+== OCL
+    分支     toolchain-2.9 
+    point    ccec6a2
+	
+    cmake .. -DOROCOS_TARGET=xenomai -DCMAKE_INSTALL_PREFIX=/usr/include -DCMAKE_INSTALL_PREFIX=/usr/local
+
