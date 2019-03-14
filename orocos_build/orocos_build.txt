@@ -323,4 +323,14 @@ Define the DEFAULT_PLUGIN_PATH cmake variable to override this.
 -- Generating done
 -- Build files have been written to: /home/luoshi/work/rtt_xenomai3/build
 
+== Log4cpp
+    分支     toolchain-2.9
+    point    1f6915e
+
+== OCL
+    分支     toolchain-2.9 
+    point    ccec6a2
+	
+    cmake .. -DOROCOS_TARGET=xenomai -DCMAKE_INSTALL_PREFIX=/usr/include -DCMAKE_INSTALL_PREFIX=/usr/local
+
 
