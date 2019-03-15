@@ -1,0 +1,67 @@
+
+2019年 03月 15日 星期五 10:47:16 CST
+
+EC-Master-V2.9-Xenomai_x64-Eval
+
+
+
+== TOP
+EcVersion.txt
+	
+Bin
+	Xenomai3
+		x64Cobalt
+			libemllI8254x.so	;; 动态库
+			..
+SDK
+	INC
+		*.h
+		Xenomai
+			EcOsPlatform.h
+	LIB
+		Xenomai3		;; 两人个静态库
+			x64Cobalt
+				libAtemRasSrv.a
+				libEcMaster.a
+Sources
+	Common
+		EcTimer.cpp
+		EcTimer.h
+  	LinkOsLayer
+		Xenomai
+			atemsys
+				atemsys.h/.c
+				atemsys.bb
+  	OsLayer
+		Xenomai
+			EcOs.cpp
+
+== Sub
+SDK/INC/
+	/*
+	 * At, Acontis Technologies
+	 * Em, EtherCat Master
+	 * Ras, Remote Access Service 
+	 */
+	AtEmRas Clnt.h
+	AtEmras	ClntVersion.h
+	AtEmRas Error.h
+	AtEmRas Srv.h
+	AtEmRas SrvVersion.h
+	AtEmRas Type.h
+
+    AtEthercat.h	/* ethercat master 的接口文件 */
+
+	/* Ec, EtherCat
+	 */
+	Ec Common.h
+	Ec Error.h
+	Ec EscReg.h
+	Ec InterfaceCommon.h
+	Ec Link.h
+	Ec ObjDef.h
+	Ec Os.h
+	Ec Type.h
+	Ec Version.h
+	Ethernet Services.h
+	
