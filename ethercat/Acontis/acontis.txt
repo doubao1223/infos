@@ -1,0 +1,27 @@
+
+
+2019年 02月 26日 星期二 11:51:03 CST
+== acontis
+     完整符合 EtherCAT Master Classes指令 (ETG.1500)
+	 协议栈 独立于 操作系统和编译器
+	 支持多种CPU架构
+	 支持SMP多核处理
+	 提供两人个产品版本：
+		Class A  ;;完整功能
+		Class B  ;;基础功能
+     支持从站之间通信
+	 支持分布式时钟(DC)、模式同步（包括主站同步) (DCM)
+
+== 主栈协议栈 EC-Master
+   			  EtherCAT Application
+
+			  EtherCAT Master Core
+
+			  OS Layer 		  EC Link Layer
+			  
+== DCM
+   Synchronization between master and slaves
+   
+
+== 明白人
+    张晓鹏
