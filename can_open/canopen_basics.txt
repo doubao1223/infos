@@ -1,0 +1,66 @@
+
+2019年 03月 15日 星期五 19:28:24 CST
+
+
+
+
+== CAN ( Controller Area Network )
+
+   	   microcontroller <--> devices   ;; 不需要主计算机
+
+	   message-based protocol
+
+	   应用：
+			CAN-based multiplex wiring system
+
+	   规范版本
+			CAN 2.0, 1991
+				CAN 2.0A	;; 11-bit identifier
+				CAN 2.0B	;; 29-bit identifier
+			ISO 11898-2
+			ISO 11898-3
+			...
+	  缺点
+			CAN standard does not include tasks of application layer protocols,
+			如： flow control, device addressing, and transportation of data blocks larger than one message,
+			  and above all, application data,
+			  many impolementations of higher layer protocols were created.
+
+== CANopen ( The standardized embedded network )
+     实现了 network layer层和 以上的层
+
+	 a addressing scheme					一个寻址方案
+	 
+	 several small communication protocols	多个小的通信协议
+	     network management		 网絡管理
+		 device monitoring		 设备监控
+		 communication between nodes	节点之间的通信
+	 an application layer 		 		一个应用层
+	 a simple transport layer		    一个简单的传输层
+	   for message segmentation/desegmentation
+
+== The lower level protocol ( CAN使用的低层协议 )
+   	  虽然 设备之间使用别的通信方式(如 EtherCAT), 也能实现 CANopen device profile.
+   	  实现 data link 和 physical layers 通常使用的都是 CAN。
+== CANopen 协议包含什么内容，什么应该出现在协议中。
+	协议规定了
+		the basic CANopen device  ;;什么设备能用
+		communication profiles	  ;;通信综述. ( 通信质量，通信概述 )
+
+		CiA301		  ;; basic profile
+		
+		CiA401		  ;; specialized devices for I/O-modules
+		CiA402		  ;; specialized devices for motion control.
+
+== 设备模型 ( Device Model )
+     
+
+== Glossary of CANopen terms
+     PDO	处理数据 对象 ( Process Data Object )
+	 SDO	服务数据 对象 ( Service Data Object )
+	 COB-ID	通信对象的身份号 ( Communication OBject identifier )
+	 CAN ID	CAN身份号 ( 11-bit CAN message ID )
+	 EDS 	电子数据表 ( Electronic Data Sheet )
+	 DCF	设备配置文件 ( Device Configuration File ), 修改过的 EDS 文件，多了 node ID 和 baud rate.
+	   
+	
