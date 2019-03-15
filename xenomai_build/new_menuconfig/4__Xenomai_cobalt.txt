@@ -12,7 +12,8 @@
               512  Maximum number of POSIX timers per process ( 初始值是 256 )
               
       => Debug support
-              没选，不知道有什么作用
+              1,2,3,
+			  6,7
 
 　　　=>  Drivers
               Enable legacy  pathnames for named RTDM devices

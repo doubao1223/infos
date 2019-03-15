@@ -82,6 +82,8 @@ sudo update-grub
     ./configure --with-core=cobalt --enable-debug --enable-smp --enable-pshared
     make
     sudo make install
+    (加Doc的版本， ./configure --enable-doc-build --with-core=cobalt --enable-debug --enable-smp --enable-pshared)
+	
 
 == 重启，加载新的内核
    reboot

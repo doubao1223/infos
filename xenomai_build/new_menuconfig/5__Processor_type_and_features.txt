@@ -4,17 +4,18 @@
 == Processor type and features
      => Processor family
            Core 2/newer Xeon   ( if "cat /proc/cpuinfo | grep family" returns 6 )
+     => Preemption Model
+	       选 Preemptible Kernel(Low-Latency Desktop)
      => Interrupt pipeline
             I-pipe legacy interface 取消!!!	     
        导致编译错误： ./include/linux/sched.h:1899:12 error
             "IPIPE_ROOT_NPTDKEYS" undeclared here (not in a function)
 
      => Performance monitoring    --这次没有修改，用默认的选择  --取消
-     => Transparent Hugepage Support         取消  ok
+     => Transparent Hugepage Support         取消
      => Memory split(3G/1G user/kernel split)
      -> Memory model (Sparse Memory)  具体还需要进一步了解
-     => Allow for memory compaction          取消   --没取消
+     => Allow for memory compaction          取消
      => Contiguous Memory Allocator          取消   ok
      => Allow for memory compaction                
-          Page Migration                     取消  --没取消
-     
+          Page Migration                     取消

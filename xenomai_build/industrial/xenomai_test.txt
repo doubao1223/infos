@@ -1,0 +1,64 @@
+
+2019年 03月 06日 星期三 10:02:49 CST
+
+
+## sudo ./switchtest -T10
+  --enable-debug 会导致latency
+
+
+## sudo ./cyclictest -t 10 -p 80 -n -i 5000 -l 5000
+
+invoked syscall, aborting.
+(enabling CONFIG_XENO_OPT_DEBUG_TRACE_RELAX may help)
+
+## sudo ./xeno-test
+  => OK
+       arith
+	   leaks
+	   posix_clock
+	   posix_cond
+	   posix_fork
+	   posix_mutex
+	   posix_select
+	   setsched
+	   sigdebug
+	   timerfd
+	   tsc
+	   vdso_access
+	   dlopen
+
+  => skipped (no kernel support)
+       bufp
+       cpu affinity
+       iddp
+       net_packet_dgram
+       net_packet_raw
+	   net_udp
+	   rtdm
+	   sched_quota
+	   sched_tp
+	   sigdeug "IGDEBUG_MIGRATE_PRIOINV"
+
+  => not supported
+	   mutex_trylock
+    
+## latency
+
+    The pre-calibration for your machine is pessimistic, you should
+decrease the /proc/xenomai/latency value until the minimum latency
+never drops below zero, keeping the worst-case as close as possible to
+zero.
+
+	i.e.
+	# echo [nanoseconds] > /proc/xenomai/latency
+
+	You can refine this value as the latency test runs in another
+window.  Once you are happy with some calibration value, assign it to
+CONFIG_XENO_OPT_TIMING_SCHEDLAT in your kernel configuration.
+
+    Please note that depending on which latency is considered among
+user-space/kernel task scheduling, and interrupt handler, the most
+appropriate calibration value may be different. You have to find the
+best trade-off for your workload.
+
+    
