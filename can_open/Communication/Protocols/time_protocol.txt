@@ -1,0 +1,31 @@
+
+== TIME protocol ( Time Stamp Object protocol )
+       用途
+		   accurate synchronization
+		   时间校准？
+
+	   毫秒级同步
+	       Time-Stamp object 代表一个6字节区域的时间值
+	   			  32bit 用于存储(从午夜开始的 毫秒数)
+				  		 最多27bits, 存储在 32-bit 的区域.
+				  16bit  存储天数(从 1984, 1 1 开始计算)
+
+
+	   微秒级同步
+	       大型网络中的 time critial applications, 需要
+	       				very accurate synchronization。
+	       
+	       有必要同步到 微秒级
+	       	  necessary to synchroniza the local clocks
+	       	      with an accuracy in the order of microseconds.
+	   
+		   通过使用 optional high resolution synchronization protocol
+		   			  which employs a special form of timestamp message
+					    to adjust the inevitable drift of the local clocks.
+		   此 high-resolution timestamp 是 unsigned32 编码,精度是 1 us.
+		       每过 72 分钟 the time counter restarts.
+		   		   
+	   其他
+		   Is is configured by
+	   	   mapping the high resolution time-stamp (object 1013h) into a PDO.
+	   
