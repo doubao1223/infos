@@ -305,15 +305,84 @@
 	 drives 拥有 digital 或者 analog I/O 的 还使用 od entries from 8000 - 83FF
 
 == common entries
-   	 => Motor dta
+   	 => Motor data
      6402-64ff		;; serve as a database for motor parameters.
      				   用来维护一个服务数据库
 	 => Drive data
 	 6500-65ff		;; database for drive parameters
 
 	 => od entries
-	 
-	 	P34
+	 	0x6402  Motor type				
+		0x6404  Motor manufacturer		
+		0x6404 	Motor calibration date
+		0x6410	Motor data 电机数据
+		
+				  This Object contains as much as possible
+				  	   information about the connected motor.
+				  The structure of this record is described
+				  	   in the drive manufacture's handbook.
 					   
+		0x6502  Supported drive modes 驱动模式
+		0x6510	Drive data
 
+				  information about the drive unit.
+				  
+		0x601D	Digital inputs 数字输入
+				  定义 simple digital inputs for drives.
+== device control
+     controls all functions of the drive.
+	 分为两部分：
+		 device control of the state machine	状态机
+		 	 状态机的控制方式：
+				外部控制， 有( controlword 和 external signals ).
+				内部控制， 通过 internal signals
+						   (如 faults and modes of operation)
+		     功能：
+				 描述
+					设备状态，
+					drive的可能的control sequence.
+			 状态：
+				 一个状态，代表 a special internal or external behavior.
+				     状态 一定程度上，确定了可以进行的行为，
+					 	  能够接受的命令。
+				 例如： 要 start 一个点到点的移动，
+				 		需要 drive 处在 OPERATION ENABLE 状态。
+		     状态的改变：
+				 使用 control word 和 按照 internal events.
+				 使用 control word 或者 按照 internal events.
+		     状态的读取：
+				 使用 statusword
+				 
+		 operation mode function	 			模式
+		 
+		 control word  ;; 控制drive的状态
+		 status word   ;; 显示drive的状态
+
+		 在 remote mode, the device
+		   is controlled directly from the CANopen network by PDO and SDO.
+		 远程模式，通过 CANopen network, 走数据包(PDO, DSO)。
+    驱动管理器 的 状态转移
+	    状态迁移的原因：
+			驱动器内部事件
+	        controlword
+    => od entries
+	       0x6040	controlword
+    	   0x6041	statusword
+		   0x605B	shutdown option code
+		   0x605C	disable operation option code
+		   0x605A	quick stop option code
+		   0x605D	halt option code
+		   0x605E	fault reaction option code
+		   0x6060	modes of operation
+		   0x6061	modes of operation display
+
+    => functional description
+	       modes of operation function
+		   drive disabling function
+		   quick stop function
+		   stop function
+		   fault reaction
+		   	   fatal faults
+			   non-fatal faults
+			   
 ## Cia SA 301 CANopen
