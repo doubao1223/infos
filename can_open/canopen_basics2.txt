@@ -1,0 +1,138 @@
+
+// 2019年 03月 20日 星期三 15:04:12 CST
+
+== factor group 
+     => gi
+			interchange
+				physical dimenstions and sizes
+				device internal units
+     => od entries
+			位置、速度、加速度等
+     => obj desc
+	 		这个组的对象 是 normalize the physical inputs and outputs 所需要的。
+			0x6089    Position notation index	   ;; 位置标记值 (比例)
+			0x608A	  		   dimension 		   ;;
+			0x608B	  Velocity notation index
+			0x608C	  		   dimension
+			0x608D	  Acceleration	
+			0x608E	  		   dimension
+			
+			0x608F	  Position encoder resolution	;; encoder increments/motor revoluations
+					  	  位置编码精度 				    (电机转一转，有多少个编码器计数)
+ 			0x6090	  Velocity encoder resolution	;; 转速一定时，每秒钟的编译器计数
+
+			0x6091	  Gear ratio	   				;; 尺轮组的比例
+					  	   			电机轴 转速/驱动器轴 转速
+									
+			0x6092	  Feed constant					;; feed / driving shaft revolutions (驱动轴每转一圈的 feed)	
+			0x6093	  Position factor
+					    位置因子， 转变 the desired position 为 the internal format.
+			
+			0x6094	  Velocity encoder factor		
+			0x6095	  Velocity factor 1				;; motor data -> velocity data
+					  		   		  feed constant * velocity unit * second * F/
+									  b0 S/min * gear ratio * velocity unit * F
+			0x6096	  Velocity factor 2				;; encoder data for positions -> encoder data for velocity
+					  		   		  pos encoder resolution / velocity encoder reslution
+			0x6097	  Acceleration factor 		    ;; acceleration -> internal format
+					  			       velocity unit * velocity encoder factor / acceleration unit * second
+			0x607E	  Polarity
+			
+== pp, profile position mode	操纵位置 模式
+     => gi
+	 
+		    a target position
+			  -> trajectory generator -> (position demand value) 
+	  		 		  	 			轨迹生成器
+			  -> Position control function -> control effort
+				    位置控制环
+
+		    Trajectory Generator 更详细的部分
+			position	               |  
+			velocity     -> Multiplier |  Trajectory Generator -> ( position demand value )
+			acceleration -> Multiplier |
+		   
+     => od entries
+	 	  0x607A target position			;目标位置（ 可以是绝对值 或者 是相对值 )
+		  		  应该移动到的位置
+				  使用用户定义的位置单位给出这个数据
+				  
+		  0x607B position range limit		;位置范围限制
+		  		  min position range limit
+				  max
+				  限制了输入值的范围
+  		  0x607D software position limit	;软件位置限制
+		  		  min position range limit
+				  max
+  		  0x607F max profile velocity		;最大 操纵速度
+		  		  最大允许速度
+		  0x6080 max motor speed			; 电机最大速度
+		  		  电机的最大允许速度(单位是 rpm )
+		  0x6081 Profile velocity			; 操纵速度
+		  		  
+		  0x6082 End velocity				; 末端速度
+		  		   drive 到达目标位置时，应该具有有速度
+				   ( the drive must have on reaching the target position )
+		  0x6083 profile acceleration	; 操纵加速度
+		  		   使用用户定义的单位
+				   被转換为 increments/second^2
+		  0x6084 profile deceleration	; 操纵减速
+		  		 		 
+		  0x6085 Quick stop deceleration  ;
+		  		   用来 停止电机的。
+		  0x6086 Motion profile type	  ; 运动操纵类型
+		  		   用来 选择 操纵运动的类型
+  		  0x60C5 Max acceleration		  ; 最大加速度
+		  		   限制加速
+		  0x60C6 Max deceleration		  ; 最大减速度
+		  		   限制减速
+	 => func desc
+	      两种方式，让驱动器 应用 target positions
+		      Set of set-points,  到达一个目标点，接着执行下一个目标点。（速度不减速到0)
+			  Single set-point,   到达一个目标点， 发状态给 host, 然后 接收新的 set-point.
+			  		 			  (到目标点后，一般速度都会减为0，再移动到下一个 set-point)
+		  
+== hm, homing mode
+     => gi
+     => od entries
+     => obj desc
+	 => func desc
+ == pc, position control function
+     => gi
+     => od entries
+     => obj desc
+	 => func desc
+== ip, interpolated position mode
+     => gi
+     => complex data types
+     => od entries
+     => objc desc
+     => func desc
+== pv, profile velocity mode
+     => gi
+     => od entries
+     => obj desc
+	 => func desc
+== tq, profile torque mode
+     => gi
+     => od entries
+     => obj desc
+== velocity mode ( vl )
+     => g desc
+     => complex data types
+     => od entries
+     => obj desc
+     => func desc
+== appendix (附录)
+     =>	od by chapter
+     => od by index
+     => od by name
+	 => definition of dimenstion indices
+
+
+g	 ; general
+gi   ; general information
+desc ; description
+obj  ; object
+func ; functional
+fun  ; function
