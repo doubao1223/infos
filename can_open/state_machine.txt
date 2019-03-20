@@ -1,6 +1,6 @@
 
     举例 state machine 的几个状态:
-		  	   Power Disabled
+		  	 =>Power Disabled
 			   		 start
 					 Not Ready to Switch On	;; 还没准备发启动。 如果有 刹车，要作用于这个状态。
 					 Switch On Disabled	 	;; 驱动器完成了初始化，
@@ -11,7 +11,7 @@
 					 Ready to Switch On		;; 高电压   可能 已经加载，
  											;; 驱动参数 可以修改。
 					 						   驱动功能还处于 不能状态。
-			   Power Enabled
+			 =>Power Enabled
 			   		 Switched On			;; 高电压 已经加载
 					 		  				;; power amplifier 已经准备好
 					 	   	  		 		   驱动参数 可以修改。
@@ -25,7 +25,7 @@
 					 Quick Stop Active		;; 驱动参数 可以修改。
 											;; 执行 quick stop 功能。
 											
-			   Fault
+			 =>Fault
 					 Fault Reaction Active	;; 驱动参数 可以修改。
 					 	   					;; 驱动器发生了错误
 											;; quick stop 功能执行了。

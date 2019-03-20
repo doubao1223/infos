@@ -367,22 +367,112 @@
 	        controlword
     => od entries
 	       0x6040	controlword
+						..
+						Device control commands are triggered
+							   by the following bit patterns in the controlword
+
+				      => 0-3 and 7
+							   下面这些比特位，指定一些控制命令。
+					      Fault reset, Enable operation, Quick stop, Enable voltage, Switch on
+						  Table 4的说明：
+							bits marked X are irrelevant(不相关的，不起作用的，不关心的)
+
+							* in the state SWITCHED ON, the drive executes the functionality of this state.
+							** It exists no functionality in the state SWITCHED ON.
+							     The drive does not do any in this state.
+				      => 4,5,6 and 8
+					  	  这些bit位 因 operation mode 不同而不同。
+						   operation mode   4						5						  6				8
+						   		 Velocity	rfg enable				rfg unlock 				  rfg use ref	Halt
+                       	 Profile position	new set-point			change set immediately	  abs/rel		Halt
+						 Profile velocity	-						-	   	   				  -				Halt
+						   Profile torque	-						-						  -				Halt
+						           Homing	Homing operation start	-						  -				Halt
+                   Interpolation position	renable ip mode	 		-						  -				Halt
+
+				      => 9, 10
+					  	 	如果不用，必须 set to zero
+					  => 11, 12, 13, 14 and 15
+					  	    制造商 specific
+							
+
     	   0x6041	statusword
-		   0x605B	shutdown option code
+					    indicated the current state of the drive
+
+						0  Ready to switch on
+						1  switched on			; 01x 0011
+						2  Operation enabed		; 01x 0111
+						3  fault	 			; 0xx 1000
+						5  quick stop			; 00x 0111
+						   		 
+						6  disabled				; 1xx 0000
+						   			not ready	; 0xx 0000
+									ready 		; 01x 0001
+									fault react ; 0xx 1111
+						
+						4  voltage enabled		; xx1 xxxx
+						9  remote  				; if bit9 is set,
+						   						  then parameters may be modified via the CAN-network,
+												  	   (设置了这个bit，就可以 通过网络 修改参数, )
+												  and the drive executes the content of a command message
+												  	  ( 并 让驱动器 执行 the content of a command message )
+											    ; if bit9 是 0，
+												      drive就是处于 local mode, 将不会 执行 命令消息。
+													  drive 可以 transmit messages （依赖具体配置）
+													  drive 处于本地模式时， 接受 accesses via SDO
+													  
+						10 target reached	    ; 
+						11 internal limit active  ; 达到 内部 限制值
+						12 and 13 		  		; operation mode specific
+						   operation mode	12 	  			13
+						               vl	-				-
+						               pp	set-point ack	following error
+						               pv	speed	  		max slippage error
+						               tq	-				-
+						               hm	homing attained	homing error
+						               ip	ip mode active	-
+									   
+						14 and 15	   ;; 留给 drive manufacturer 使用
+		   0x605B	shutdown option code	关闭 操作
 		   0x605C	disable operation option code
-		   0x605A	quick stop option code
-		   0x605D	halt option code
-		   0x605E	fault reaction option code
-		   0x6060	modes of operation
-		   0x6061	modes of operation display
+		   0x605A	quick stop option code	快停 操作 码
+		   			    
+		   0x605D	halt option code		停止 操作 码
+		   0x605E	fault reaction option code	 错误复原 操作码
+		   			   如果驱动器中产生错误，应该采取什么行动。
+		   0x6060	modes of operation	  	操作状态
+		   0x6061	modes of operation display	显示当前的 操作模式
 
     => functional description
-	       modes of operation function
-		   drive disabling function
+	     =>modes of operation function
+		   	 设备的行为，依赖于 激活的模式。
+			 因为模式不能同时运行，所以用户通过选择一个 操作模式，来激活所需的功能。
+			 
+			 排他性功能的例子： 位置和力矩控制。
+			 	 在任何时候，都只能控制一个变量。变量只能执行最多一个功能。
+
+			 混合控制被认为是 mode operation的一个 独特的特性。
+			 	 一个例子是， 位置控制操作的同时，可以激活 encoder profile support,
+				 结果就是， encoder profile support 不被认为是 操作的一个模式。
+			 
+			 用户可以在 操作的多个模式之间切换。 (只要设备支持)
+
+			 modes of operation:
+			 	   Velocity Mode			( AC/DC drives, 无反馈 )
+				   Profile Velocity Mode	( servo drives, 反馈 )
+				   Torque Profile Mode
+				   
+				   Homing Mode
+				   
+				   Profile Position Mode
+				   Interpolated Position Mode
+				   
+		 =>drive disabling function 
 		   quick stop function
-		   stop function
-		   fault reaction
-		   	   fatal faults
-			   non-fatal faults
+		   stop function		;; controlword	bit8
+		   
+		   fault reaction		;; 驱动器错误
+		   	   fatal faults		;; 致命错误
+			   non-fatal faults ;;
 			   
 ## Cia SA 301 CANopen
