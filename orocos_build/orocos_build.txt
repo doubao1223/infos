@@ -327,4 +327,8 @@ Define the DEFAULT_PLUGIN_PATH cmake variable to override this.
     point    ccec6a2
 	
     cmake .. -DOROCOS_TARGET=xenomai -DCMAKE_INSTALL_PREFIX=/usr/include -DCMAKE_INSTALL_PREFIX=/usr/local
+	make
+	sudo make install
+	sudo ldconfig		;; 意思不明
+	
 
