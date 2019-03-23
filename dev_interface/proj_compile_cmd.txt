@@ -23,3 +23,26 @@
 -O0 -g3 -Wall -c -fmessage-length=0 -std=c++0x
 
 
+
+
+== dev_interface_lib
+
+
+== dev_interface_proj
+
+   /etc/ld.so.conf.d
+   => fakeroot-x86_64-linux-gnu.conf
+      x86_64-linux-gnu.conf
+	  xenomai.conf
+	  libc.conf
+	  x86_64-linux-gnu_EGL.conf
+	  ros.conf
+	  x86_64-linux-gnu_GL.conf
+
+   sudo ldconfig
+
+   => /etc/ld.so.conf.d
+        创建文件 orocos_xeno_plugins.conf
+		写入内容 /usr/local/lib/orocos/xenomai/plugins
+	    执行 sudo ldconfig
+		
