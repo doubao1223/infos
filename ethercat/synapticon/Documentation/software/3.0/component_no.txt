@@ -21,10 +21,16 @@ NO. 	 Hardware module/		     目录位置
 
 Component			modules
 ----------			------------
+Base				Board Support Module
+					SOMANET COM Recogniton Module
+					Locks Module
+					Reboot Module
+					Flash Service Module
+EtherCAT			EtherCAT Slave Library
 
-EtherCAT			
 EtherCAT Drive		Drive Module
 		 			EtherCAT PDO Handler Module
+				4.0 CANopen Interface Service	
 					
 Motion Control		PWM Module					 ;; 脉宽 调制信号
 	   				Position Feedback Module	 ;; 从各种 传感器　读 read position
@@ -47,5 +53,10 @@ Motion Control		PWM Module					 ;; 脉宽 调制信号
 					Profile Module		;; 包含 software for profile ramps generation
 					Motion Control Module   ;;  位置和速度控制　的服务
 					Shared Memory Module	;; 使能 asynchronous data access among tasks
+				  + Controllers Implementation Module ;;	
++ Ethernet		    Ethernet MAC (dual-port) Module
+  					Ethernet Hub Module
+					Ethernet SMI Module
+					
 					
 					

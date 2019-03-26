@@ -1,0 +1,21 @@
+
+2019年 03月 26日 星期二 17:31:18 CST
+
+== CANopen over EtherCAT
+
+     CiA402
+	 
+	 IEC 61800-7-201
+	   the state machine
+
+	 如果使用 TwinCAT, 需要 SOMANET CIA 402 ESI( 文件 SOMANET_CiA_402.xml )
+
+	 SDO	  ;; 用来配置　the devices of the motion control system
+	    不是实时的
+	 
+	 PDO	  ;; 用来传递 process data
+	 	producer/consumer principle
+		ETG 1000.5 和 1000.6
+
+		SOMANET 支持　PDO configuration for up to 20 objects
+	

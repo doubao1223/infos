@@ -1,0 +1,10 @@
+
+2019年 03月 26日 星期二 20:06:51 CST
+
+== Migration to v4.0
+    把 firmware 中的SDK升级到　the latest version of the SDK.
+
+	Upgrading from v3.2
+
+	Upgrading from v3.0
+	

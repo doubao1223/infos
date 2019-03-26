@@ -1,0 +1,52 @@
+
+2019年 03月 26日 星期二 09:54:34 CST
+
+== ethercat drive
+   以太工控网 驱动组件
+   这是一个针对特定应用的组件
+   ( 包含
+        使用 IFM DC-Drive 和 COM-EtherCAT 设备， 以 over EtherCAT 方式，
+        实现 BLDC Motor Motion Control 所需的 services 和 utitilies )
+
+   实现了 CiA 402-compliant Motion Control protocol.
+   ( 集中了 somanent motion control component提供的 所有的功能。)
+   ( 为特定应用需求 提供了灵活性 )
+
+=> hardware compatibility
+     somanet com -> EtherCAT
+	 somanet core -> C2X
+	 somanet drive -> Drive 400
+
+=> modules
+    = Drive Module
+		EtherCAT ;; master
+		  /\
+		  ||
+		  \/	
+		EtherCAT <-> Drive Module <-> Motor Control Libraries
+    -- EtherCAT PDO Handler Module
+	    user app  <==>  PDO handler Module  <==>  somanet ethercat
+		    在用户 和 ethercat 之间交换 PDO values.
+			
+    ++ CANopen Interface Service
+
+=> Examples
+     EtherCAT Drive App				;; 从站上的应用
+	 Master examples				;; 主站的应用
+	     1. Cyclic
+		      Position/Velocity/Torque control demo
+		 2. Special tuning mode application
+		 
+	 Test Master+Slave examples  	;; 主从交互
+	 	 PDO Handling Demo Slave	;; 简单通信
+		 	 		  	   Master   ;; 
+	     SDO Handling demo slave	;; 处理参数
+		 	 		  	   Master	;; 访问 从站的 od, 读、写对象值
+=> Dependencies
+	 somanet Motion Control
+	 somanet EtherCAT
+	 somanet Base
+=> Important
+     如果要在 Linux 机器上运行 EtherCAT Drive Master相关应用，
+	 必须安装 所有需要的驱动程序.
+	 

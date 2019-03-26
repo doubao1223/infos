@@ -1,0 +1,55 @@
+
+2019年 03月 26日 星期二 15:47:16 CST
+
+== Motion Control
+     提供 modules 和 libraries，
+	     运行 BLDC Motor
+		 Motion Controls
+
+	 具体如下：
+		 BLDC motors control
+		 Field Oriented Control ( FOC )
+		 Posiiton, Velocity, and Torque control loops
+		 Runtime reconfigurable Feedback Sensor support
+		     Hall Sensor,
+			 Incremental (AB and ABI),
+			 BiSS,
+			 Magnetic Rotary encoders via SPI
+
+		 Basic Motion Profile Generation
+		 Fully featured ADC drivers
+		 Configurable software-defind PWM module
+		 Watchdog
+		 GPIO server ( e.g. for homing-related functions )
+		 
+== hardware
+	 Core C2X
+	 Drive 400
+
+== Modules
+	 PWM Modules
+	 ...
+	 Shared Memory Module
+
+== Examples
+     Low level functionality tests
+	   PWM Demo
+	 Position Feedback Sensors tests
+	   Hall Sensor Test
+	   Incremental Encoder Test
+	   BiSS Absolute Encoder Test
+	   REM 14 Absolute ENcoder Test
+	   REM 16MT Absolute Encoder Test
+	   Position Feedback Service Test
+	 BLDC Motor Control and Tuning demos
+	   BLDC Control Tuning Demo
+	   BLDC Torque Control Demo
+	   BLDC Motion Control Demo
+
+== Motor Control Quick Guides
+     Motion Control Components configuration
+
+== Dependencies
+     Base
+	 
+

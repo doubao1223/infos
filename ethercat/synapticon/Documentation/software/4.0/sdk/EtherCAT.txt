@@ -1,0 +1,24 @@
+
+2019年 03月 26日 星期二 15:00:26 CST
+
+== EtherCAT Component (软件组件)
+     slave driver (驱动 SOMANET hardware modules和SoCs )
+	 提供的功能，如：　firmware的布置和更新
+
+	 要访问 EtherCAT的functions, 需要
+	　　 在 Makefile 里， include lib_ethercat
+		 在你的应用里， #include <ethercat_service.h>
+
+=> hardware
+    Core ( C22 )
+	COM EtherCAT
+
+=> Modules
+	 EtherCAT Slave Library
+	   这个库中包含 Beckhoff ET1100 EtherCAT chip的驱动，并支持 PDO, CoE and FoE data handling.
+=> Examples
+     FoE firmware update demo
+
+=> Dependencies
+     Base
+

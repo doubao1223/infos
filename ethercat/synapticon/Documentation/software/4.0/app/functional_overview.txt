@@ -1,0 +1,37 @@
+
+2019年 03月 26日 星期二 17:04:03 CST
+
+== 功能全图 ( Functional Overview )
+
+	 basic architecture of the servo drive system
+
+     ========================================
+	 EtherCAT Slave Stack						firmware updates, storing of configuration files via EtherCAT
+	 ( CoE, FoE )								
+	 ========================================
+	 CANopen 402 Drive Spec Protocol,
+	 State Machine & Machine Specifics
+	 ========================================
+	 Position control    |   
+	 ----------------    |  Additive Torque
+	 Velocity Control    |     
+	 --------------------
+	 Torque Control                  <- Cogging Compensation (齿轮牙 补偿)
+	 								 <- Friction Compensation
+	 ========================================
+	 Model-predictive
+	 Fiel-oriented Control
+	 ========================================
+	 position | PWM		   | Current | Torque
+	 sensor   | Generation | sensor  | sensor
+	 ==============|==========|==============
+	 位置传感器	   |__________|		  力矩传感器
+	 			   |
+	 			   电机
+
+== Functionality description
+操作模式：
+	CSP, Cyclic Synchronous Position Control
+	CSV, 					Velocity
+	CST,					Torque
+	

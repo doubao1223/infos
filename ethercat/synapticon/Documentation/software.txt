@@ -1,0 +1,23 @@
+
+2019年 03月 25日 星期一 19:31:17 CST
+
+== somanent software
+
+3.0									4.0/4.1
+== somanent applications						
+    somanent servo node ethercat	<=			
+	
+== somanent sdk				
+									Migration to v4		
+    somanent base					<=
+	ethercat 						<=
+									ethernet
+	motion control					<=
+	ethercat drive					network drive
+	
+	
+
+
+   
+
+
