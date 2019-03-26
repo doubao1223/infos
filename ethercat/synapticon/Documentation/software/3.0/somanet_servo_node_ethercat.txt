@@ -1,0 +1,44 @@
+
+2019年 03月 25日 星期一 19:50:27 CST
+
+伺服结点 EtherCAT
+
+     EtherCAT伺服驱动系统块图 ( somanet servo node )
+
+	 EtherCAT Slave Stack ( CoE, FoE )
+	 ========================================
+	 CANopen 402 Drive Spec Protocol,
+	 State Machine & Machine Specifics
+	 ========================================
+	 Position control    |   
+	 ----------------    |  Additive Torque
+	 Velocity Control    |     
+	 --------------------
+	 Torque Control                  <- Cogging Compensation (齿轮牙 补偿)
+	 								 <- Friction Compensation
+	 ========================================
+	 Model-predictive Fiel-oriented Control
+	 ========================================
+	 position | PWM		   | Current | Torque
+	 sensor   | Generation | sensor  | sensor
+	 ==============|==========|==============
+	 位置传感器	   |__________|		  力矩传感器
+	 			   |
+	 			   电机
+
+== Functionality description
+操作模式：CSP, CSV, CST.
+
+Update firmware and storing files is possible over EtherCAT (FoE)
+Multiple concurrent encoders (for example BiSS, Hall, SSI) are supported.
+OBLAC Drives
+
+== Getting started
+     Each system needs a master software that commands the slaves,
+
+	 IgH Master for Linux
+	 Windows: Beckhoff's TwinCAT documentation
+
+== Operating your Servo Node
+   	  refer to : Operation Manual	STEP 3: SOMANENT Servo Node Operation Manual
+	  		

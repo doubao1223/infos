@@ -1,0 +1,23 @@
+
+2019年 03月 26日 星期二 09:34:51 CST
+
+== somanet base ( software component )
+   基础软件组件
+     a collection of
+	 	necesary utilities and basic firmware
+		for somanent programming
+		
+=> important
+	 always need to include
+	 
+=> modules
+	 board support module			 ;; 板支持 
+	 somanet com recognition module  ;; com自动识别
+	 locks module 			 		 ;; API( 并行任务使用的 锁)
+	 reboot module					 ;; API( 重启 somanet chip)
+	 flash service module			 ;; API( access internal flash )
+
+=> Examples
+	XScope Test		 ;; 可用
+	COM-detect Test  ;; 不对外
+

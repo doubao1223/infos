@@ -1,0 +1,14 @@
+
+2019年 03月 26日 星期二 16:46:51 CST
+
+== SOMANET Software 4.0
+
+   => Applications
+		EtherCAT Drive application
+		
+   => SDK
+		Base
+		EtherCAT
+		Motion Control
+	    EtherCAT Drive
+
