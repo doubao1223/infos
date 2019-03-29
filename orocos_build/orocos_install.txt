@@ -1,43 +1,178 @@
 
 2019年 03月 07日 星期四 10:45:13 CST
+说明：　the RTT uses the CMake build system
+		     for configuring and building the library.
 
-## 设置 orocos　的安装环境
+## 依赖安装
+== cmake
+   sudo apt-get install cmake
+   ----------
+   查看版本
+   cmake --version
    
-   	=>构建依赖
-		CMake					>=2.6.3
-		Boost C++ Library 		>=1.33.0(1.40.0 recommended)
-		Boost C++ Test Library 	1.33.0  ;; 单元测试使用
-		  两个前提： 1. build RTT from source
-			        2. ENABLE_TESTS=ON
-		Boost C++ Serialization Library		1.37.0
-		GNU gcc/g++ Compilers   3.4.0				;; 4.x series also is ok.
+== ccmake  ;; 给 cmake 的配置参数的工具
+   sudo apt-get install cmake-curses-gui
 
-	=>安装
-	    CMake
-			方式一：　apt-get install cmake
-			方式二：　www.cmake.org 从源码安装
-		Orocos
-			tar -xvjf orocos-rtt-2.9.0-src.tar.bz2
-			mkdir orocos-rtt-2.9.0/build
-			cd orocos-rtt-2.9.0/build
-			cmake ..
-				  -DOROCOS_TARGET=<target>						;; xenomai
-				  [-DCMAKE_PREFIX_PATH=/opt/orocos]				;; Boost
-				  [-DCMAKE_INSTALL_PREFIX=/usr/local]			;; where to install the RTT
-				  [-DLINUX_SOURCE_DIR=/usr/src/linux]			;; Linux kernel
-　　		make									;; 创建　liborocos-rrt-xenomai.so
-													;;如使能了 corba　是　liborocos-rtt-corba-xenomai.so
-			sudo make install 						;; 默认安装是　/usr/local
+== boost 库　;; orocos 依赖
+   sudo apt-get install libboost-all-dev  ;; 默认安装　boost 1.58.0
+   ----------
+   安装位置
+     /usr/include/boost			; 头文件
+	 /usr/lib/x86_64-linux-gnu	; 库
 
-	=>组件
-		RTT
+## OROCOS组件安装
+== Log4cpp
+   https://github.com/orocos-toolchain/log4cpp.git
+   git checkout    toolchain-2.9
+    point    1f6915e
+   ----------
+    mkdir -p build 
+    cd build
+	
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/orocos
+		  ----------
+		  更详细的环境变量配置，可以使用 ccmake ..
+		  ----------
+    make 
+    sudo make install
+    ;; sudo ldconfig
+　 ----------
+	安装后的文件: /usr/local/orocos/	include/orocos/log4cpp
+										lib/liborocos-log4cpp.so.2.9.0
+											
+										
+== rtt 安装
+    在~/.bashrc中，设置xenomai的路径
+        export XENOMAI_ROOT_DIR=/usr/xenomai
+		---------- 下面这两个还要看一下是不是有用 ----------
+		#export XENOMAI_INCLUDE_DIR=/usr/xenomai/include
+        #export XENOMAI_NATIVE_LIBRARY=/usr/xenomai/lib
+		
+	git clone https://github.com/orocos-toolchain/rtt.git
+	分支：ahoarau-xenomai3-support-v2
+	checkout point: 576720c
+	cd rtt
+	mkdir build
+	cd build
+	----------
+    cmake ..
+	信息如下：
+		No  OROCOS_TARGET  environment varaible set	　　
+		   ;;　需要设备环境变量 OROCOS_TARGET
+		   ;; -DOROCOS_TARGET=xenomai
+		   
+		Could Not Find Xerces (missing: XERCES_C_LIBRARY XERCES_INCLUDE_DIR)
+		   ;; 没有装Xerces，我应该不需要这个东西。　
+		   => sudo apt-get install libxerces-c3-dev
+		   
+		Could NOT find Boost
+	 	   => sudo apt-get install libboost-all-dev  ;; 默认安装　boost 1.58.0
+		   主要使用了
+				libboost_filesystem.so
+		   		libboost_system.so
+				libboost_unit_test_framework.so
+				libboost_thread.so
+				libboost_serialization.so
+		
+		No default plugin path given, setting it to /usr/local/lib/orocos.
+		Define the DEFAULT_PLUGIN_PATH cmake variable to override this.
 
-		OCL ;; the OCL is now part of the Orocos Toolchain and should
-			   seldomly be installded separately.
+		[-DCMAKE_PREFIX_PATH=/opt/orocos]		;; Boost
+		[-DCMAKE_INSTALL_PREFIX=/usr/local]		;; where to install the RTT
+		[-DLINUX_SOURCE_DIR=/usr/src/linux]		;; Linux kernel
+		
+	cmake .. -DOROCOS_TARGET=xenomai -DCMAKE_INSTALL_PREFIX=/usr/local/orocos
+	
+	ccmake ..
+		BUILD_STATIC	on
+		OROSEM_LOG4CPP_LOGGING
+		XENOMAI_POSIX_XENO_CONFIG	/usr/xenomai/bin/xeno-config
+		----------
+		因为log4cpp使用了自定义的安装位置，脚本找不到，需要指定。
+		所心在 ccmake 中，使用 [t] 打开advanced mode
+	   　　设置
+		   LOG4CPP_INCLUDE_DIR=/usr/local/orocos/include/orocos
+		   LOG4CPP_LIBRARY=/usr/local/orocos/lib/liborocos-log4cpp.so
+		----------
+　　make								;; 创建　liborocos-rrt-xenomai.so
+										;; 如使能了 corba　是　liborocos-rtt-corba-xenomai.so
+		说明：
+			Xenomai 3.0.8 alchemy skin
+			Xenomai 3.0.8 posix skin
+			
+	sudo make install 					;; 安装位置 CMAKE_INSTALL_PREFIX
+	
+    ----- warning -----
+	Could NOT find Xerces (missing: XERCES_C_LIBRARY_INCLUDE_DIR)
+    => sudo apt-get install libxerces-c3-dev
+	
+	Cmake Error at config/LibFindMacros.cmake:74 (message)
+     Required library XENOMAI NOT
+    => export XENOMAI_ROOT_DIR=/usr/xenomai
 
-## 源代码需要设置么？
+    Found XenomaiPosix in XENOMAI_POSIX_INCLUDE_DIR-NOTFOUND
+    Optonal library XENOMAI_POSIX NOT FOUND.
+	=> ccmake ..
+	XENOMAI_POSIX_XENO_CONFIG	/usr/xenomai/bin/xeno-config
 
-## 详细配置(using CMake)
+	安装后的文件: /usr/local/orocos/include/rtt
+				 /usr/local/orocos/lib/
+										liborocos-rtt-xenomai.a
+										liborocos-rtt-xenomai.so.2.9.0
+										
+										liborocos-rtt-mqueue-xenomai.so.2.9.0
+										liborocos-rtt-mqueue-xenomai.a
+										
+										
+== OCL
+    分支     toolchain-2.9 
+    point    ccec6a2
+    cmake .. -DOROCOS_TARGET=xenomai -DCMAKE_INSTALL_PREFIX=/usr/local/orocos
+	  ----------
+	  在ccmake中切换到 advanced mode
+	  LOG4CPPD_LIBRARY=/usr/local/orocos/lib/liborocos-log4cpp.so
+	  LOG4CPP_INCLUDE_DIR=/usr/local/orocos/include/orocos
+	  LOG4CPP_LIBRARY=/usr/local/orocos/lib/liborocos-log4cpp.so 
+	  ----------
+	make
+	sudo make install
+	;; sudo ldconfig		;; 意思不明
+    ----------
+	安装后的文件: /usr/local/orocos/include/orocos/ocl
+				 /usr/local/orocos/lib/
+										liborocos-ocl-taskbrowser-xenomai.so.2.9.0
+										liborocos-ocl-log4cpp-xenomai.so.2.9.0
+										liborocos-ocl-deployment-xenomai.so.2.9.0
+				 
+== rtt 的 cmake　配置信息
+==========================================
+Xenomai 3.0.8 alchemy skin
+    libs        : -lalchemy;-lcopperplate;/usr/xenomai/lib/xenomai/bootstrap-pic.o;-L/usr/xenomai/lib;-lcobalt;-lmodechk;-lpthread;-lrt
+    include     : /usr/xenomai/include/cobalt;/usr/xenomai/include;/usr/xenomai/include/alchemy
+    definitions : -D_GNU_SOURCE;-D_REENTRANT;-D__COBALT__
+    ldflags     : -Wl,--no-as-needed -Wl,@/usr/xenomai/lib/modechk.wrappers
+    cflags      : -fasynchronous-unwind-tables
+==========================================
 
-## 交叉编译
+-- Found XENOMAI 3.0.8
+-- Xenomai 3.0.8 detected, searching for posix skin.
+-- 
+==========================================
+Xenomai 3.0.8 posix skin
+    libs    : -L/usr/xenomai/lib;-lcobalt;-lmodechk;-lpthread;-lrt
+    include : /usr/xenomai/include/cobalt;/usr/xenomai/include
+    ldflags : -Wl,--no-as-needed -Wl,@/usr/xenomai/lib/cobalt.wrappers -Wl,@/usr/xenomai/lib/modechk.wrappers    -L/usr/xenomai/lib -lcobalt -lmodechk -lpthread -lrt
+    cflags  : -I/usr/xenomai/include/cobalt -I/usr/xenomai/include -D_GNU_SOURCE -D_REENTRANT -fasynchronous-unwind-tables -D__COBALT__ -D__COBALT_WRAP__
+==========================================
+
+-- Found XENOMAI_POSIX 3.0.8
+-- XENOMAI_DEFINITIONS : _GNU_SOURCE;_REENTRANT;__COBALT__
+-- Found Doxygen -- API documentation can be built
+TLSF settings: -Wextra -Wall -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wno-long-long -Wstrict-aliasing=2 -DUSE_SBRK=1 -DUSE_MMAP=1 -D_GNU_SOURCE -DTLSF_STATISTIC=1 -fno-strict-aliasing
+Building MQueue Transport library (Requires Boost >= 1.37.0).
+No default plugin path given, setting it to /usr/local/lib/orocos.
+Define the DEFAULT_PLUGIN_PATH cmake variable to override this.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/luoshi/work/rtt_xenomai3/build
 
