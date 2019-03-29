@@ -17,8 +17,8 @@
 	   echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
 	   source ~/.bashrc
 	   sudo apt-get install ros-kinetic-ros-control
-	   在 /etc/ld.so.conf.d 目录中添加 ros.conf文件， ros.conf 文件中加入 '/opt/ros/hydro/lib'
-	   sudo ldconfig
+	   在 /etc/ld.so.conf.d 目录中添加 ros.conf文件， ros.conf 文件中加入 '/opt/ros/kinetic/lib'
+	   ;; sudo ldconfig
 
 
 == ccache
