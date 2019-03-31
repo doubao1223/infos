@@ -1,0 +1,114 @@
+
+2019年 03月 13日 星期三 20:03:50 CST
+
+== kernel
+     => context_tracking.c  2(218)
+	 	exit.c 				2(1768)
+		fork.c				4(2486)
+		module.c			4(4368)
+		panic.c				3(633)
+		signal.c			4(3778)
+		stop_machine.c		2(684)
+		
+	 => debug
+	      debug_core.c   9 differs
+*	 => ipipe	 
+	 	  core.c		1978 lines
+		  timer.c		630 lines
+		  tracer.c		1486 lines
+	 =>	irq
+	      chip.c		33 differs
+		  dummychip.c	2  differs
+		  generic-chip.c  27 differs
+		  internals.h   1 differs
+		  irqdesc.c		3
+		  manage.c		3
+		  msi.c			3
+	 => locking
+	 	  lockdep.c		8
+		  lockdep_internas.h  2
+		  spinlock.c    1
+	 => power
+	 	  hibernate.c	3
+	 => printk
+	      printk.c		8 
+	 => sched
+	      core.c		22
+		  idle.c		7
+		  wait.c		1
+ 	 => time
+		  clockevents.c	2
+		  timekeeping.c 1
+		  timer.c		3
+	 => trace
+		  ftrace.c			10
+		  ring_buffer.c		6
+		  trace.c			4
+		  trace_clock.c		2
+		  trace_functions.c 2
+		  trace_functions_graph.c 4
+		  trace_irqsoff.c   5
+			
+*    => xenomai
+          => rtdm(kernel/cobalt/rtdm)
+		       wrappers.c
+			   internal.h
+			   fd.c
+			   drvlib.c
+			   device.c
+			   core.c
+			   
+		  => posix(kernel/cobalt/posix)
+			   clock.h./.c
+   			   cond.h/.c			   
+		  	   timer.h/.c
+			   timerfd.h/.c
+			   thread.h/.c
+			   syscall32.h/.c
+			   signal.h/.c
+			   event.h/.c			   
+			   sem.h/.c
+   			   nsem.c
+
+			   sched.h/.c
+			   process.h/.c
+			   mutex.h/.c
+			   mqueue.h/.c
+			   monitor.h/.c
+			   memory.h/.c
+			   io.h/.c
+			   
+			   internal.h
+			   extension.h
+
+			   corectl.h/.c
+
+			   compat.c
+		  => (kernel/cobalt)
+			    apc.c
+				arith.c
+				bufd.c
+				clock.c
+				debug.h/.c
+				heap.c
+				init.c
+				initr.c
+				lock.c
+				map.c
+				pipe.c
+				procfs.h/.c
+				registry.c
+				sched.c
+				sched-idle.c
+				sched-quota.c
+				sched-rt.c
+				sched-sporadic.c
+				sched-tp.c
+				sched-weak.c
+				select.c
+				synch.c
+				thread.c
+				timer.c
+				tree.c
+		        vfile.c
+

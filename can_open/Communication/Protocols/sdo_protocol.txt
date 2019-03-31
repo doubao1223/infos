@@ -1,0 +1,30 @@
+
+== SDO protocol ( service data object protocol )
+   	   用途
+           从远程设备的 object dictionary
+	   				设置 values
+		 			读取 values
+	   角色			
+           SDO server		  被访者( device is accessed )
+	       SDO client 		  访问者( device accessing )
+
+	   发起
+		   通信总是由 SDO client 初始化。
+
+	   SDO upload/downlaod
+	       CANopen是站在 SDO server的视角上进行描述，(我是 server)
+	         从 a object dictionary 读的动作， 我把 SDO 给了请求者，
+	        	 对我来说就是一个 SDO upload.
+	         写到 a object dictionary的动作， 请求者给了我一个 SDO,
+	        	 我得到了一个SDO, 对我来说就是一个 SDO download.
+	   为了解决一个问题：
+		   object dictionary values 会大于 8 个字节， SDO protocol implements
+		       segmentation and desegmentation of longer messages.
+
+		   实际上有两个子协议
+			   SDO download/upload
+			   SDO Block downlaod/upload
+
+后面部分没有看懂
+
+		   

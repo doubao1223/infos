@@ -1,0 +1,70 @@
+
+
+2019年 02月 26日 星期二 11:51:03 CST
+
+== GmbH
+
+     Which is written after the name of a German company, designates
+	 is as a private entity.
+
+	 THe letters stand for
+	 	 Gesellschaft mit beschränkter Haftung,
+	 means a 'company with limited liability'.
+
+== AG
+	 publicly traded
+
+	 an abbreviation for the German word
+	   Aktiengesellschaft,
+	 which literally translates to 'stock corporation' or
+	 	   'shares corporation' in English.
+		   
+== acontis
+     完整符合 EtherCAT Master Classes指令 (ETG.1500)
+	 协议栈 独立于 操作系统和编译器
+	 支持多种CPU架构
+	 支持SMP多核处理
+	 提供两人个产品版本：
+		Class A  ;;完整功能
+		Class B  ;;基础功能
+     支持从站之间通信
+	 支持分布式时钟(DC)、模式同步（包括主站同步) (DCM)
+	 
+== License.txt
+   => Definitions
+      -> SDK
+   	  -> Documentation
+      -> Product
+      -> Product line
+      -> Target System
+
+   => Delivery of Software
+   	  -> Subject Matter
+	  -> Right of Use
+	  -> Performance
+	  -> Customer's Obligations Regarding Software Protection
+	  -> Subject Matter
+	  -> Correction of Defects
+	  -> Further Development of the Software under Maintenance
+	  -> Compensation for Maintenance
+	  -> Charges and Payments
+	  -> Disruptions in the Performance, Default
+	  -> Remote Support
+	  -> Remedy of Defects
+	  -> acontis's Liability
+	  -> Confidentiality Obligations
+	  -> Miscellaneous
+	  
+== 主栈协议栈 EC-Master
+   			  EtherCAT Application
+
+			  EtherCAT Master Core
+
+			  OS Layer 		  EC Link Layer
+			  
+== DCM
+   Synchronization between master and slaves
+   
+
+== 明白人
+    张晓鹏

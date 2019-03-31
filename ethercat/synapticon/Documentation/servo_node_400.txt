@@ -1,0 +1,72 @@
+
+2019年 03月 23日 星期六 10:36:11 CST
+
+Somanet Servo Node 400 EtherCAT
+
+== About
+
+  Featuring Com EtherCAT, Core C2X and Drive 400, the SOMANET Servo
+  Node 400 EtherCAT controls and drives one permanent magnet
+  synchronous motor (PMSM, BLDC) up to 415 Watt nominal power.
+
+  SOMANET Servo Nodes:
+  		  Meet the most compact and flexible embedded
+  		  EtherCAT Servo Drives.
+		  
+== Description
+
+   Number of brushless / brushed DC motors*		1 / 2*
+   Rated supply voltage	 		 				12 - 48 / 60 V DC
+   Maximum input current DC / phase current		9.6 A
+   Maximum phase current RMS					13.2 A
+   Maximum continuous output power				415 W
+   Efficiency		  		 					98%
+   
+   Position feedback sensor support (2 ports)	Hall, Incremental Encoder (QEI, ABI, ABZ),
+   					 				   			BiSS-C, SSI, SPI**, I²C**
+   
+   Analog inputs (auxiliary)					2 × single-ended 0-10 V, 2 × differential ±5 V
+   		  		 								(All Analog Inputs are hardware-configurable upon
+												request: 0-5 V, 0-10 V, 0-20 V, ±5 V, ±10 V)
+
+   Digital I/O	 				  				4 × GPIO / SPI** / I²C** / UART
+   		   										(Two Digital IO can be configured as
+												 5.0 V CMOS logic upon request)
+
+  Notes:	 		   			  	 	   		* Currently not supported by our standard software.
+  												Can be developed upon request, please contact
+												our Sales team for details.
+												** Upon Request
+
+												Please refer to our product documentation for
+												more detailed specifications
+== technology
+
+    Highly efficient model-predictive, field-oriented motor control
+    software with advanced compensation of unwanted physical effects
+    in drive (e.g. cogging)
+	
+    EtherCAT or Ethernet communication (Profinet, SERCOS III, CAN,
+    RS-485, WiFi and Bluetooth available on demand) through SOMANET
+    Com modules
+	
+    DS402 position, speed and torque/current control loops
+	
+    High-res, high-speed ADCs for precise current and voltage measurements
+	
+    Advanced protection circuitry
+	
+    Control feedback through encoders and additional sensors via Hall,
+    QEI/ABI/ABZ (RS-422), BiSS-C (RS-422), SSI, SPI, I2C and analog
+    interfaces
+
+== applications
+    Applications for the SOMANET EtherCAT Drive include for example:
+
+        Traditional Robotic Arms 		  传统机器人手臂
+        Collaborative Robotic Arms		  协作机器人手臂
+        Automated Guided Vehicles		  自动导航车
+        Service Robots	 				  服务机器人
+        Conveyor Belts					  传送带
+        Special Machinery				  特殊机械
+

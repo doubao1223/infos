@@ -1,0 +1,66 @@
+
+2019年 03月 23日 星期六 13:43:52 CST
+
+== Hardware ( SOMANET Servo Drive Node 400 )
+
+     => Drive 400		;;驱动控制器
+	      支持所有的 BLDC motors up to 60V
+		  
+    	  LED Indicator
+		  
+		    Com LEDs
+		    Core LED
+		    Drive LEDs
+	     ref: https://doc.synapticon.com/hardware/servo_nodes/servo_node_1000_ethercat/led_indicator/index.html
+						  
+     => Core (Processor Modules)
+		  1个 SoC core provides up to 8 deterministic real-time hardware threads.
+		    This enables to run every timing-critical application in a seperate thread.
+			No Need to struggle with execution sequences in main loops
+			   or resource-consuming microcontroller OS.
+			   
+		我司使用的产品型号是:　SOMANET Core C2X rev A.4
+			1个 dual-core Soc processor (32-bit)
+			16 deterministric real-time threads
+			
+			Core clock frequency								500MHz
+			Maximum clock frequency usable by single thread		125 MHz
+			Minimum guaranteed clock frequency per thread		63 MHz
+			
+			Maximum inter-core bus speed	   	   				250 Mbit/s
+			
+			Dirstributed SRAM size		2x 256 kByte
+			Flash memory size 			16 Mbit
+			consuming less thant 1 Watt.
+
+			watchdog  	   		 
+			real-time clock		 
+			temperature sensor
+			fedly programmable RGB LED
+		ref:
+			https://doc.synapticon.com/hardware/core/core_c2x/a4/docs/index.html
+			
+     => Com EtherCAT (Communication Modules) 
+	 		the Beckhoff's ET1100 EtherCAT Slave Controller
+
+				FMMU's     		  		    8
+				SYNC manager				8
+				Distributed Clocks		    Yes (64bits)
+				DPRAM						8 kB
+				Configuration memory 		16 kB
+				Intreface to Core board 	16 bit
+				Distributed SRAM size		4x 64 kB
+				Ethernet magnetics on-board	Yes
+				
+	    我司使用的产品型号是:　Com EtherCAT rev B.2
+
+		ref: https://doc.synapticon.com/hardware/com/com_ethercat/b1/docs/index.html
+
+
+     =>	Drive & IO
+
+	 	   motors or sensors  < -- > the processor
+		   supporting sensors like force/torque, sonar, IR, LIDAR and Cameras.
+		   
+	 => Accessories
+

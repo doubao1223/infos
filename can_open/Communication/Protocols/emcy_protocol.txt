@@ -1,0 +1,10 @@
+
+== EMCY protocol (Emergency Object protocol)
+
+    背景
+	    发生device internal fatal error后，会触发Emergency messages.
+    用途
+		interrupt type error alerts.
+
+
+   

@@ -1,0 +1,61 @@
+
+2019年 03月 12日 星期二 16:52:11 CST
+
+== EtherCAT
+     Ethernet for Control Automation Technology,
+	   Beckhoff发明的
+	 基于 CANopen protocol
+	 EtherCAT technology group 维护
+
+	 Ethernet 和 EtherCAT 的区别
+	 =>Ethernet，设计为 在许多不同节点之间，传送 large amounts of data
+	     不同节点的数据可以 达到 几十亿个 (billions of separate addresses)
+		 允许了在如此大的一个网络中进行通信。
+	 => EtherCAT
+	     short cycle time
+		 full duplex, master-slave configuration
+		 fast
+			30us 处理 1000 I/O points
+			100us 和 100 servo axes 通信
+			The aces receive set values and control data and report actual
+			  porisiont and status.
+			Axes are synchronized using a distributed clock technique
+			  that's a simple version of IEEE1588 and (分布式时钟技术)
+			  reduce jitter to less than 1 us
+			        (抖动)
+		 The EtherCAT protocol delivers fast throughput because
+		   messages are processed in hardware before they're forwared to
+		     the next slave.
+		 Slaves read data relevant to them as the data frame passes and
+		   they insert new data into that same data stream on the fly.
+		 This doesn't depend on the run-time of the protocol stack,
+		   so processing delays are typically just a few nanoseconds.
+== EtherCAT 主站
+   	　两种开发模式：
+			付费的商业化解决方案，比如 twincat接口
+			开源的etherlabmaster
+
+      关键点：
+			实现主站在 DC 模式下，使从站稳定的运行在OP状态下。
+			主站的时钟要跟参考时钟同步起来。
+　　　使用方式：
+		 　 ethercat使用，需要付费注册成为 ETG 会员。
+
+== 伺服 从站
+
+    CoE: 基于EtherCAT的CANopen通信； 
+    DC:  分布式时钟； 
+    ENI: EtherCAT Network Information的缩写，即EtherCAT网络信息； 
+    EoE: 基于EtherCAT的以太网； 
+    ESC：EtherCAT Slave Controller的缩写，EtherCAT从站控制器； 
+    EMI：EtherCAT Master Information的缩写，EtherCAT主站信息； 
+    ESI：EtherCAT Slave Information的缩写，EtherCAT从站信息； 
+    ESM: EtherCAT State Machine 的缩写，即EtherCAT状态机； 
+    FoE: 基于EtherCAT的文件访问； 
+    PDO: 过程数据对象； 
+    SDO：服务数据对象； 
+    DLPDU:数据链路层处理数据单元； 
+    SII: 从站信息接口； 
+    SoE: 基于EtherCAT伺服描述； 
+    SOP: 开始帧。
+    

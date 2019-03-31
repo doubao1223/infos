@@ -3,6 +3,11 @@
 
 == Bus options (PCI etc.)
       => PCI support
+	  	 	PCI Express Hotplug driver ---> disable
+			PCCard (PCMCIA/CardBus) support ---> disable
+			Support for PCI Hotplug
+			
+			
             ...
             Message Signaled Interrupts ( MSI and MSI-X )
              使能 ( 默认就是这个 ) ( enable  PCI_MSI )

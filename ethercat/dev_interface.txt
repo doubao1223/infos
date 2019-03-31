@@ -1,0 +1,54 @@
+
+2019年 03月 15日 星期五 15:24:11 CST
+
+
+== dev_interface_lib/proj 综合
+
+    3rdparty
+    	EcMaster
+    		lib	(SDK/LIB/Xenomai/x64Cobalt)
+			 	libEcMaster.a
+    dev	(从栈设备么?)
+    	ethercat
+    		ethercat_interface.cpp		*　没有
+    		ethercat_def.hpp			*
+    		ethercat_interface.hpp		*
+    		acontis
+				acontis_common.cpp/.hpp			*
+				acontis_logging.cpp/.hpp		*
+				acontis_notification.cpp/.hpp	*
+				EcOs.cpp						*
+				ethernet_ip_io_instance.cpp/.hpp	*
+				force_sensor_instance.cpp/.hpp	*
+				io_board_instance.cpp/.hpp		*
+				outer_encoder_instance.cpp/.hpp	*
+				profinet_io_instance.cpp/.hpp	*
+				safety_plc_instance.cpp/.hpp	*
+				servo_instance.cpp/.hpp			*
+				acontis_def.hpp					*
+				ec_slave_info.hpp				*
+				common	(Sources/Common)
+					EcTimer.h						
+	inc
+		acontis
+			Xenomai	(SDK/INC)
+				AtEmRas Clnt.h			/* Client */
+	            AtEmras	ClntVersion.h
+				
+	            AtEmRas Error.h
+	            AtEmRas Srv.h			/* Server */
+	            AtEmRas SrvVersion.h
+	            AtEmRas Type.h
+                AtEthercat.h	/* ethercat master 的接口文件 */
+	            /* Ec, EtherCat
+	             */
+	            Ec Common.h		/* Common header shared by all AT-EM layers */
+	            Ec Error.h		/* EtherCAT Master error definitions */
+	            Ec EscReg.h		/* ESC Controller Registers */
+	            Ec InterfaceCommon.h   /* EtherCAT Master common definitions for interfaces */
+	            Ec Link.h		/* EtherCAT Master link layer interface */
+	            Ec ObjDef.h
+	            Ec Os.h			/* EC-Master  OS-Layer header */
+	            Ec Type.h
+	            Ec Version.h
+	            Ethernet Services.h

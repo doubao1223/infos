@@ -1,0 +1,38 @@
+
+== PDO protocol ( Process Data Object protocol )
+   	   用途
+		   多个节点之间处理实时数据( real time data )
+		   
+		   1个 PDO 可以包括 多个 object dictionary entries.
+		   PDO内的 objects 可以使用
+		       mapping and parameter object dictionary entries 进行配置。
+			   
+	   两种类型的PDO
+		   Transmit PDO	  Me --->	data comming from me, me is producer
+	       receive PDO	  Me <---   data going to me
+
+		   如果要 发送数据给Me, 用 rPDO
+		   如果要 从Me读取数据, 用 TPDO
+		   
+	   PDO的发送方式
+	      PDO可以同步发，也可以异步发。
+
+		  同步PDOs的发送
+			  在 SYNC 消息之后
+		  异步PDO的发送
+			  在内部或者外部触发后 发送。
+
+	   使用举例
+		  场景一单个PDO：
+			  向一个设备请求你要的数据，
+			  换个说法，你请求一个设备 传输 TPDO给你，
+			      这个TPDO包含你要的数据。
+			  发送 一个 empty TPDO 给设备！(with the RTR flag)
+
+		  场景二多个PDO：			  
+		      同时启动两个设备。
+			  map 相同的 RPDO into 两个或多个不同的设备
+			  	  (要保证 这些 RPDOS are mapped with the same COB_ID.)
+						 
+	   
+   	       

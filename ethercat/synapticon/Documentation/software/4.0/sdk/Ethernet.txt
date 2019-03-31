@@ -1,0 +1,10 @@
+
+2019年 03月 26日 星期二 20:40:47 CST
+
+== Ethernet Library
+
+Hub				module ethernet_hub
+MAC1   MAC2		module ethernet_dual
+PHY1   PHY2		somanet com ethernet board
+
+

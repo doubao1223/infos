@@ -1,0 +1,18 @@
+
+
+== Demo
+	ATEMDEmoConfig.h
+		thread priorities
+		timer settings
+		静态 EtherCAT master configuration values
+
+		eUsrJob_SendAcycFrames 一个周期发几个 frames
+
+
+== Demo2
+
+
+== DemoDc
+
+
+== DemoSyncSm
