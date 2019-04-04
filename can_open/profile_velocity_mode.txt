@@ -1,0 +1,30 @@
+
+// 2019年 03月 20日 星期三 15:04:12 CST
+
+== pv, profile velocity mode
+     => gi
+     => od entries
+     => obj desc
+	 => func desc
+== tq, profile torque mode
+     => gi
+     => od entries
+     => obj desc
+== velocity mode ( vl )
+     => g desc
+     => complex data types
+     => od entries
+     => obj desc
+     => func desc
+== appendix (附录)
+     =>	od by chapter
+     => od by index
+     => od by name
+	 => definition of dimenstion indices
+
+g	 ; general
+gi   ; general information
+desc ; description
+obj  ; object
+func ; functional
+fun  ; function

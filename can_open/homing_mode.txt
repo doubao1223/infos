@@ -1,0 +1,75 @@
+
+// 2019年 03月 20日 星期三 15:04:12 CST
+
+== hm, homing mode
+     => gi
+		  描述 drive 找原点(home position)的方法
+		  
+			limit switches at the ends of travel
+		  				 	一个行程结束时
+							
+		  	a home switch (zero point switch) in mid-travel
+		  		  			  				在行程过程中。
+		  大部分方法都采用 index (zero) pulse train
+		  				   		 from an incremental encoder
+
+		  control_word		   | 	  	 |
+		  homing_option_code   |		 |	status_word
+		  homing_speeds		   | Homing	 | 	
+		  homin_acceleration   | 		 |  position_demand_value
+		  home_offset		   |		 |
+
+	=> input
+		  两个 homing speed,
+		  	   the faster speed			find the home switch
+			   the slower speed 		find the index pulse
+    => output
+		  bits in the statusword
+		  result of the homing process
+		  the demand to the position control loops
+    => controlword of homing mode
+	   
+		  bit4	   Homing operaton start	0		;; 未激活
+		  		   		  		   			0->1	;; 启动 homing mode
+											1		;; homing mode 激活
+											1->0	;; 中断 homing mode
+		  bit5	   Halt						0		;; 执行 bit4 的指令
+											1		;; 以 homing acceleration 停止轴(的运动)
+    => statusword of homing mode
+										Halt
+	      bit10	  target reached	0	0	 没有达到 原点 （运动已经结束)
+		  		  		 				1	 Axle轴减速 (还在减速运动中)
+									1   0	 回到了原点
+										1 	 Axle速度为0
+										
+		  bit12	  homing attained	0	homing mode还没完成	 
+									1	成功结束
+		  bit13	  homing error		0	没有错误
+		  		  		 			1 	homing error发生
+     => od entries
+	 	   0x607C	Home offset				偏移 ( app的zero position 和 machine的home position )
+		   				 			        在 homing 的过程中得出的。
+											这是一个校正值？
+		     说明： during homing the machine home position is found
+			 		  and once the homing is completed
+					  the zero position is offset from the home position
+					  	  (软件回零时机器所在的位置)   	   原点
+					  by adding the home offset to the home postion.
+		   0x6098	Homing method			回原点的方式	;; 8位的一个对象
+		   		方法1： 依靠 the negative limit swith 和 index pulse
+				方法2： 依靠 the positive limit swith 和 index pulse
+				方法3 4： 依靠 the positive home swith 和 index pulse
+				方法7 - 14: 依靠 the home swith 和 index pulse
+				方法17 - 30: 不依靠 index pulse
+				方法33 - 34: 依靠 index pulse
+				方法35: 依靠 curret position
+		   0x6099   Homing speeds			速度
+		   0x609A	Homing acceleration		加速度
+		   			
+
+g	 ; general
+gi   ; general information
+desc ; description
+obj  ; object
+func ; functional
+fun  ; function

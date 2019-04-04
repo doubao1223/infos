@@ -1,0 +1,46 @@
+
+// 2019年 03月 20日 星期三 15:04:12 CST
+
+== factor group 
+     => gi
+			interchange
+				physical dimenstions and sizes
+				device internal units
+     => od entries
+			位置、速度、加速度等
+     => obj desc
+	 		这个组的对象 是 normalize the physical inputs and outputs 所需要的。
+			0x6089    Position notation index	   ;; 位置标记值 (比例)
+			0x608A	  		   dimension 		   ;;
+			0x608B	  Velocity notation index
+			0x608C	  		   dimension
+			0x608D	  Acceleration	
+			0x608E	  		   dimension
+			
+			0x608F	  Position encoder resolution	;; encoder increments/motor revoluations
+					  	  位置编码精度 				    (电机转一转，有多少个编码器计数)
+ 			0x6090	  Velocity encoder resolution	;; 转速一定时，每秒钟的编译器计数
+
+			0x6091	  Gear ratio	   				;; 尺轮组的比例
+					  	   			电机轴 转速/驱动器轴 转速
+									
+			0x6092	  Feed constant					;; feed / driving shaft revolutions (驱动轴每转一圈的 feed)	
+			0x6093	  Position factor
+					    位置因子， 转变 the desired position 为 the internal format.
+			
+			0x6094	  Velocity encoder factor		
+			0x6095	  Velocity factor 1				;; motor data -> velocity data
+					  		   		  feed constant * velocity unit * second * F/
+									  b0 S/min * gear ratio * velocity unit * F
+			0x6096	  Velocity factor 2				;; encoder data for positions -> encoder data for velocity
+					  		   		  pos encoder resolution / velocity encoder reslution
+			0x6097	  Acceleration factor 		    ;; acceleration -> internal format
+					  			       velocity unit * velocity encoder factor / acceleration unit * second
+			0x607E	  Polarity
+			
+g	 ; general
+gi   ; general information
+desc ; description
+obj  ; object
+func ; functional
+fun  ; function
