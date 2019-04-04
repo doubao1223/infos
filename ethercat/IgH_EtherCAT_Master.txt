@@ -4,5 +4,21 @@
 == IgH EtherCAT Master
    	   GPLv2
 
+	   EtherCAT, high performance
+	   			 ethernet-based fieldbus system
+				 short cycle times
+
+  => Installing IgH EtherCAT master
+	   unpack
+	   make ethercatMaster
+	   make ethercatMasterInstall
+
+	   
+  => Firmaware update via FoE
+  
+  => SII/EEPROM Update
+  
+  => Siitool
+  
 
 

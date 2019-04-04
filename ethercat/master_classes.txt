@@ -1,0 +1,19 @@
+
+2019年 04月 02日 星期二 08:17:13 CST
+
+== EC Master的功能
+1　network initialization
+2  handling of the state machines of all devices
+3  the process data communication
+4  providing acyclic access for parameter data exchange
+     between master application and slave.
+
+== 配置说明：
+	configuration logic 收集以下信息，
+　　  esi或sii
+	  esc寄存器和od
+	  idn list
+	生成 EtherCAT Network Information(ENI), 提供给 EtherCAT master.
+== Master Class B (功能少)
+    支持CoE，cyclic process data exchange
+

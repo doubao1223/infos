@@ -1,0 +1,72 @@
+
+2019年 03月 26日 星期二 17:48:56 CST
+
+== Actuator Configuration
+
+   	 Motor Configuration
+         Motor Control Objects
+
+	 Brake
+		 Brake Paramerter Object
+
+     Gear Ratio
+	 
+== Sensor Configuration
+     Sensor Objects
+
+	 Description of commonly used specifications
+	     Function	 
+		 Resolution
+		 Velocity calculation period
+		 Polarity
+		 Multiturn resolution
+
+== Logging
+   概要
+     记录firmware里发生的事件.
+	 可以选择要记录的事件.
+	 通过FoE访问日志。
+	 存储文件:
+		log_curr.log	9kb
+	 	log_prev.log	9kb
+   日志类型	　
+   	  DEBG
+	  INFO
+	  WARN
+	  ERR
+		 somanet throws firmware erros as specified in CiA 402
+		 Error Report Object
+   格式
+   　<time TYPE|><message>
+                  消息长度是　105个字符
+
+== Motion Control via CoE ( Canopen etherCAT的运动控制 )
+
+     Drive State Machine (CiA 402)  驱动控制　状态机
+	 Modes of Operation 控制模式
+	 	   CST, CSV, CSP
+	 Control Loop Tuning　控制环　精调
+	 Extended control functionalities
+	   Cogging Compensation
+	   Field Weakening
+	   Anti-Windup Control
+	   Gain Scheduling
+	   Motor Overload Protection	电机　超过负载的保护
+	   Torque Offset for FeedForward Control	　
+	   Velocity Offset for Feedforward Control
+	   
+== CiA 402 Object Dictionary
+     All Objects
+	 Communication Area					通信
+	 Standard RxPDO mapped Objects		到　slave 的PDO
+	 Standard TxPDO mapped Objects      到　master的PDO
+	 manufacturer Specific Area			自定义的
+	 Profile Specific Area 				特性指标的
+
+== Process Data Objects
+     TxPDO: Inputs
+	 RxPDO: Outputs
+
+== Device Information
+     communicate with a device and configure it
+

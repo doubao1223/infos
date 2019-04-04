@@ -1,12 +1,24 @@
 
+2019年 04月 01日 星期一 19:42:48 CST
 
-== Demo
-	ATEMDEmoConfig.h
-		thread priorities
-		timer settings
-		静态 EtherCAT master configuration values
+== EcMasterDemo
 
-		eUsrJob_SendAcycFrames 一个周期发几个 frames
+	展示基本的 EtherCAT 通信
+	主栈的初始化
+	启动(将所有的slaves设置为Operational state)
+	举例实现　polled mode operation
+
+	ATEMDemoConfig.h 	  入口，解析命令行参数
+	ATEMDemo.cpp		  初始化，启动，终止 EtherCAT master
+	ATEMDemoConfig.h	  任务优先级，timer设置，EtherCAT master的参数
+	selectLinkLayer.cpp	  把命令行的解析抽象为　Link Layer 参数
+	ecatNotification.cpp  从栈监控　和　错误检测 ( ecatNotify() )
+	ecatDemoCommon.cpp	  辅助函数
+	SlaveInfo.h			  从栈 信息服务 (bus scan, slave properties)
+	Logging.cpp			  消息日志功能	
+
+
+	eUsrJob_SendAcycFrames 一个周期发几个 frames
 
 
 == Demo2

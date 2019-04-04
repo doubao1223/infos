@@ -1,0 +1,31 @@
+
+2019年 03月 26日 星期二 15:00:26 CST
+
+== EtherCAT Library (软件组件)
+     构建 EtherCAT Slave Device　所必需的
+
+	 这个库　communicates with ESC,
+	     读和写　PDOs
+		 访问　mailbox requests for CoE( CAN over EtherCAT ) 和
+		       		   			    FoE( File over EtherCAT )
+
+	 要访问 EtherCAT Library 的functions, 需要
+	　　 在 Makefile 里， include lib_ethercat
+		 在你的应用里， #include <ethercat_service.h>
+
+=> hardware
+    Core C22, C2X
+	COM EtherCAT
+
+=> Modules
+	 EtherCAT Slave Library
+	   这个库中包含 Beckhoff ET1100 EtherCAT Slave Controller的驱动，
+	   并支持 PDO, CoE and FoE data handling.
+=> Examples
+     FoE firmware update demo
+
+=> Dependencies
+     Base
+	 SOMANET CANopen interface (to make use of the od and
+	 		 		 		   	   the CoE mailbox protocol )
+
