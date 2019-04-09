@@ -1,0 +1,49 @@
+
+
+
+// 2019年 04月 09日 星期二 19:09:33 CST
+
+
+==错误和原因
+Ethernet cable not connected
+检查是不是用错网口了。
+
+EC_E_FEATURE_DISABLED
+从栈不支持DC
+
+Cyclic command WKC error on LRW - Address: 0x10000000 - WKC act/set=2/3
+Working Counter 主站对每个从站的读、写操作，该值都会+1/+2,
+用于判断从站有没有正确响应主站的操作(读或者写).　一般进入OP之后，
+报不报WKC，都没多大问题，您可以继续排查一下是不是从站哪里设置的问题。
+
+
+
+==张xx：
+
+我们的标准 Demo 会打印出 错误号和错误信息。
+
+可以从EC-Engineer中的查看从站是否支持DC(Distributed Clock).
+
+修改完DC设置，直接生成eni,　更换之前是的eni, 再运行主站就行。
+
+eni是整个 EtherCAT网络的配置，包含主站和从站。
+
+我们一般看主站运行的cycle time和DCM drift。
+    xenomai的测试工具，一般就看一下latency的情况。
+　　cycle time 一般在图形界面下，最大值控制在50以内(周期>=500 us)都可以。
+　　DCM drift　一般控制在DC周期的 20% 以内，在Demo的代码里可以看到。
+					------------------------------
+			        周期		  DCM drift
+					500 us		  100 us
+					1000us		  200 us
+					2000us		  400 us
+					
+我们一般主要就看主站运行的log.
+
+    cycle time 看时钟的latency
+	DCM drift 看的是时钟的 jitter(整个网络时钟同步的漂移)
+latency 一般控制在　几十以内都可以。
+jitter的参考意义更大些，能体现整个网络的同步的稳定性。
+
+DCM可以看Class A的介绍，里面比较详细，写了如何看dcm log.
+
