@@ -1,0 +1,55 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+
+
+Bin
+    xenomai3
+      x64Cobalt
+        EcMasterDemo
+        libemllI8254x.so
+    
+    xenomai2
+    ....
+Doc
+    ....
+
+include
+  acontis
+    Xenomai2
+	  ||Xenomai/
+	  ||AtEmRasClnt.h
+	  ||...
+	  ||EthernetServices.h
+	  
+    Xenomai3
+	  ||Xenomai/
+	  ||AtEmRasClnt.h
+	  ||...
+	  ||EthernetServices.h
+	  
+  boost
+  eigen
+  kdl
+  orocos
+    ocl
+    rtt
+
+libs
+  acontis
+    x86
+    x64
+       Cobalt
+         libEcMaster.a
+  boost
+
+src
+  config
+  
+test(Acontis的4个测试工程)
+  EcMasterDemo
+  EcMasterDemo2
+  EcMasterDemoDc
+  EcMasterDemoSyncSm
+  

@@ -1,0 +1,272 @@
+
+2019年 04月 10日 星期三 09:59:08 CST
+
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+Bin
+    xenomai3
+      x64Cobalt
+        EcMasterDemo
+        libemllI8254x.so
+    
+    xenomai2
+    ....
+Doc
+    ....
+
+include
+  acontis
+    Xenomai2
+	  ||Xenomai/
+	  ||AtEmRasClnt.h
+	  ||...
+	  ||EthernetServices.h
+	  
+    Xenomai3
+	  ||Xenomai/
+	  ||AtEmRasClnt.h
+	  ||...
+	  ||EthernetServices.h
+	  
+  boost
+    include
+	  boost_1_58_0
+	  ...
+	  
+  orocos-toolchain
+    ocl
+    rtt
+  eigen/kdl/rtt
+
+libs
+  acontis
+    x86
+    x64
+       Cobalt
+         libEcMaster.a
+  boost
+    boost_1_58_0
+	...
+	.
+  orocos-toolchain
+    ocl
+	   *.a
+	rtt
+	   *.a
+  eigen/kdl/rtt
+  
+src
+  demo.hpp
+  demo.cpp
+  global_defs.hpp
+  hardware_param.hpp(.cpp)
+  main.cpp
+  
+  util/timer.h
+  config/
+  dev/
+
+test(Acontis的4个测试工程)
+  EcMasterDemo
+  EcMasterDemo2
+  EcMasterDemoDc
+  EcMasterDemoSyncSm
+  
+-------------------- dev/ --------------------
+ axis*.cpp
+ axis*.hpp
+ control_info.hpp
+ dev_dev.hpp
+ hardware_*
+ not
+ simulated_hadware.*
+
+ ethercat/
+ toolbox/
+ 
+
+== open source style build
+    Step into the directory where your codebase is and try to build it.
+
+	这个暂时不考虑。
+
+
+== eclipse 工程
+/home/wangjz/src/cdt_codes		作为 workspace
+MyDemo							在workspace中，我的工程
+
+说明：
+	工程数量不限
+	    a workspace 可以包含任意数量的 projects
+	也可以包含不在其中的projects   
+	    a workspace 也可以包含projects that
+		                      reside outside of its sub-directoies.
+
+== 配置 workspace
+    打开Eclipse IDE, 并选择新创建的workspace directory.
+=> 利用另一个workspace的设置
+   ---------- 导出 ----------
+      打开old workspace,
+	  
+	  File -> Export ...
+	  General -> Preferences, Next
+	    确保 Export all 是选中.
+	    To preference file: 如 ~/Downloads/Untitled.epf
+	  Finish
+	  现在就已经把 old workspace的 基本设备　导出到文件中了。
+   ---------- 导入 ----------
+   回到新的 Workspace
+	  File -> Import ...
+	  General -> Preferences, Next
+      在新窗口，确保Import all是选中状态。
+	    Browse... 浏览到preference file
+	  Finish
+	  必须重启eclipse使之生效。
+=> 导入coding style settings
+      Window -> Preferences
+	  C/C++ -> Code Style -> Formatter
+
+	  Import...  (select your coding style specification file)
+
+=> 配置project property pages
+      Window -> Preferences
+	  C/C++ -> Property Pages Settings
+	  选中　Display "Discovery Options" Page
+
+=> 配置C++ properties
+      Window -> Preferences
+	  C/C++ -> Build -> Settings
+
+	  切到 Discovery
+	  选择从列表里选择使用的工具链，在Command to get compiler specs 里添加
+		 -std=c++14	 c++14
+
+	  更新信息请参考　GCC documentation
+
+=> 配置 Indexer
+      Window -> Preferences
+	  C/C++ -> Indexer
+
+	  取消选中
+		Index source files not included in the build
+	  	Index unused headers.
+=> 配置 spell checking
+     Window -> Preferences
+	 General -> Editors -> Text Editors -> Spelling
+
+	 User defined dictionary
+
+== 设置 project
+     工作空间已经配置好了，现在可以导入工程了。
+=> 导入工程
+方式一: (有Makefile的工程)
+   　File -> New -> Makefile Project with Existing Code
+     指定　Existing Code Location
+	 选定　Toolchain for Indexer Settings.
+	    Linux GCC
+	 指定工程名称
+	 Finish, 工程导入完成。
+	 说明：因为我的工程没有Makefile，所以导入后是空的。
+
+方式二： (C++源码) 
+	 File -> C/C++ -> Existing Code as Makefile Project -> Next
+     指定　Existing Code Location
+	 选定　Toolchain for Indexer Settings.
+	    Linux GCC
+	 Finish
+	 
+方式三：(只有源代码)
+	 File -> General -> Projects from Folder or Archive
+     选中工程
+	 Finish
+
+== 配置 project
+     在　Project Explorer 点击右键 -> Properties
+	 
+=> C/C++ Build
+
+     在 右侧的标签页 Builder Settings 中，
+	    => make the Eclipse Indexer work properly
+	 	   取消 Use default build command,
+	 	   输入 make
+		   (如果是使用 cmake, 则输入 make VERBOSE=1)
+   		=> 指定 Makefile
+           Build directory
+     在 右侧的标签页 Behavior 中，
+	 	=> 并行编译
+		　　Enable parallel build
+		      Use parallel jobs: 3  (目前的系统有6个core)
+			  
+=> 编译
+　　　在　Project Explorer 点击右键 -> Build Project
+
+
+== Eclipse Indexer ========================================
+     to make Eclipse index the source code correctly.
+
+在　Project Explorer 点击右键 -> Properties
+   =>C/C++ Build -> Discovery Options ->
+
+	 Discovery profiles scope: Configuration-wide
+	 		   (让所有indexed languages共有一份配置)
+	 		   				   									 
+	 选中 Automate discovery of paths and symbols
+	 Apply
+	 
+   =>C/C++ General
+	   ->Preprocessor Include Paths, Macros, etc.
+	      切换到 Providers 页
+	   
+	      在 Command to get compiler specs( CDT GCC Built-in Compiler Settings)
+	   　　　增加 desited C++ standard, 如　-std=c++14
+	      交叉编译，有可能需要选中
+	        Binary Debug Data Entries
+			CDT Cross GCC Built-in Compiler Settings
+
+	   
+       ->Paths and Symbols
+           标签页 includes
+	                -> GNU C++ -> Add...
+					-> 弹出一个标题为　Add directory path的窗口
+					　　　Directory: (toolchain)/arm-noneeabi/include/
+					     选中 Add to all configurations
+						 选中 Add to all languages
+					 　　 OK
+					　重复以上的过程，增加其他的 toolchain
+           标签页 Symbols
+		   		    -> GNU C++ -> Add...
+					-> 弹出一个标题为　Add symbol的窗口
+					     Name: __cplusplus
+						 Value: C++14
+					   选中　Add to all configurations
+					   Ok
+  一般来说，这些就够了，但是你在代码中跳转时，
+  　　会看到unresolved references highlighted as errors
+  
+　　　This is because there is
+        an obscure bug somewhere in the Indexer that prevents it from working
+		unless
+		   the set of
+		   CDT
+		   === User Setting Entries is non-empty ===
+      解决这个问题：
+	  　　C/C++ General -> Pre[rocessor Include Paths, Macros, etc.
+	      -> Entries -> CDT User Setting Entries -> Add...
+		  下拉选中　Preprocessor Macro -> 增加一个预处理宏，如：
+		      I_LOVE_ECLIPSE
+      		  1
+		  不选Treat as built-in
+		  OK
+
+
+== 参考dev_interface 工程，进行编译设置 ====================
+    C/C++ Build
+		  => Generate Makefiles automatically
+
+		  => 头文件设置
+		  　 Settings -> Tool Settings
+		       GCC C++ Compiler -> Includes
+			      ...include/acontis/xenomai3
+				  
