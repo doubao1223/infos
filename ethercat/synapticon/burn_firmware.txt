@@ -1,0 +1,24 @@
+
+// 2019年 04月 12日 星期五 10:12:31 CST
+
+------------------------------
+使用 oblac-drivers
+
+1 电脑通过无线　接入oblac-drivers-xxx
+2 驱动器连接下面的网口
+3 在网页中打开　192.168.0.1
+4 选择页面右上角的　Configuration
+5 在页面左侧，配置驱动器
+  　　Drive -> Update firmware -> Browse ->
+  			选中存储在本地的固件 package*V4.2.0*.zip
+	  Start firmaware update
+6 等待固件更新完成...
+7 更新未完成后，Master会自动再次连接 DRIVER
+
+
+------------------------------
+Drive页面下
+
+　Launch setup wizard 是灰色的，
+　依次按键petr，可以使其“点亮”，再按petr可以关闭。
+　        
