@@ -22,3 +22,69 @@ Drive页面下
 　Launch setup wizard 是灰色的，
 　依次按键petr，可以使其“点亮”，再按petr可以关闭。
 　        
+
+------------------------------
+sensor
+
+
+01 Drive Name
+02 Brake Setup
+     Pull voltage 24000	mV			Release strategy	Clutch-style brake control
+	 Hold voltage 5000	mV			DC bus voltage		47	V 
+	 Pull time	  1000  ms
+
+03 Motor Setup
+   	 Pole Pairs				10					Phase Resistance	161849 uO
+	 Torque Constant		85363 uNm/A			Phase Inductance 	138    uH
+	 Max torque				3000
+	 Motor Rated Current	11000 mA
+	 Motor Rated Torque		939	  mMm
+	 Max motor speed		3930  rpm
+
+04 Sensors Setup
+     Sensor port 2		BISS Encoder 2: Commutation & Motion Control Feedback
+
+	 Resolution	 262144	Inc/Revolution
+	 Zero velocity threshold	1000 us
+	 Polarity	   				Normal Polarity
+	 Multitrun resolution 		16
+	 Clock frequency			1000 kHz
+	 Timeout					36 us
+	 CRC polynom				48
+	 Clock port config(disabled) 0
+	 Data port config(disabled)  0
+
+	 Number of filling bits		 0
+	 Number of bits to read while busy	16
+	 Status bits active value	  Active low
+	 
+05 Offset Detection
+   	 START OFFSET DETECTION
+     running offset detection...
+
+	 Commutation Offset
+	 575
+
+	 FINISH
+
+------------------------------
+CONTROLLER TUNING
+
+Position control strategy			Cascaded PID
+Cascaded controller configuration	PI-P
+Warn Torque Const					3
+Alpha Mult							1
+Lower Boundary						1
+Upper Boundary						1001
+
+
+Actual position
+Interpret position as
+Repeat
+Amplitude	
+Holding Duration			500	ms
+Amplitude					2621400	ticks
+Profile Velocity			1000 rpm
+Acceleration				1000 rpm/s
+Deceleration				1000 rpm/s
+
