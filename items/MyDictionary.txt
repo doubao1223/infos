@@ -1,0 +1,7 @@
+AFX_, Application Framework Extensions(Microsoft Foudation Class)
+MSDN, Microsoft Software Developer Network
+
+
+list, 列
+
+

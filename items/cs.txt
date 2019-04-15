@@ -1,0 +1,325 @@
+
+
+数据结构 
+
+计算机组成原理 
+
+操作系统
+
+计算机网络
+
+== programming languages:
+C
+C++
+C#
+
+Go
+
+Java
+JavaScript
+
+
+PHP
+
+Python
+
+Ruby
+Scala
+SQL
+Swift
+
+
+
+Alex Demyankov
+1年前
+You pretty much twisted the topic. You should have named your video "Does C++ Have a Future for Windows applications and Web Pages?" :) And I would absolutely agree with you on that - No! But you missed like 70% of other fields where C++ is predominant language and will stay like this for years to come.
+
+Alright, here we go, from the top of my head:
+- hard real-time system
+- performanse critical systems, like finance transactions
+- energy-constrained environment
+- large scale software infrastructures
+- resource constrained systems
+- some high performance os, internals, drivers, etc (Linux and Windows kernels are written in C, not C++)
+- compilers
+- interpretting engines (virtual machines) for higher languages, like Java, C#, etc
+- game engines (on top usually there is some scripting language, like Lua)
+- console games
+- graphics editior (Photoshop for example)
+- database engines
+- embedded, IoT - C++ is growing day by day
+- numerical and scientific computing
+- supercomputer's parallel software (nVidia for example)
+- deep learning, neural network applications
+- heavy video rendering (for example 20th Century Fox has hundreds of Linux servers which run C++ video rendering)
+- intensive video processing applications
+
+
+
+
+Dev Anima
+1年前
+C++ is cute, but I would go full C.
+"I don’t think C gets enough credit. Sure, C doesn’t love you. C isn’t about love–C is about thrills. C hangs around in the bad part of town. C knows all the gang signs. C has a motorcycle, and wears the leathers everywhere, and never wears a helmet, because that would mess up C’s punked-out hair. C likes to give cops the finger and grin and speed away. Mention that you’d like something, and C will pretend to ignore you; the next day, C will bring you one, no questions asked, and toss it to you with a you-know-you-want-me smirk that makes your heart race. Where did C get it? “It fell off a truck,” C says, putting away the boltcutters. You start to feel like C doesn’t know the meaning of “private” or “protected”: what C wants, C takes. This excites you. C knows how to get you anything but safety. C will give you anything but commitment
+
+In the end, you’ll leave C, not because you want something better, but because you can’t handle the intensity. C says “I’m gonna live fast, die young, and leave a good-looking corpse,” but you know that C can never die, not so long as C is still the fastest thing on the road."﻿ 
+
+
+
+ SteelBlueVision
+ SteelBlueVision
+ 1年前（修改过）
+ > C knows how to get you anything but safety. C will give you anything but commitment...In the end, you’ll leave C, not because you want something better, but because you can’t handle the intensity. C says “I’m gonna live fast, die young, and leave a good-looking corpse,” but you know that C can never die...
+ So, TL;DR, C is like your ex-wife?
+
+
+
+  Dev Anima
+  Dev Anima
+  1年前（修改过）
+  C actually can express some verbose classy behavior. It may not be what your typical grandma would expect how a class should be expressed, but, never the less, it's how the class actually is behind the superfluous sugarcoated facades of the more common folk. Although C's not a complete orphan, he was raised in very tough neighborhoods, and he's used to all kinds of environments. And yes, there is not much syntactic sugar in his expressions, it's all straight talk, cut to the core and don't mess around. If you miss even one punctuation mark or use a wrong tone of voice (he's highly case sensitive guy) he may throw some really big tantrums of unexpected behaviors. But if you pay your respects and ask nicely, you will get exactly what you wanted in the exact way you asked for, well, mostly the exact way you phrased your request. He will carry out verbatim your phrased requests and if they weren't what you actually wanted, he will most likely just silently lough behind your back, but if you are lucky, you may get some chuckles here and there or even some riddles that make fun of your inattentiveness, and it's all on you to figure out when and where you've messed up. But in the end, he will do the job and will do it very efficiently. You can even negotiate for better efficiency if you are prepared to bend the regulations and go beyond conventions. You can get really creative this way, but be aware of the possible consequences, you may get in some serious troubles and never recover. This unlimited power corrupts, and is not for the faint-hearted.﻿ 
+
+
+bi Axinte
+1年前
+C++ will remain relevant as long as game development will still require it and C will remain relevant as long as drivers will still be written in it.
+
+
+zathul
+1年前（修改过）
+C++ is the language of choice for:
+1) Artificial Intelligence (Deep learning especially, say hello to OpenNN)
+2) Financial Trading Systems
+3) Real time signal processing (radar systems, audio / video stuff, prototyping is and will still be in Matlab & Python)
+4) Image Processing
+5) Operating systems (including drivers)
+6) Network security systems.
++) Any performance critical system including web services
+
+And forget game development already. People don't even need to write code for game dev anymore with the drag and drop tools. Even Unreal developers use blueprints not C++ (unless you're writing your own engine from scratch).
+
+
+
+
+BGZDevTips
+1年前
+A few people seemed to touch on it a bit below, but I'll give my take. John is correct in that you should first focus on what career path you wish to take and what applications your really want to write. This helps to narrow things down and give more clarity on which languages you should try to specialize in. C# is definitely more relevant for web applications and the like. 
+For game development, as an aspiring game developer myself, I believe the language choice should depend on exactly what level of control you want to have on a game project. Are you someone who likes to get into the nitty gritty and control low level aspects of your game and be able to squeeze every bit of performance out of whatever system your developing for? Then C++ is a must. If your more worried about high level gameplay code and getting game projects out the door quickly, then C# may be a better alternative. 
+P.S. Realize that Unity's engine is developed in C++. C# is used mainly as the scripting language for Unity for gameplay code.﻿ 
+
+
+
+
+
+BGZDevTips
+BGZDevTips
+1年前
+A few people seemed to touch on it a bit below, but I'll give my take. John is correct in that you should first focus on what career path you wish to take and what applications your really want to write. This helps to narrow things down and give more clarity on which languages you should try to specialize in. C# is definitely more relevant for web applications and the like. 
+For game development, as an aspiring game developer myself, I believe the language choice should depend on exactly what level of control you want to have on a game project. Are you someone who likes to get into the nitty gritty and control low level aspects of your game and be able to squeeze every bit of performance out of whatever system your developing for? Then C++ is a must. If your more worried about high level gameplay code and getting game projects out the door quickly, then C# may be a better alternative. 
+P.S. Realize that Unity's engine is developed in C++. C# is used mainly as the scripting language for Unity for gameplay code.
+
+
+hris Germanidis
+Chris Germanidis
+1年前
+I think that there will be places where C++ will still be used and the reasons will not be just to maintain legacy code as some people put it. C++ gets a lot of hate, unjustified hate in my opinion, sometimes from people who are bored to do their homework and understand how it works and blame their mistakes on the language being too complicated when they write the code wrongly. It is more difficult than other languages but not impossible and the problems that you'll have to solve are more difficult than learning it. First of all, hardware is not improving as it used to, like 15-20 years ago a new processor was almost twice as fast as the last model, this is no longer the case so hardware is not advancing that rapidly now, application demands however are. I am not saying that C++ is the choice for everything but it has a lot of strong points and not everything is web applications, there are programs and games that need all the flexibility and speed they can get and C++ can give that, that's why it is used, not because some people live in the past. After a period of stagnation between 2003 (or more like 1998) till 2011 the language is evolving with many great new features added to the STL and the language which were terribly missing. I think that every tool has its field and C++ will continue to have its and maybe expand it too.﻿ 
+
+
+
+
+
+BosonCollider
+1年前（修改过）
+C++ is pretty much the only viable choice in any hard real-time application. Anything with GC is automatically excluded, and among languages that aren't garbage collected, it's quite difficult to find an alternative to C++ tbh, getting a reasonable amount of abstraction without a GC is hard. Rust is probably the best new contender for the throne and it might take market share eventually, but right now nobody knows if it'll end up sticking around or if it will die off like D did.
+
+
+
+
+
+men Vrankar
+1年前
+I'm trying to understand where you're coming from when you're saying that C++ is a hard language... C++ is surprisingly simple language (same as quite allot of programming languages) on the surface. The difference becomes apparent once you dive deeper - there the language becomes far more complex and languages such as Java don't simply because they don't even have a second layer (if other languages would have one they'd also be more complex) but that knowledge is quite often not needed when writing business logic and interfacing with modern and good quality libraries... Most of the time when I see use of raw pointers in C++ it's either legacy code, low level stuff (which I rarely have to touch) or code produced by extremely inexperienced programmers that were taught by C programmers or came from languages such as Java (on the other hand I've had an unpleasant experience with Java where only pointers exist - references or stack objects that make C++ easy for me are simply non existent there - imagine my surprise after being misleadingly told for years that Java doesn't have pointers). Unfortunately world is moving to hype based development instead of quality based and yes C++ doesn't shine there that much - in hype based development there is no interest in putting the effort into quality (that is replaced by rapid development often by developers that shouldn't be allowed near a keyboard in the first place) which in short term is a great thing as things are moved to production faster but from my experience in the long run it can ruin a company simply by introducing allot of different technologies duck taped together which have to be maintained (imagine the long term costs for such code bases). I could go on about this forever but in the end I agree with you that specializing in C++ is not the best idea but for different reasons that you provide - in hype based world people don't invest enough time into becoming experts of something and C++ is not for such people (there are better languages to write low quality code in) and programmers are quite often not people interested into learning how to program but instead come from a different field where they want to automate something with as little effort as possible so that they can invest more time into the thing they want to automate instead of the automation part itself (popularity of some other languages shines here as there are more libraries to choose from and in such vast pool there are not just poorly designed but also good quality libraries) and that is not necessarily a bad thing - programming is an umbrella of automation approaches that should be tailored to the problem and not vice versa. On the other hand learning (and mastering it to some degree - this part is quite important as most people including me get a feeling that same syntax of languages means same paradigms work equally good and that's a bad trap to fall in [e.g. producing std::string* s = new std::string("abc"); code by Java programmers in C++ where a better and preferred way to write it would be std::string s;]) C++ is a good thing since it teaches you to write maintainable libraries with easy to use right/hard to use wrong interface designs - the parts of the knowledge that from my experience are quite often lacking with for e.g. Java and web (PHP, JavaScript) developers (I could be wrong as I have experience limited to ~30 Java and just a couple of PHP and JavaScript developers so I might be quite biased here).
+
+
+
+
+Hax52 on Redstone
+1年前
+C++ is growing. I don't know where you get your information from, but according to Herb Sutter C++ has grown over 25% in the past few years, which makes it currently one of the fastest growing languages. C++ can be difficult, but doesn't have to be. It also teaches a lot of techniques that I wish I knew before I learned C#. But as usual a language is a tool, and not everything is a nail. If your serious about your game, you will be using C++. A game written in a garbage collected environment is wasting a lot of cycles doing extra stuff it doesn't need to do. Web app/Business app, sure C# or any managed language is fine. But if resources are constrained and you need performance than C++ is going to work better than a managed language. Don't believe everything you hear on the interwebs!
+
+
+
+
+
+ billybbob18
+billybbob18
+1年前
+C++ is growing in the embedded systems market, and its on the way to replacing C. The new F35 multipurpose fighter jet is programmed in C++ almost exclusively. 8 million lines of C++. A little bit of C, and a little bit of ADA83 as legacy code from previous fighters.
+
+
+
+
+
+
+Frydac
+1年前
+its much easier to not get memory leaks in modern C++ than it used to be + good static checkers exist that will catch them for you. FYI I work on audio codecs (also embedded), streaming and fx, which is mostly C++ where it used to be more C, no real viable other option as it is hard realtime: if you miss one sample of e.g. 48000 samples per second, it is distinctly noticeable (usually results in a loud high 
+
+
+
+ Fastoon
+ Fastoon
+ 1年前（修改过）
+ ElectricalBolt hey, why are you so retarded? You do realise stuff like memory leak isnt a thing anymore since we got stuff like smart pointers but what would you know about smart pointer let alone pointers? Its not like you actually used C++ otherwise you wouldnt be here talking out of your ass.
+
+
+
+
+
+ wooka64
+ 1年前
+ I believe nothing beats C++ for speed, Application development on the Desktops and for now Operating Systems. The only reason why most people don't want to use C++ is because they always want an easy way out of learning something hard. Saying that, I am not sure if Most companies us it but I think C++ is actually fun to code. The main reason to learn C++ is to have full control over your code with Python, you get nagged about white spaces because that's how it determine code blocks, in Java you have to save your Java file after your main class but with C++, save your file any name you want and use brackets. Indent your code to make it readable simple as that. 
+ Overall, I think one should learn languages for a Job and at least have one Hobby language.
+
+
+
+
+ Per Kroon
+ 1年前
+ Dear Simple Programmer I realise that your make this videos out of you own experience but I think you should make that more clear.  Your experiences might influence someone in to complacently wrong choice because his/hers circumstances are completely different then yours.  Perhaps living in another country?  Just made that as an example since I know that several European countries have an overflow of C# programmers but in dear in of C++ programmers, and that's where the money hare here. A lot a good C# programmers don't even get work here.
+
+ Just wanted to get my point of view and I know there is others out there that probably have another but that is my point.  you should be on point on to whom you are aiming your advice's.﻿ 
+
+
+
+
+  Carutsu
+  Carutsu
+  1年前（修改过）
+  You're wrong on this one man. C++ is much stronger than ever. The new standards have given it a fresh feel and right now is a great language to use. Automotive, embedded, IoT are a few of the applications…
+
+  I personally believe that Its strongest suit is that it has a well defined object life, unlike pretty much any other language.﻿ 
+
+
+
+
+
+   Dry Dessert
+   Dry Dessert
+   1年前（修改过）
+   I don't see any way how to create web apps with C++. Even if possible (?) I would not know why anyone would want to do that. I agree with that. Microsoft is pushing the development of C++ though. They are very active contributors in the development of the standard. For applications that require the best possible performance Java, JS and Python are laughable. The performance of those languages is terrible. Again, for some web app it's good enough. For a DAW (software to produce music with), CG animation and rendering, movie post production, I would not buy anything based on one of those amateur-languages (sorry for the pun). And I don't think there are any contenders in these markets. If someone thinks C++ is hard, then they should probably not do more complex things than web apps. Nothing wrong with that. C# is a different story, probably. It is used in some Autodesk software I think and probably other software that deserves to be called professional.﻿ 
+
+
+
+
+
+   Ikogn
+   1年前（修改过）
+   C++ is still very relevent in the field of 3D rendering and image processing. It is relevant in the medical field, when practicing computer-assisted surgery, you want real-time information about the position of your instruments and the patient's organs and it means heavy computations. It's is also used in military applications, I had job offers to develop armament and simulation systems in C++. Aerospace is also a field that is hiring C++ programmers for their image processing needs. I don't think the demand for C++ programmers isn't growing, I think it is just growing way slower than the demand for other languages, because it is used for niche domains that have very specific needs and very specific constraints in terms of performance.﻿ 
+
+
+
+icardo Cruz
+1年前
+If you 're  being taught C++ right from university ve thankful.
+I got to learn it totally on my own before applying for jobs.
+
+C++ is getting revamped to compete with python and c# or even objective C /java.
+
+The difference?
+Performance﻿ 
+
+
+
+
+hris Germanidis
+Chris Germanidis
+1年前
+I think that there will be places where C++ will still be used and the reasons will not be just to maintain legacy code as some people put it. C++ gets a lot of hate, unjustified hate in my opinion, sometimes from people who are bored to do their homework and understand how it works and blame their mistakes on the language being too complicated when they write the code wrongly. It is more difficult than other languages but not impossible and the problems that you'll have to solve are more difficult than learning it. First of all, hardware is not improving as it used to, like 15-20 years ago a new processor was almost twice as fast as the last model, this is no longer the case so hardware is not advancing that rapidly now, application demands however are. I am not saying that C++ is the choice for everything but it has a lot of strong points and not everything is web applications, there are programs and games that need all the flexibility and speed they can get and C++ can give that, that's why it is used, not because some people live in the past. After a period of stagnation between 2003 (or more like 1998) till 2011 the language is evolving with many great new features added to the STL and the language which were terribly missing. I think that every tool has its field and C++ will continue to have its and maybe expand it too.﻿ 
+
+
+
+
+
+
+Freedom Audio
+1年前
+I make audio effect plugins using C++ and the JUCE library.  JUCE is written in C++ and is a great library particularly for audio software because that is what it is basically designed for.  C++ is nice to use for audio applications as it gives you full control over memory.  In audio or with any other hard realtime application you cannot get away with just hoping that your realtime critical functions execute quick enough on average.  You need to ensure that realtime functions finish within an acceptable maximum upper bound execution time, every single time with no exceptions.  Memory alloc/dealloc is one of the things that has no guaranteed execution time and therefore you need to do separate from realtime contexts.  C++ offers you this level control while still providing zero-overhead abstraction so you can work on a fairly high level with libraries such as JUCE as well.﻿ 
+
+
+
+
+
+
+asdfqwer1234
+1年前
+c++ IS the language for high performance real time computer visión and robotics. And for deep learning research area ( not only using the python toolbox). In general, for anything that you high performance C++ is the way to go.﻿ 
+
+
+
+
+
+Vishal Menon
+1年前
+C/C++ is standard for realtime DSP like audio VST plug-ins. Some companies still use Assembly,. Most documentation on the subject is in C/C++, or python~ which is used more so  to visualize and test concepts than for any real time signal processing. 
+Many C++ frameworks out there for DSP too,.
+The reason they say for this choice is primarily speed. Possibly also has a link to Bell Labs' association
+
+
+
+
+ venumspyders
+ venumspyders
+ 1年前
+ Game developer here. If you are working on your own custom 3D engine or making changes to an off the shelf engine such as Unreal, you need C++. If you are using Unity you can get away without knowing C++. Also if you want to work in a professional game studio as an engine programmer it will be very hard to escape C++.﻿ 
+
+
+
+
+
+  Alexej Harm
+  Alexej Harm
+  1年前
+  Claims that "it doesn't make any sense" and provides no arguments.
+
+  C++ is great for server side web applications (lots of C++11 and C++14 frameworks out there).
+
+  C++ is great for client side web applications (mainstream in about a year but possible right now with WASM).
+
+  The only disadvantage of C++ is that you need to know a lot about the language and the standard library.﻿ 
+
+
+
+
+
+
+
+  Jhonatan
+  1年前
+  Some recent libraries in machine learning are in C++, but only if you're developing them, because if not you'd probabily be using python.﻿ 
+
+
+
+
+
+llrunner
+Gnollrunner
+1年前
+Not buying it! C++ has almost no competition in it's niche. Java, C# and so forth all compete with each other. When someone else comes out with a reasonably portable language that compiles to native code then I'll start to pay attention. So far there is very little.﻿ 
+
+
+
+
+ MA Siel
+ MA Siel
+ 1年前（修改过）
+ qt the most used framework in the industrie. this is c++
+ php are written in c++
+ sqlite written in c++
+ postgesql written in c++﻿ 
+
+
+
+
+
+
