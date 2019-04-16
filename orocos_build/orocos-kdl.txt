@@ -1,0 +1,11 @@
+
+// 2019年 04月 16日 星期二 20:42:28 CST
+
+orocos-kdl 编译
+
+工程里 includes
+	   .../eigen/include/eigen
+	   
+	   eigen/include/eigen/unsupported
+重要：需要把 unsupported 删除，再编译
+
