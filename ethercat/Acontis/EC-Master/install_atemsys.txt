@@ -1,0 +1,11 @@
+
+// 2019年 04月 20日 星期六 10:38:15 CST
+
+(1) /etc/modules 中，增加 atemsys
+(2) 将 atemsys.ko 拷贝到 /lib/modules/``/kernel/drivers/net/ethernet/intel/igb/目录中。
+(3) 执行命令
+	  depmod -a 
+(4) reboot
+(5) 重启之后，使用命令检验
+(6) lsmod | grep atemsys
+
