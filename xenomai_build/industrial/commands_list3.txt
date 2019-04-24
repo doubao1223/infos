@@ -50,12 +50,9 @@ sudo update-grub
 2. 报错 failed to run libtoolize: No such file or directory
    原因
    解决 sudo apt-get install libtool
-    ./configure --with-core=cobalt --enable-debug --enable-smp --enable-pshared
+    ./configure --with-core=cobalt --enable-pshared
     make
     sudo make install
-
-	复杂的配置
-    ./configure --with-core=cobalt --enable-debug --enable-assert --enable-async-cancel --enable-pshared --enable-smp --enable-x86-vsyscall --enable-valgrind-client --enable-fortify --enable-dlopen-libs --enable-tls
 
 == 重启，加载新的内核
    reboot
