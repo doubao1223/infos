@@ -5,11 +5,39 @@
     0 F2/F12 进入 BIOS， 选
         EFI Boot Devices
 	    Linpus lite (SanDisk Cruzer Glide)
+		------------------------------
+		EFI Boot Devices
+		Linpus lite (Netac  OnlyDisk)
+		------------------------------
     1 Install Ubuntu
+	    ------------------------------
+		English -> continue -> continue
+		.... in UEFI mode ...
+		  -> Continue in UEFI mode
+		------------------------------
     2 安装选项 
-         v  Download updates while isntalling Ubuntu
+         x  Download updates while isntalling Ubuntu
 	     x  Install third-party software for graphics and Wifi hardware, MP3 and other media
     3 Erase disk and install Ubuntu
+	------------------------------
+	3' Something else (without Swap Partition)
+	   选中/dev/sda1, /dev/sda5,　用 - 号，删除
+	   选中free space, 用+号，增加
+	       EFI System Partition
+		   128MB
+		   Primary
+		   Beginning of this space
+	       OK
+	   选中free space, 用+号，增加
+	       Ext4 journaling file system
+		   Primary
+		   Beginning of this space
+		   /
+		   OK
+	   Install Now
+	       You have not selected any partitions for use as swap space. ...
+		   -> Continue
+	------------------------------
     4 luoshi
       luoshi-POC-320
       luoshi
@@ -26,6 +54,11 @@
     	sudo apt update
     	sudo apt install ibus-table-wubi
     	sudo apt install ibus-pinyin
+	4 bcompare
+	    sudo dpkg -i bcompare-4.2.9.23626_amd64.deb
+
+　　　　报需要：libqt4-opengl libqtwebkit
+		sudo apt-get install -f
 	
 == 下载实时内核编译需要的 代码源文件
     xenomai-3.0.8.tar.bz2
@@ -119,5 +152,4 @@ kernel/ipipe/core.c:1712:1: warning: the frame size of 2056 bytes is larger than
 		Processor type and features
 	       => Enable maximun number of SMP processors and NUMA nodes
 		         取消选择
-	
          
