@@ -1,0 +1,48 @@
+
+// 2019年 04月 24日 星期三 15:08:56 CST
+
+== 
+第一步：定义 oro malloc相关函数
+			 如果有宏 OS_RT_MALLOC,则包含头文件 tlsf/tlsf.h
+			 
+ oro_malloc.h		cstdlib
+ ----------			--------
+ oro_rt_malloc  	malloc		
+ oro_rt_free		free
+ oro_rt_realloc		realloc
+ oro_rt_calloc		rt_calloc
+
+----------------------------------------------------------------------
+                                               ->  xenomai/fosi.h
+                                ->  ../fosi.h 
+rtt/include/rtt/os/tlsf/tlsf.h  
+				    tlsf_malloc   挂到 oro_rt_malloc
+					     free     挂到 oro_rt_free
+					     realloc  挂到 oro_rt_realloc
+					     calloc	  挂到 oro_rt_calloc
+----------------------------------------------------------------------
+　					导出的其他函数
+					#ifdef __cplucplus
+					extern "C" {         // C函数		tlsf.c文件中的实现
+					#endif 
+					　　 init_memory_pool				size_t init_memory_pool(size_t mem_pool_size, void *mem_pool)
+					     get_pool_size
+						 get_overhead_size
+						 get_used_size
+						 get_max_size
+						 destroy_memor_pool
+						 add_new_area
+						 
+						 malloc_ex
+						 free_ex
+						 realloc_ex		会用到 malloc_ex
+						 calloc_ex
+
+						 tlsf_malloc	会用到 malloc_ex
+						 tlsf_free
+						 tlsf_realloc
+						 tlsf_calloc
+					#ifdef  __cplusplus
+					}
+					#endif
+----------------------------------------------------------------------				 
