@@ -1,7 +1,0 @@
-
-2019年 01月 21日 星期一 09:16:04 CST
-
-== Kernel hacking
-     => -*- Magic SysRq key
-           (0x1) Enable magic SysRq key functions by default
-

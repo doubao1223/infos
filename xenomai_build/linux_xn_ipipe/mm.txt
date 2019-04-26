@@ -1,8 +1,0 @@
-
-== mm
-     => memory.c		11
-	 => mlock.c			1
-	 => mprotext.c		5
-	 => mmu_context.c  	4
-     => vmalloc.c		1
-	 

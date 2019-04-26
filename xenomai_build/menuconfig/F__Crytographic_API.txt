@@ -1,8 +1,0 @@
-
-2019年 01月 21日 星期一 09:16:04 CST
-
-== Crytographic API
-       Hardware crypto devices
-           Support for AMD Cryptographic Coprocessor  不选
-     
-

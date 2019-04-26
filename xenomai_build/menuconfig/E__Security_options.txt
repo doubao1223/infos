@@ -1,9 +1,0 @@
-
-2019年 01月 21日 星期一 09:16:04 CST
- 
-== Security options
-      Socket and Networking Security Hooks   
-          XFRM (IPSec) Networking Security Hooks   不选
-      NSA SELinux Support
-          NSA SELinux runtime disable   选中
-     
