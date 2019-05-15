@@ -37,3 +37,35 @@
 
 还是有问题。
    
+
+
+== 
+apt-get install ruby-dev
+
+
+export OROCOS_TARGET=xenomai
+rm /home/wangjz/.ros/* -rf
+rosdep update
+
+
+sudo deployer-xenomai
+
+
+
+
+== ros send msg (leihong)
+   cd catkin_ws
+   
+   mkdir src
+   cd src
+   catkin_init_workspace
+   
+   将代码拷贝到 src 中
+   
+   在 catkin_ws $ catkin_make
+   
+   source ~/catkin_ws/devel/setup.bash
+   roslaunch xmate_3kg_description test_xmate.launch
+   
+
+
