@@ -13,3 +13,27 @@
    sudo rosdep init
    rosdep update
 
+
+== 安装位置说明
+   rosrun
+   => /opt/ros/kinetic/bin/rosrun
+   
+   ocl
+   => /opt/ros/kinetic/share/ocl
+   	  /opt/ros/kinetic/lib/orocos/gnulinux/ocl
+	  /opt/ros/kinetic/include/orocos/ocl
+	  
+   orocreate-pkg
+   => /usr/local/bin/orocreate-pkg
+      /opt/ros/kinetic/bin/orocreate-pkg
+
+== rosrun ocl 
+   rosrun ocl orocreate-pkg HelloWorld
+   => [rosrun] Couldn't find executable named orocreate-pkg below /opt/ros/kinetic/share/ocl
+   
+   建立软连接
+   sudo ln -s /opt/ros/kinetic/bin/orocreate-pkg /opt/ros/kinetic/share/ocl/orocreate-pkg
+   
+
+还是有问题。
+   

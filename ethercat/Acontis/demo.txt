@@ -19,12 +19,3 @@
 
 
 	eUsrJob_SendAcycFrames 一个周期发几个 frames
-
-
-== Demo2
-
-
-== DemoDc
-
-
-== DemoSyncSm
