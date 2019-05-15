@@ -1,0 +1,15 @@
+
+
+== 为ros安装ocl支持
+   sudo apt-get install ros-kinetic-ocl
+   
+   sudo rosdep init
+=> ERROR: default sources list file already exists:
+   /etc/ros/rosdep/sources.list.d/20-default.list
+   Please delete if you wish to re-initialize
+
+   sudo rm /etc/ros/rosdep/sources.list.d/20-default.list
+   
+   sudo rosdep init
+   rosdep update
+
