@@ -1,0 +1,30 @@
+
+// 2019年 6月17日 星期一 14时56分03秒 CST
+
+real-time, refer to systems that guarantee consistent responses to events
+           within time constraints (also called deadlines)
+           with low variability regardless of system load.
+
+
+A normal linux operating system is not real-time.
+    例如：toggles a pin on the parallel port every millisecond.
+          在Linux上，可以实现为一个简单的循环:
+            toggles the pin 并等待1ms.
+
+    大多数情况下这是能正常工作的。
+    当系统的负载增加时，循环开始变慢，
+      because the process may be preempted
+        by the kernel or be swapped out of memory
+      in favor of another memory intensive program.
+    
+A real-time operating system will be designed so that
+  regardless of the system load, the program that toggle the pin
+  can do the operation every millisecond give or take a few microseconds.
+
+
+A real-time operating system (RTOS) usually has
+  an API for creating and running real-time tasks and
+  uses a scheduling algorithm that's different from
+    what's used by general purpose operating systems like Windows and Linux.
+
+
