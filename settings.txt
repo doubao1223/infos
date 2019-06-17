@@ -1,0 +1,61 @@
+
+// 2019年 6月15日 星期六 19时57分00秒 CST
+
+git clone https://github.com/shadowsocks/shadowsocks-qt5.git
+
+== Botan
+
+$ ./configure.py 
+$ make
+$ ./botan-test
+$ make install
+
+== 
+brew upate
+brew install qt5
+
+$ echo $PATH
+/usr/local/Cellar/qt/5.12.3
+
+
+== libQtShadowsocks
+brew install botan
+brew link botan
+mkdir build && cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local
+make all
+make install
+
+== shadowsocks-qt5
+brew update
+brew install libqrencode zbar 
+
+mkdir build && cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local
+make
+make install
+
+== ShadowsocsX-NG
+PAC自动模式
+服务器设置
+    地址: xxxx : 8388
+    加密方法:aes-256-cfb
+    密码: yyy
+    
+偏好设置
+  常规: 开机启动
+  高级:
+      本地socks5监听地址: 127.0.0.1
+      本地Socks5监听端口: 1080
+   本地PAC服务器监听端口: 1089
+                    超时: 60 秒
+  HTTP:
+      HTTP代理监听地址: 127.0.0.1
+      HTTP代理监听端口: 1087
+                        开启HTTP代理服务器
+  网络接口:
+      自动配置
+      
+从 GFW List 更新PAC
+
+
