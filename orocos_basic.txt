@@ -1,0 +1,48 @@
+
+// 2019年 6月22日 星期六 11时33分13秒 CST
+
+hjh 整理的
+
+== rtt
+
+哪些数据是可以传输的？
+
+addPort
+
+动态内存分配，执行时间可能不同。
+
+port
+    connect
+    disconnect
+
+operation
+    addOperation
+    阻塞调用
+    异步调用
+    
+C++11 异步编程
+
+  ClientThread
+  OwnThread
+  
+    Call
+    Send
+
+Global Exection Engine
+
+  attribute
+  property
+    get
+    set
+    没有加锁，不是线程安全的。
+    
+  实时线程的核心概念，高优先级的任务，先调度先执行。
+                      低优先级的任务，后调度后执行。
+
+Peers Network
+    addPeer
+
+    connectPeers
+    
+
+
