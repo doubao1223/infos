@@ -115,3 +115,125 @@
 
 解决线程调度顺序的技术。
 
+// 2019年 6月22日 星期六 09时30分11秒 CST
+
+轮询
+
+中断
+
+信号
+    信号处理机制 
+    信号的响应动作
+        signal()
+        sigaction()
+
+A 进程里有多个线程，进程里处理信号都是相同的？！
+
+信号定义
+    9, 15
+    0,31
+    实时信号
+
+Qt有信号和槽
+Boost也有 signal 提供的和Qt的槽差不多。
+
+中断和信号的优先级是在哪里定义的？
+调度器怎么决定先后顺序的?
+
+中断应用在哪些方面？
+
+
+gdb （学习gdb源码)
+1 coredump 分析
+      info threads
+           * 指示当前线程栈
+      threads xxx
+      frame xxx
+      
+      bt
+      info args
+
+有时候还需要结合汇编来分析
+    -g 生成调试信息      
+strip去掉调试信息
+    -O0 不优化。 可能性能会差。
+    -Og (4.8)
+
+没有发生错误，想要core文件
+  libunwind
+  backtrace
+  booost.stacktrace
+  google-coredumper
+
+
+2 多线程分析
+
+  死锁。
+
+  资源同路的问题。
+  
+gdb attach
+
+  请求锁的位置
+      time wait
+
+info help
+info args
+
+3 其他调试方法
+    printf
+    头脑debug
+4 profiler 分析器
+   gprof
+        函数统计
+        gcc -pg
+   gprof a.out gmon.out
+
+5 Valgrind
+   Memcheck     内存泄露, 内存越界
+                代码静态错误
+
+   Cachegrind   cpu有指令缓存和数据缓存
+
+   callgrind    函数统计
+        gprof
+
+   Helgrind     线程
+
+   Massif       堆分析工具
+
+6 gperftools
+    tcmalloc
+    heap-profiler
+    heap-checker
+
+boost.regex
+string-algo
+asio 异步IO
+filesystem      简明的文件操作接口
+any     各种各样的类型        
+singal2
+thread
+boost.bind
+
+glog 简单易用的日志库
+gtest && gmock
+
+
+CSAPP
+APUE
+more C++ idioms
+
+虚美难假，偏轮难行。
+
+
+
+== 堆
+  maps  
+mmap
+
+堆内存的地址范围。
+
+
+
+
