@@ -229,7 +229,9 @@ more C++ idioms
 
 
 == 堆
-  maps  
+  maps
+  /proc/id/maps
+  /proc/$pid/maps
 mmap
 
 堆内存的地址范围。
