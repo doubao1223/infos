@@ -1,0 +1,149 @@
+
+// 2019年 6月26日 星期三 10时52分23秒 CST
+
+1. 在一个站点 搜索关键字xyz
+
+site:xenomai.org  clockfreq
+在网站 xenomai.org 中查找 clockfreq相关内容
+
+Google  site:TIME.com
+在网站 TIME.com 中查找 Google 相关信息
+
+Sidney Crosby site:nhl.com
+search for all content about famous hockey player Sidney Crosby,
+but only on NHL.com
+
+2. 用引号来搜索固定短语
+"how china think"
+搜索整个词组.
+减少搜索.
+
+3. 在引号中用星号指定 unknown or variable
+"how  * think of china"
+
+4. 在搜索结果中，减少certain words
+jaguar -car
+减少结果中 car 相关的项
+
+Mustang -cars
+
+5. 搜索新闻归档，可以back to the mid-1880s
+news.google.com
+
+6. 用 vs 来比较
+"rice vs. quinoa"
+"china vs. japan"
+"china vs japan"
+"japan vs china"
+
+7. 精确搜索
+如查找 creme brulee, 选择工具，可以对语言，时间，匹配度进行选择。
+
+8. 查 meaning of a words
+"DEFINE: mortagage"
+"DEFINE: bae"
+"DEFINE: SMH"
+
+9. tilt
+https://elgoog.im/tilt/
+
+10. Atari Breakout
+一个小游戏
+
+11. 使用 images 搜图
+点击 摄像机 按钮，上传图片。
+
+12. 使用不同的标签来搜索
+image, news, ...
+图片，新闻，地图，视频，更多
+
+13. find a page that links to another page
+
+link:nytimes.com
+所有pages link to New York Times official website.
+
+14. 找到sites that are similar to other sites
+
+related:amazon.com
+
+15. do math
+8*5 + 5
+
+16. search two phrases
+"Best ways to prepare for a job interview" OR "How to prepare for a job interview"
+这两个短句都会被搜索。
+
+chocolate OR white chocolate
+搜索 pages that have either chocolate or white chocolate!
+
+17. 搜索 数字范围
+What teams have won the Stanley Cup ..2004
+41..43
+
+18. 简单语句
+Pizza places nearby
+
+19. start with something simple then gradually get more complicated.
+First try: job interviews
+Seond try: prepare for job interviews
+Third try: how to prepare for a job interview
+
+好处：this will gradually refine the search
+        to bring you fewer, more targeted terms.
+
+20. 用网站更可能使用的语言
+
+websites don't say things the way people do; instread, they try to
+use language that sounds professional.
+
+"I have a flat tire" could be replaced by "repair a flat tire."
+"My head hurts" could be replaced by "headache relief."
+
+21. 只使用重要的词
+It is apropos to use only the important words when
+  searching for something.
+
+DDon't use: Where can I find a Chinese restarutant that delivers.
+Instead try: Chinese restaurants nearby.
+
+22. 快捷方式
+
+Weather *zip code*
+天气 *042200*
+天气 042200
+
+What is *Mark Zuckerberg* Bacon Number
+
+What is the definition of *word*
+或者
+Define:*word*
+
+What is the definiton of 中国
+What is the definiton of "中国"
+Define:"中国"
+
+Timee *place*
+
+check any stock by typing its ticker name
+
+23. 用不同用词来搜索
+You may search "How to install drivers in Ubuntu?"
+When you really mean "Troubleshoot driver problems Ubuntu."
+
+24. 查找文件
+*Search term here* filetype:pdf
+
+"assert" filetype:pdf
+
+25. Money and unit conversions
+miles to km
+ 10 miles to km"
+
+USD to British Pound Sterling
+"10 USD to British Pound Sterling"
+
+26. 
+
+
+
+
