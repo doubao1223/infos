@@ -13,10 +13,13 @@ Sidney Crosby site:nhl.com
 search for all content about famous hockey player Sidney Crosby,
 but only on NHL.com
 
+global warming site:edu
+references to global warming found on .edu websites
+
 2. 用引号来搜索固定短语
 "how china think"
-搜索整个词组.
-减少搜索.
+搜索整个词组. 减少搜索.
+"one small step for man"
 
 3. 在引号中用星号指定 unknown or variable
 "how  * think of china"
@@ -25,7 +28,8 @@ but only on NHL.com
 jaguar -car
 减少结果中 car 相关的项
 
-Mustang -cars
+Mustang -car
+bass -fishing
 
 5. 搜索新闻归档，可以back to the mid-1880s
 news.google.com
@@ -43,6 +47,9 @@ news.google.com
 "DEFINE: mortagage"
 "DEFINE: bae"
 "DEFINE: SMH"
+
+define:plethora
+link to definitions of the word "plethora"
 
 9. tilt
 https://elgoog.im/tilt/
@@ -62,12 +69,16 @@ image, news, ...
 link:nytimes.com
 所有pages link to New York Times official website.
 
+link:www.umich.edu
+websites that link to the University of Michigan website
+
 14. 找到sites that are similar to other sites
 
 related:amazon.com
 
 15. do math
 8*5 + 5
+sqrt(3)
 
 16. search two phrases
 "Best ways to prepare for a job interview" OR "How to prepare for a job interview"
@@ -76,9 +87,15 @@ related:amazon.com
 chocolate OR white chocolate
 搜索 pages that have either chocolate or white chocolate!
 
+vacation London OR Paris
+results with the word "vacation" and either "London" or "Paris"
+
 17. 搜索 数字范围
 What teams have won the Stanley Cup ..2004
 41..43
+
+Willie Mays 1950..1960
+results about Willie Mays during this time period
 
 18. 简单语句
 Pizza places nearby
@@ -139,11 +156,18 @@ When you really mean "Troubleshoot driver problems Ubuntu."
 miles to km
  10 miles to km"
 
+cm in foot
+28C in F
+$ in pund
+days in fortnight
+miles in league
+mph in speed of light
+
 USD to British Pound Sterling
 "10 USD to British Pound Sterling"
 
-26. 
-
-
+26. Similar Words
+~mobile phone
+results with the wordd "phone", a well as "cell", "cellular", "wireless", etc.
 
 
