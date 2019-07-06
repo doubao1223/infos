@@ -1,0 +1,100 @@
+
+// 2019年 7月 4日 星期四 12时52分06秒 CST
+
+实时环境配置
+
+1. 简介
+   在Linux主机上，使用make manuconfig命令配置内核源码的选项，编译出内核包。
+安装内核，重启电脑，引导为新的内核。
+
+本文使用的主机是Ubuntu 16.04.6, Linux内核linux-4.14.128.tar.gz,
+实时内核 xenomai-3.0.9, ipipe-core-4.14.128-x86-5.patch.
+
+2. Ubuntu 16.04.6 的安装（略）
+   为了能使用make menuconfig编译内核，需要安装依赖包。在Ubuntu 16.04上需要安装的，
+   有 libncurses5-dev ;; 'make menuconfig' requires the ncurses libraries
+      kernel-package  ;; make-kpkg: command not found
+      （安装到最后，会有一个选择菜单，选Install the package maintainer's version, 回车)
+      libssl-dev      ;; 解决编译报错：openssl/openssl.h: No such file or directory           
+      libelf-dev      ;; Cannot use CONFIG_STACK_VALIDATION=y, please install libelf-dev
+                      ;; 另外执行 make modules 命令，也需要libelf-dev.
+                      
+3. 实时内核编译
+   （1) 将linux-4.14.128.tar.gz, xenomai-3.0.9 都解决到目录(如~/work）中，并把
+ipipe-core-4.14.128-x86-5.patch拷贝到同一目录中。
+   （2) 进入目录 linux-4.14.128，
+        使用命令../xenomai-3.0.8/scripts/prepare-kernel.sh --arch=x86_64 --ipipe=../ipipe-core-4.14.89-x86-2.patch 将实时补丁打给Linux内核。
+   （3) 使用 make menuconfig 修改内核配置。参考《实时内核编译选项配置》。
+        为简单起见，复制config文件到 linux-4.14.128, 并修改为 .config。
+        config为已经配置好的实时内核文件。
+   （4) 在linux-4.14.128 中，使用touch REPORTING-BUGS创建空文件REPORTING-BUGS.
+                         (不创建会报 cannot stat 'REPORTING-BUGS': No such file or directory 的错误)
+        使用命令fakeroot make-kpkg -j `getconf _NPROCESSORS_ONLN` --initrd --append-to-version -xenomai-3.0.9 --revision 1.0 kernel_image kernel_headers modules, 编译。
+   
+   （5) 安装编译好的内核.
+          sudo dpkg -i linux-headers* linux-image*
+   （6) 修改/etc/defaut/grub
+        一般是把GRUB_DEAULT=0 修改为"1>3"
+              注释掉 GRUB_HIDDEN_TIMEOUT=0
+        sudo update-grub
+   （7) 重启引导到新内核
+ 
+4. 安装 xenomai 用户空间代码
+   重启加载编译的新xenomai实时内核后，还需要安装xenomai的用户空间代码。
+   注：可使用uname -r命令，查看内核版本信息。
+   cd xenomai-3.0.9
+   ./script/bootstrap
+   ./configure --with-core=cobalt --enable-smp --enable-pshared
+   make && sudo make install
+
+5. 测试
+   cd /usr/xenomai/bin
+   sudo ./latency
+   sudo ./clocktest
+   
+6. 库安装
+   libboost-all-dev
+   ROS kinetic
+   orocos rtt
+   orocos ocl
+
+7. 应用
+   soft_robot_x64
+
+8. dd
+sudo fdisk -l
+
+sudo umount /media/ubuntu/Rokae
+sudo mount -t ntfs-3g /dev/sdc1 /mnt/
+注： sdc1 是 就是数据盘Rokae
+
+sudo dd if=/dev/sda of=/mnt/test_img/nuvo_xenomai3.0.9_linux4.14.128.img oflag=dsync bs=32M
+不行
+
+bs, blosck size, 块大小，是一次读取和写入的字节数。
+
+
+修复出问题的文件:
+sudo apt-get install ntfsprogs
+sudo ntfsfix /dev/sdb1
+
+e2fsck /dev/drive
+dumpe2fs /dev/drive | grep -i superblock
+e2fsck -b number /dev/drive
+
+也可以这样做
+cat /dev/source > /dev/target
+
+
+测试:
+sudo dd if=/dev/sda of=file.txt bs=16M count=100
+=> 100+0 records in
+   100+0 records out
+   1677721600 bytes (180 MB, 172 MiB) copied, 11.7652 s, 15.3 MB/s
+
+sudo dd if=/dev/sda of=i5-3200m_xenomai3.0.9_linux4.14.128.img bs=16M
+=> 1908+1 records in
+   1908+1 records out
+   32017047552 bytes (32 GB, 30 GiB) copied, 435.898 s, 73.5 MB /s
+
+
