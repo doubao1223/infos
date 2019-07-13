@@ -1,11 +1,15 @@
+ 2019年 6月17日 星期一 14时56分03秒 CST
 
-// 2019年 6月17日 星期一 14时56分03秒 CST
-
-real-time, refer to systems that guarantee consistent responses to events
+real-time, refer to systems
+           that guarantee consistent responses to events
+                             连续响应 对 事件
            within time constraints (also called deadlines)
+                  在限制时间内
            with low variability regardless of system load.
+                很小的变化         不考虑系统的负载
 
-
+实时系统难在什么地方？
+1. 通常的 linux 系统不是实时的。
 A normal linux operating system is not real-time.
     例如：toggles a pin on the parallel port every millisecond.
           在Linux上，可以实现为一个简单的循环:
@@ -13,18 +17,236 @@ A normal linux operating system is not real-time.
 
     大多数情况下这是能正常工作的。
     当系统的负载增加时，循环开始变慢，
-      because the process may be preempted
-        by the kernel or be swapped out of memory
+      because the process may be preempted by the kernel
+                  进程可能被 内核剥夺
+        or be swapped out of memory
+                  或者被交换出内存
       in favor of another memory intensive program.
-    
+          支持 另一个 高内存消耗的程序
+2. 实时操作系统    
 A real-time operating system will be designed so that
   regardless of the system load, the program that toggle the pin
+             不受系统影响
   can do the operation every millisecond give or take a few microseconds.
+             每 1ms 内，花费 几us 翻转一次.
 
+关于实时系统的一个对比：
+(1) a high performance computer with the latest Core i7 processor running a non-realtime OS
+(2) a low end microcontroller runing a single optimized control task.
 
-A real-time operating system (RTOS) usually has
-  an API for creating and running real-time tasks and
+(1) can be less "real-time" than (2)
+
+实时系统的使用场景
+fly-by-wire aircraft,
+satellites,
+exoplanetary rovers,
+cardiac pacemakers
+car engine control unit
+
+实时操作系统需要提供什么?
+A real-time operating system (RTOS) usually
+  has an API for creating and running real-time tasks and
+      (1) 提供 创建和运行 实时任务的 API.
   uses a scheduling algorithm that's different from
+      (2) 不同于 普通 操作系统的 调度算法。
     what's used by general purpose operating systems like Windows and Linux.
 
+Using real-time with full operating systems的好处，
+可以使用大量已有的 software 和 functionality，使 操作系统可以拥有网络和类似GSL的math libraries.
+
+ == 使用 Real-Time Operating Systems 进行控制
+   constant sampling time    not met  常数采样时间不能保证
+   controller responds too late to changes in the system state
+                       控制器 影响 系统状态的变化 太慢。
+   这两点都会 it could lead to the system becoming unstable.
+       导致系统不稳定
+   
+ == 选择 xenomai 来实现 real time controllers 的原因
+     good documentation      文档好
+     free and open source    免费并开源
+
+ == 安装xenomai
+    要使用xenomai, 需要compile a modified kernel.
+
+    如果是你第一次编译内核, 出错是应该的。
+      Keep in mind that if this is the first time you're compiling a kernel,
+        things are bound to go wrong.
+    一定要有耐心,
+      Be willing to debug your compilation patiently.
+      I had to go through the compilation process dozens of times, making tweaks
+        at each step to get my first successful kernel image.
+
+一个不明白的选项：
+    Xenomai/cobalt -> Core Features -> Shared Interrupts - ENABLE
+      ( if you want shared interrupts to work )
+
+ == /usr/xenomai/bin
+  Some important xenomai related executables (including xeno-config) are in the
+    /usr/xenomai/bin folder.
+
+  The libraries files that the code is linked against are installed in the
+    /usr/xenomai/lib folder.
+
+  可以增加环境变量
+    export path="/usr/xenomai/bin:$PATH"
+    export LD_LIBRARY_PATH="/usr/xenomai/lib:$LD_LIBRARY_PATH"
+
+  在编译程序时，有可能报错 It might complain that it cannot find the library files.
+    This is because environment variables are cleared
+      when running a program as root. To fix this permanently:
+    => /etc/ld.so.conf.d
+        创建一个配置文件 xenomai.conf
+        向文件中增加 /usr/xenomai/lib
+        执行命令 sudo ldconfig
+  测试
+    sudo /usr/xenomai/bin/latency
+
+  总结
+    The process of getting real-time linux with Xenomai or any other framework running
+      for the first time can be little painful but once your installation is stable,
+      it'll serve you well for a very long time.
+    Once you have a working compiled kernel package, Installation on future hardware will
+      also go much faster.
+    
+      
+// 2019年 7月 2日 星期二 13时02分41秒 CST
+实时系统
+
+硬件时钟
+软件时钟
+
+软件时钟相对于硬件时钟的延迟？？
+
+
+latency
+nsamples = 10^9 / 10^5 = 10^4 个
+
+latency的问题
+1. ticks 为什么是 100us 的倍数
+    可能不是，latency 只是想用 ticks 个数，来指定一个expected 时间。
+    ticks * period_ns 是什么意思?
+    
+2. tikcs 是的时间是正好100us么？怎么控制的？
+
+clocktest
+
+cpu_thread
+    cpu_set_t
+    per_cpu_data
+        first_tod, first_clock
+        offset     和标准值比较后的偏差值
+        drift      漂移,逐渐的变化
+        
+        warps      时间扭曲、突起(平面的扭曲，直线上的弯曲)
+                   时间倒转，坑。后获取的时间值now, now < last.
+                   [坑]
+        max_warps  最大的扭曲值
+        thread
+        
+    pthread_mutex_t lock;
+        没有定义 自旋锁的话，使用
+        init_lock 是    pthread_mutex_init(lock, NULL)
+        acquire_lock 是 pthread_mutex_lock(lock)
+        release_lock 是 pthread_mutex_unlock(lock)
+    
+    sched_setaffinity
+    pthread_setschedparam
+        pthread_self
+    check_reference
+       (1) read_reference_clock()      TOD取的值
+            通过系统调用，取 SYS_gettimeofday，单位是 ns
+            取10次，得到最小的 min_delta
+
+            [ 墙上时间 ]  linux时间?
+            
+       (2) read_clock()                Clock取的值
+            clock_gettime(clockid_t )  xenomai时间？
+            从clockid_t 取的 ns 值.
+              如果clockid_t 是 CLOCK_REALTIME的话，和 gettimeofday 返回同样的值。
+              
+       问题：这两个时钟有什么区别？
+             为什么一个是时间，另一个用作标准时间。
+             offset 为什么是 clock_val[idx] - tod_val[idx];
+
+    check_time_warps
+        
+    nanosleep
+        挂起 1ms + x的时间
+    
+    ToD offset:     clock_val - tod_val
+    Tod drift:      delta_clock_val / delta_tod_val - 1
+    warps:          时间倒转次数
+    max delta:      时间倒转最大值 (now - last) < 0, 取反，取最大。
+    
+    tod < gettimeofday < secondary mode
+
+== 
+3rdparty/EcMaster/lib/libEcMaster.a
+
+dev/ethercat
+dev/ethercat/acontis
+dev/ethercat/ethercat_interface.*
+
+dev/ethercat/acontis/Common/EcTimer.*
+dev/ethercat/acontis/EcOs.cpp
+
+inc/acontis/EcOs.h
+inc/acontis/Xenomai/
+
+
+== xenomai3中系统超频
+
+=> 安装cpufrequtils 工具
+   sudo apt install cpufrequtils
+   sudo cpufreq-set -c 0 -g performance
+   sudo cpufreq-set -c 1 -g performance
+   sudo cpufreq-set -c 2 -g performance
+   sudo cpufreq-set -c 3 -g performance
+
+我这样设置完频率一直在 2.4G 左右。
+
+
+=> 我设置时遇到的问题
+   Error setting new values. Common errors:
+   - Do you have proper administration rights? (super-user?)
+       yes
+   - Is the governor you requested available and modprobed?
+       不知道
+   - Trying to set an invalid policy?
+       yes?
+   - Trying to set a specific frequency, but userspace governor is not available,
+       for example because of hardware which cannot be set to a specific frequency
+       or because the userspace governor isn't loaded?
+
+
+== CPU的处理能力
+ CPU的内部结构可分为，
+    控制单元，
+    逻辑单元，
+    存储单元，
+
+CPU的主要性能指标：
+1. 主频，一般说来，一个时钟周期完成的指令数是固定的，所以主频越高，CPU的速度也就越快。
+      不过由于各种CPU的内部结构也不尽相同，所以并不能完全用主频来概括CPU的性能。
+
+      外频，是系统总线的工作频率
+      外频 X 倍频 = 主频
+
+2. 内存总线速度（或者叫系统总结速度），一般等同于CPU的外频。
+    由于内存速度的发展滞后于CPU的发展速度，为了缓解内存带来的瓶颈，所以出现了二级缓存，来协调两者之间的差异。
+3. 工作电压，CPU正常工作所需的电压。
+    低电压能解决耗电过大和发热过高的问题。
+4. 协处理器（数据协处理器），主要功能就是负责浮点运算。
+     协处理器的功能除了增强浮点运算，往往对多媒体指令进行了优化。
+5. 流水线技术、超标量，
+6. 乱序执行 和 分枝预测
+
+7. L1 高速缓存，CPU内置的高速缓存，可以提高CPU的运行效率。
+   内置的L1高速缓存的容量 和 结构对CPU的性能影响较大
+   write back
+   write through
+
+8. L2 高速缓存，指CPU外部的高速缓存。
+
+9. 制造工艺
 
