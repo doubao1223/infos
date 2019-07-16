@@ -1,0 +1,66 @@
+
+// 2019年 7月16日 星期二 21时05分09秒 CST
+
+
+ChainDynParam::JntToMass
+    RigidBodyIntertia& load
+
+    Ic[i] = chain.getSegment(i).getInertia() + load;
+            load 是个空指针，或者 load 没有初始化。
+
+      chain.getSegment(i).getInertia() --> Ia    <====
+                                  load --> Ib
+                                  
+    RigidBodyInertia operator+(const RigitBodyInertia& Ia,
+                                     const RigidBodyInertia& Ib)
+    {
+        return RigidBodyInertia( Ia.m + Ib.m,
+                                 Ia.h + Ib.h,
+                                 Ia.I + Ib.I,  
+                                 mhi)                                 
+
+        RigidBodyInertia {
+        
+          RotationalInertia I;
+          
+        }
+                                Ia.I -> Ia      <====
+                                Ib.I -> Ib
+        
+        ==> operator+(const RotationalInertia& Ia,
+                      const RotationalInertia& Ib)
+
+    }
+                                                                       
+    
+------------------------------------------------------------
+    std::vector<ArticulatedBodyInertia,
+                Eigen::aligned_allocator<ArticulateBodyInertia> >
+         Ic;
+
+    chain.getSegment()  Request the nr'd of the chain.
+                        There is no boundary checking.
+    
+                    -- nr, the nr of the segment starting from 0
+                    -- return a constant reference to the nr'd segment
+
+    Segment 这个类封装了 a simple segment,
+            that is a "rigid body" (i.e., a frame and a rigid body inertia)
+            with a joint and with "handles", root and tip to connect to other segments.
+
+        A simple segment is described by the following properties:
+           Joint
+           Rigid Body Inertia: of the rigid body part of the segment
+           Offset from the end of the joint to the tip of the segment:
+                  the joint is located at the root of the segment.
+
+    RigidBodyInertia I;
+    
+        RigidBodyInertia& getInertia() const
+        {
+            return I;
+        }
+
+------------------------------------------------------------
+              
+
