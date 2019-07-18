@@ -8,7 +8,22 @@
   怎么评估。
 3. i915 gpu
 
-== 2019.7.13
+
+============================================================
+业务
+代码
+
+编程: C++。
+编译: eclipse 的编译系统，cmake。
+          C++ Manageed Build
+          CMake Project的区别
+          Makefile Project
+          
+编辑器: emacs, TEX, md格式，pdf.
+============================================================
+
+
+== 2019.7.15  周一
 
 1. Xmate 科研版 demo
 2. 熟悉产品
@@ -26,4 +41,40 @@
     12月底       对外卖。
 
 ethercat 不做了.
-输出一些系统评测文档，包括之前遇到的问题。
+输出一些系统评测文档，包括之前遇到的问题。   <<=== 在阅读一下xenomai代码再输出
+                                             
+
+== 2017.7.16
+soft_robot_search 架构
+功能模块
+
+EcMaster Demo           1
+atemsys.ko Demo         2
+boost demo              3
+eigen demo              4
+kdl demo                5
+gsl demo                6
+
+Business Demo           7    业务逻辑
+orocos demo             8
+xenomai demo            9
+i-pipe demo             10
+xenomai kernel demo     11
+
+== 2017.7.17
+解决了 碰撞检测程序启动时的 segmentfault.
+
+将返回 对象引用改为返回对象。
+
+原因分析：
+   gcc4.6: 如果在函数中返回 对象引用，退出函数后并不销毁对象。
+   gcc5.4: 函数中返回对象，退出函数后对象被销毁，所以不能返回引用。
+           应该返加对象。
+
+== 2019.7.18
+lircos 项目基本信息
+lircos 工程编译
+lircos 代码
+
+
+
